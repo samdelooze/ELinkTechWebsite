@@ -6,35 +6,43 @@
     <title>@ViewData["Title"] - ELinkTech</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://kit.fontawesome.com/64301a05d6.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Main" asp-action="Index">ELinkTech</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark mb-3">
+            <div class="container-fluid ps-5">
+                <a class="navbar-brand text-light " asp-area="" asp-controller="Main" asp-action="Index">ELinkTech</a>
+        
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                           <a class="nav-link text-dark page-scroll"  href="#sect1">Sect 1</a>
+                            <a class="nav-link text-light page-scroll" href="#sect1">Home</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link text-dark page-scroll" href="#sect2">Sect 2</a>
+                            <a class="nav-link text-light page-scroll" href="#sect2">About Us</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link text-dark page-scroll" href="#sect3">Sect 3</a>
+                            <a class="nav-link text-light page-scroll" href="#sect3">Services</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link text-dark page-scroll" href="#sect4">Sect 4</a>
+                            <a class="nav-link text-light page-scroll" href="#sect4">Resellers</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link text-dark page-scroll"  href="#sect5">Sect 5</a>
+                            <a class="nav-link text-light page-scroll" href="#sect5">Contact</a>
+                        </li>
+                        <!--
+                        <li class="nav-item">
+                            a class="nav-link text-light " asp-area="" asp-controller="Main" asp-action="Privacy">Privacy</a>
+                        </li>
+                        -->
+                    </ul>
+                    <ul class="navbar nav justify-content-end pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Main" asp-action="Login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Main" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Main" asp-action="Register">Register</a>
                         </li>
                     </ul>
                 </div>
@@ -47,10 +55,28 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - ELinkTech - <a asp-area="" asp-controller="Main" asp-action="Privacy">Privacy</a>
-        </div>
+    <footer class="border-top footer text-muted bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark mb-3">
+            <div class="container-fluid ps-5">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    &copy; 2022 - ELinkTech
+                    <ul class="navbar nav justify-content-end pe-3">
+                        <li class="nav-item pe-1">
+                            <i class="nav-link fa-brands fa-facebook"></i>
+                        </li>
+                        <li class="nav-item pe-1">
+                            <i class="nav-link fa-brands fa-instagram"></i>
+                        </li>
+                        <li class="nav-item pe-1">
+                            <i class="nav-link fa-brands fa-twitter"></i>
+                        </li>
+                        <li class="nav-item pe-1">
+                            <i class="nav-link fa-brands fa-linkedin"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
