@@ -8,37 +8,37 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ELinkTech
 build_property.RootNamespace = ELinkTech
-build_property.ProjectDir = E:\Documets\GitHub\ELinkTechWebsite\ELinkTech\
+build_property.ProjectDir = /Users/ahnthy/Desktop/Diploma_Advanced-Programming/Semester2/WED_Capstone Project/Project/ELinkTechWebsite/ELinkTech/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\Documets\GitHub\ELinkTechWebsite\ELinkTech
+build_property.MSBuildProjectDirectory = /Users/ahnthy/Desktop/Diploma_Advanced-Programming/Semester2/WED_Capstone Project/Project/ELinkTechWebsite/ELinkTech
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/Documets/GitHub/ELinkTechWebsite/ELinkTech/Views/Main/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpblxJbmRleC5jc2h0bWw=
+[/Users/ahnthy/Desktop/Diploma_Advanced-Programming/Semester2/WED_Capstone Project/Project/ELinkTechWebsite/ELinkTech/Views/Main/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFpbi9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Documets/GitHub/ELinkTechWebsite/ELinkTech/Views/Main/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpblxQcml2YWN5LmNzaHRtbA==
+[/Users/ahnthy/Desktop/Diploma_Advanced-Programming/Semester2/WED_Capstone Project/Project/ELinkTechWebsite/ELinkTech/Views/Main/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFpbi9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Documets/GitHub/ELinkTechWebsite/ELinkTech/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[/Users/ahnthy/Desktop/Diploma_Advanced-Programming/Semester2/WED_Capstone Project/Project/ELinkTechWebsite/ELinkTech/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Documets/GitHub/ELinkTechWebsite/ELinkTech/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/Users/ahnthy/Desktop/Diploma_Advanced-Programming/Semester2/WED_Capstone Project/Project/ELinkTechWebsite/ELinkTech/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Documets/GitHub/ELinkTechWebsite/ELinkTech/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/ahnthy/Desktop/Diploma_Advanced-Programming/Semester2/WED_Capstone Project/Project/ELinkTechWebsite/ELinkTech/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Documets/GitHub/ELinkTechWebsite/ELinkTech/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/ahnthy/Desktop/Diploma_Advanced-Programming/Semester2/WED_Capstone Project/Project/ELinkTechWebsite/ELinkTech/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Documets/GitHub/ELinkTechWebsite/ELinkTech/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-hgzc5dkx7g
+[/Users/ahnthy/Desktop/Diploma_Advanced-Programming/Semester2/WED_Capstone Project/Project/ELinkTechWebsite/ELinkTech/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-1jtikcqpmm
