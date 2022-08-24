@@ -1,144 +1,231 @@
 ﻿@{
     ViewData["Title"] = "Main Page";
 }
-<div>
+<div class="container">
     <section>
         <div id="sect1">
 
-        <h1>Section 1 Welcome</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacus lorem, condimentum quis volutpat eget, vestibulum ut eros. Nulla aliquam maximus malesuada. In quis nisi urna. Fusce et sodales est. Nulla pellentesque malesuada eros, vel posuere mi iaculis ac. Phasellus consectetur ante risus, vitae hendrerit purus tempor non. Vivamus at velit sed magna tincidunt facilisis.
+          <h1 class="text-center m-3">Section 1 Welcome</h1>
 
-                Fusce velutpat. Phasellus ac pretium diam. Donec aliquet dui vel ornare varius. Cras quam libero, posuere sit amet felis id, semper convallis massa. Cras vitae pulvinar turpis, at porta elit. Proin felis sapien, ornare in orci non, vestibulum dictum purus. Donec eu lorem at augue congue egestas et ut tortor. Aenean massa erat, ornare at enim vitae, fringilla ullamcorper tortor. Fusce vel tellus nec sem sagittis convallis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-            </p>
+          <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="10000">
+                <img src="https://dummyimage.com/1000x400/60aba7" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Service1</h5>
+                  <p>Some representative placeholder content for the first slide.</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://dummyimage.com/1000x400/ab9561" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Service2</h5>
+                  <p>Some representative placeholder content for the second slide.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://dummyimage.com/1000x400/61ab62" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Service3</h5>
+                  <p>Some representative placeholder content for the third slide.</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
         </div>
-        </section>
+    </section>
 
-        <section>
+    <section>
         <div id="sect2">
 
-        <h1>Section 2 About</h1>
-        <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque urna ut elit aliquet cursus. Vestibulum a commodo lorem. Phasellus ligula felis, feugiat vitae convallis et, dapibus ac felis. Suspendisse placerat vestibulum lorem, eget efficitur turpis eleifend ac. Nulla ullamcorper in sem eu elementum. Pellentesque elit orci, pretium vitae dui sed, semper venenatis lacus. Pellentesque ut lobortis leo. Maecenas mi mauris, suscipit sed massa sit amet, pretium vehicula diam. Aliquam sed velit scelerisque, congue leo quis, venenatis leo. Donec ut ligula a ipsum egestas tristique. Mauris at arcu consectetur, aliquam sem id, bibendum ligula.
+          <h1 class="text-center m-3">Section 2 About</h1>
 
-                Sed elementum, justo quis congue semper, metus justo convallis libero, id accumsan nisl ex in leo. Vestibulum dolor velit, condimentum ut ultrices commodo, malesuada ac diam. Morbi vitae finibus tellus. Morbi euismod arcu a lectus luctus maximus. Praesent finibus nibh quis quam pharetra, non faucibus nisl elementum. Curabitur pharetra, nisi quis pretium commodo, risus dolor bibendum nisi, in interdum eros dolor a metus. Duis felis nunc, tristique ut volutpat id, semper ut enim. Nulla elementum quis quam ac lobortis. Donec pretium ligula a pharetra lobortis. Proin enim felis, accumsan at purus et, consequat pulvinar justo. Integer ac turpis eget turpis sodales feugiat quis et justo. Mauris vitae lobortis augue, sed ullamcorper libero.
+          <div class="row">
+            <div class="col-sm-12 col-xl-6">
+              <img src="https://images.unsplash.com/photo-1570215171323-4ec328f3f5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" style="max-width: 100%; min-width: 100%;">
+            </div>
+            <div class="col-sm-12 col-xl-6">
+              <P>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
+              </P>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-xl-6">
+              <P>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
+              </P>
+            </div>
+            <div class="col-sm-12 col-xl-6">
+              <img src="https://images.unsplash.com/photo-1570215171323-4ec328f3f5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" style="max-width: 100%; min-width: 100%;">
+            </div>
+          </div>
 
-                Suspendisse potenti. Phasellus placerat aliquet dapibus. Proin nec sem ligula. Etiam posuere eros vel nisl consequat, fermentum luctus dui vehicula. Cras eget elit fermentum, tempus elit efficitur, convallis mi. Sed et neque vehicula, iaculis neque quis, venenatis mauris. Sed posuere consequat ex. Vivamus malesuada elit eget nisi maximus, ac pulvinar orci posuere. Vestibulum imperdiet leo non facilisis eleifend. Maecenas eros metus, pellentesque at augue non, efficitur ultrices urna. Ut non accumsan massa, sed ullamcorper tellus. Sed ullamcorper varius nulla, sit amet scelerisque velit malesuada at. Vestibulum luctus purus ac dolor efficitur suscipit.
-
-                Fusce magna risus, semper et faucibus ac, porta quis purus. Suspendisse ut aliquam dui, quis aliquet orci. Donec a ex in dolor pharetra porta faucibus id tellus. Nulla tellus libero, ornare id lacinia sed, imperdiet vel urna. Cras pellentesque dolor vitae justo consequat sollicitudin. Nunc sit amet pellentesque nibh. Proin ac mi a quam vulputate luctus eu eu leo. Cras pellentesque tortor in mauris ultricies, ut suscipit risus interdum. Suspendisse tempus elementum arcu. Sed vitae ornare urna. Curabitur ligula libero, venenatis ac eros in, placerat dignissim mauris. Nunc venenatis odio sed tempus pulvinar. Donec porta nulla id nulla semper, id mattis mauris aliquet. Sed hendrerit est eget mi scelerisque interdum.
-
-                Pellentesque viverra dui at massa dignissim, quis faucibus sem accumsan. Nulla a nibh vel nibh venenatis facilisis at in elit. Nullam mollis libero vel velit sodales tristique. Nullam sodales magna id pellentesque pellentesque. Proin venenatis, mi eu venenatis varius, nunc arcu lacinia diam, id pharetra nulla sapien at risus. In sed mauris consequat, dictum eros quis, lobortis justo. Morbi tempor, eros sit amet ullamcorper eleifend, elit est iaculis tellus, nec fringilla nisl mauris non augue. In hac habitasse platea dictumst.
-        </p>
         </div>
-        </section>
+    </section>
 
-        <section>
+    <section>
         <div id="sect3">
-        <h1>Section 3 Services</h1>
-        <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean scelerisque urna ut elit aliquet cursus. Vestibulum a commodo lorem. Phasellus ligula felis, feugiat vitae convallis et, dapibus ac felis. Suspendisse placerat vestibulum lorem, eget efficitur turpis eleifend ac. Nulla ullamcorper in sem eu elementum. Pellentesque elit orci, pretium vitae dui sed, semper venenatis lacus. Pellentesque ut lobortis leo. Maecenas mi mauris, suscipit sed massa sit amet, pretium vehicula diam. Aliquam sed velit scelerisque, congue leo quis, venenatis leo. Donec ut ligula a ipsum egestas tristique. Mauris at arcu consectetur, aliquam sem id, bibendum ligula.
 
-                Sed elementum, justo quis congue semper, metus justo convallis libero, id accumsan nisl ex in leo. Vestibulum dolor velit, condimentum ut ultrices commodo, malesuada ac diam. Morbi vitae finibus tellus. Morbi euismod arcu a lectus luctus maximus. Praesent finibus nibh quis quam pharetra, non faucibus nisl elementum. Curabitur pharetra, nisi quis pretium commodo, risus dolor bibendum nisi, in interdum eros dolor a metus. Duis felis nunc, tristique ut volutpat id, semper ut enim. Nulla elementum quis quam ac lobortis. Donec pretium ligula a pharetra lobortis. Proin enim felis, accumsan at purus et, consequat pulvinar justo. Integer ac turpis eget turpis sodales feugiat quis et justo. Mauris vitae lobortis augue, sed ullamcorper libero.
+          <h1 class="text-center m-3">Section 3 Services</h1>
 
-                Suspendisse potenti. Phasellus placerat aliquet dapibus. Proin nec sem ligula. Etiam posuere eros vel nisl consequat, fermentum luctus dui vehicula. Cras eget elit fermentum, tempus elit efficitur, convallis mi. Sed et neque vehicula, iaculis neque quis, venenatis mauris. Sed posuere consequat ex. Vivamus malesuada elit eget nisi maximus, ac pulvinar orci posuere. Vestibulum imperdiet leo non facilisis eleifend. Maecenas eros metus, pellentesque at augue non, efficitur ultrices urna. Ut non accumsan massa, sed ullamcorper tellus. Sed ullamcorper varius nulla, sit amet scelerisque velit malesuada at. Vestibulum luctus purus ac dolor efficitur suscipit.
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-4">
+              <div class="card">
+                <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Service 1</h5>
+                  <p class="card-text">Service 1</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="card">
+                <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Service 2</h5>
+                  <p class="card-text">Service 2</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="card">
+                <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Service 3</h5>
+                  <p class="card-text">Service 3</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-                Fusce magna risus, semper et faucibus ac, porta quis purus. Suspendisse ut aliquam dui, quis aliquet orci. Donec a ex in dolor pharetra porta faucibus id tellus. Nulla tellus libero, ornare id lacinia sed, imperdiet vel urna. Cras pellentesque dolor vitae justo consequat sollicitudin. Nunc sit amet pellentesque nibh. Proin ac mi a quam vulputate luctus eu eu leo. Cras pellentesque tortor in mauris ultricies, ut suscipit risus interdum. Suspendisse tempus elementum arcu. Sed vitae ornare urna. Curabitur ligula libero, venenatis ac eros in, placerat dignissim mauris. Nunc venenatis odio sed tempus pulvinar. Donec porta nulla id nulla semper, id mattis mauris aliquet. Sed hendrerit est eget mi scelerisque interdum.
-
-                Pellentesque viverra dui at massa dignissim, quis faucibus sem accumsan. Nulla a nibh vel nibh venenatis facilisis at in elit. Nullam mollis libero vel velit sodales tristique. Nullam sodales magna id pellentesque pellentesque. Proin venenatis, mi eu venenatis varius, nunc arcu lacinia diam, id pharetra nulla sapien at risus. In sed mauris consequat, dictum eros quis, lobortis justo. Morbi tempor, eros sit amet ullamcorper eleifend, elit est iaculis tellus, nec fringilla nisl mauris non augue. In hac habitasse platea dictumst.
-        </p>
-        <div class="row justify-content-center">
-        <div class="col-12 col-md-5 col-lg-4 col-xl-3 m-3">
-      <div class="card">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Service 1</h5>
-    <p class="card-text">Service 1</p>
-  </div>
-</div>
         </div>
-        <div class="col-12 col-md-5 col-lg-4 col-xl-3 m-3">
-      <div class="card">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Service 2</h5>
-    <p class="card-text">Service 2</p>
-  </div>
-</div>
-        </div>
-        <div class="col-12 col-md-5 col-lg-4 col-xl-3 m-3">
-      <div class="card">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Service 3</h5>
-    <p class="card-text">Service 3</p>
-  </div>
-</div>
-        </div>
-          <div class="col-12 col-md-5 col-lg-4 col-xl-3 m-3">
-      <div class="card">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Service 4</h5>
-    <p class="card-text">Service 4</p>
-  </div>
-</div>
-        </div>
-        </div>
-</div>
-        </section>
+    </section>
 
-        <section id="sect4">
-        <div class="container">
+    <section>
+        <div id="sect4">
 
-        <h1 class="text-center" >Section 4 Quote Form</h1>
-            <div class="row justify-content-center">
-                <div class="col-6">
-            <form class="information">
+          <h1 class="text-center m-3">Section 4 Resellers</h1>
+
+          <div class="row">
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="https://dummyimage.com/600x400/f0b848/fff" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="https://dummyimage.com/600x400/f0b848/fff" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <section>
+        <div id="sect5">
+
+          <div class="row">
+            <div class="col-12 col-lg-4">
+              <h1 class="text-center m-3">Section 5-1 Quote</h1>
+              <form class="information">
                 
                 <div class="form-group">
-    <label for="exampleFormControlSelect1">Service</label>
-    <select class="form-control" id="exampleFormControlSelect1" style="width: 100%; max-width: 600px;">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-                    <div class="form-group"><label class="form-control-placeholder" for="name">Name</label>
-                        <input type="text" style="width: 100%; max-width: 600px;" class="form-control" id="name" required> </div>
-
-					<div class="form-group"><label class="form-control-placeholder" for="email">Email address</label>
-                        <input type="email" style="width: 100%; max-width: 600px;" class="form-control" id="email" required> </div>
-					
-					 <div class="form-group"><label class="form-control-placeholder" for="number">Phone</label>
-                         <input type="text" style="width: 100%; max-width: 600px;" class="form-control" id="number" required> </div>
-
-                     <div class="form-group"><label class="form-control-placeholder" for="messaage">Message</label>
-                         <textarea name="message" style="width: 100%; max-width: 600px;" rows="6" class="input-message" ></textarea> </div>
-
-					 <div class="form-group mt-3"><button type="button" class="btn btn-block btn-dark"><span>Submit<i class="fas fa-arrow-right"></i></span></button></div>
-				</form>
+                  <label for="exampleFormControlSelect1">Service</label>
+                  <select class="form-control" id="exampleFormControlSelect1" style="width: 100%; max-width: 600px;">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
                 </div>
-        </div>
-        </div>
-        </section>
+                <div class="form-group">
+                  <label class="form-control-placeholder" for="name">Name</label>
+                  <input type="text" style="width: 100%; max-width: 600px;" class="form-control" id="name" required>
+                </div>
+					      <div class="form-group">
+                  <label class="form-control-placeholder" for="email">Email address</label>
+                  <input type="email" style="width: 100%; max-width: 600px;" class="form-control" id="email" required>
+                </div>
+      					<div class="form-group">
+                  <label class="form-control-placeholder" for="number">Phone</label>
+                  <input type="text" style="width: 100%; max-width: 600px;" class="form-control" id="number" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-control-placeholder" for="messaage">Message</label>
+                  <textarea name="message" style="width: 100%; max-width: 600px;" rows="6" class="input-message" ></textarea>
+                </div>
+					      <div class="form-group mt-3">
+                  <button type="button" class="btn btn-block btn-dark"><span>Submit<i class="fas fa-arrow-right"></i></span></button>
+                </div>
+				      </form>
+            </div>
 
-        <section>
-        <div id="sect5">
+            <div class="col-12 col-lg-8">
+              <h1 class="text-center m-3">Section 5-2 What we do</h1>
+              <div>
+                <img src="https://dummyimage.com/1000x400/60aba7" class="w-100" alt="...">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div id="sect6">
             
-        <h1>Section 5 Login/ Register</h1>
-        <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
+          <h1 class="text-center m-3">Section 6 Login/ Register</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
 
-                Ut metus leo, vulputate ac egestas ultricies, porta iaculis nibh. Nullam justo magna, cursus vel ornare sit amet, pellentesque sagittis diam. Donec sit amet nisi vitae ligula sagittis ullamcorper. Etiam at diam felis. Ut tincidunt volutpat erat. Vestibulum lacus neque, commodo nec facilisis quis, hendrerit id justo. Vestibulum dui sapien, consectetur sed eros non, sollicitudin congue leo. Aliquam luctus interdum quam, in scelerisque nulla suscipit eget. Nunc feugiat dui vitae libero faucibus consectetur. Donec gravida molestie dolor nec elementum. Morbi aliquet malesuada ipsum a iaculis. Cras cursus magna vitae eleifend accumsan. Nam condimentum nisi vestibulum metus fringilla, vitae facilisis leo imperdiet. Cras metus mi, eleifend quis diam at, porttitor posuere enim. Aenean velit lacus, iaculis ac aliquet at, efficitur sed libero. Nulla est augue, ultrices non fermentum vitae, pharetra id nisi.
+            Ut metus leo, vulputate ac egestas ultricies, porta iaculis nibh. Nullam justo magna, cursus vel ornare sit amet, pellentesque sagittis diam. Donec sit amet nisi vitae ligula sagittis ullamcorper. Etiam at diam felis. Ut tincidunt volutpat erat. Vestibulum lacus neque, commodo nec facilisis quis, hendrerit id justo. Vestibulum dui sapien, consectetur sed eros non, sollicitudin congue leo. Aliquam luctus interdum quam, in scelerisque nulla suscipit eget. Nunc feugiat dui vitae libero faucibus consectetur. Donec gravida molestie dolor nec elementum. Morbi aliquet malesuada ipsum a iaculis. Cras cursus magna vitae eleifend accumsan. Nam condimentum nisi vestibulum metus fringilla, vitae facilisis leo imperdiet. Cras metus mi, eleifend quis diam at, porttitor posuere enim. Aenean velit lacus, iaculis ac aliquet at, efficitur sed libero. Nulla est augue, ultrices non fermentum vitae, pharetra id nisi.
 
-                Aliquam vitae urna est. Cras congue ultricies enim, eu pharetra diam sodales a. Cras quis blandit purus, eget porta erat. Integer gravida facilisis diam, elementum maximus lectus pulvinar vitae. Praesent non ultrices est. Praesent non tempor ex. Quisque luctus dictum scelerisque. Proin vestibulum finibus odio ut vehicula. Fusce vestibulum, urna id sagittis lacinia, magna nisi mollis sem, vel iaculis nisi tellus ac mauris. Sed turpis tortor, tristique sed mi in, vehicula dictum risus.
+            Aliquam vitae urna est. Cras congue ultricies enim, eu pharetra diam sodales a. Cras quis blandit purus, eget porta erat. Integer gravida facilisis diam, elementum maximus lectus pulvinar vitae. Praesent non ultrices est. Praesent non tempor ex. Quisque luctus dictum scelerisque. Proin vestibulum finibus odio ut vehicula. Fusce vestibulum, urna id sagittis lacinia, magna nisi mollis sem, vel iaculis nisi tellus ac mauris. Sed turpis tortor, tristique sed mi in, vehicula dictum risus.
 
-                Phasellus bibendum vitae metus ac bibendum. Duis in cursus tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent venenatis, eros vel accumsan efficitur, ipsum sapien ornare ex, a interdum nisl tortor id nulla. Sed rutrum eu lacus in vestibulum. Nulla commodo sem vitae lacus gravida bibendum. Donec id euismod turpis. In feugiat odio sodales neque venenatis, eu consequat lacus luctus.
+            Phasellus bibendum vitae metus ac bibendum. Duis in cursus tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent venenatis, eros vel accumsan efficitur, ipsum sapien ornare ex, a interdum nisl tortor id nulla. Sed rutrum eu lacus in vestibulum. Nulla commodo sem vitae lacus gravida bibendum. Donec id euismod turpis. In feugiat odio sodales neque venenatis, eu consequat lacus luctus.
 
-                In vel ante nibh. Etiam ut purus ac arcu iaculis consequat dictum quis dui. Nulla sagittis sapien risus, sed eleifend ipsum aliquam nec. Sed sollicitudin dignissim ante, sed tempor ante sagittis at. Quisque eu dapibus nisl. Praesent commodo sit amet urna at tempor. Cras non porta massa.
-        </p>
+            In vel ante nibh. Etiam ut purus ac arcu iaculis consequat dictum quis dui. Nulla sagittis sapien risus, sed eleifend ipsum aliquam nec. Sed sollicitudin dignissim ante, sed tempor ante sagittis at. Quisque eu dapibus nisl. Praesent commodo sit amet urna at tempor. Cras non porta massa.
+          </p>
         </div>
-        </section>
+    </section>
 </div>
