@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Github\\ELinkTechWebsite\\ELinkTech\\ELinkTech.csproj": {}
+    "E:\\Documets\\GitHub\\ELinkTechWebsite\\ELinkTech\\ELinkTech.csproj": {}
   },
   "projects": {
-    "D:\\Github\\ELinkTechWebsite\\ELinkTech\\ELinkTech.csproj": {
+    "E:\\Documets\\GitHub\\ELinkTechWebsite\\ELinkTech\\ELinkTech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Github\\ELinkTechWebsite\\ELinkTech\\ELinkTech.csproj",
+        "projectUniqueName": "E:\\Documets\\GitHub\\ELinkTechWebsite\\ELinkTech\\ELinkTech.csproj",
         "projectName": "ELinkTech",
-        "projectPath": "D:\\Github\\ELinkTechWebsite\\ELinkTech\\ELinkTech.csproj",
-        "packagesPath": "C:\\Users\\Sam\\.nuget\\packages\\",
-        "outputPath": "D:\\Github\\ELinkTechWebsite\\ELinkTech\\obj\\",
+        "projectPath": "E:\\Documets\\GitHub\\ELinkTechWebsite\\ELinkTech\\ELinkTech.csproj",
+        "packagesPath": "C:\\Users\\finnh\\.nuget\\packages\\",
+        "outputPath": "E:\\Documets\\GitHub\\ELinkTechWebsite\\ELinkTech\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Sam\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\finnh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -49,8 +45,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -62,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
