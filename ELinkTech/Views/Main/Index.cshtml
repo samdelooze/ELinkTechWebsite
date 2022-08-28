@@ -1,6 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Main Page";
 }
+@using Microsoft.AspNetCore.Identity
+@model ELinkTech.ViewModels.Main
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
 <div class="container">
     <section>
         <div id="sect1">
@@ -150,7 +154,7 @@
                 </div>
               </div>
             </div>
-
+           </div>
 
         </div>
     </section>
@@ -212,20 +216,92 @@
 
 
     <section>
-        <div id="sect6">
-            
+        <div id="sect6">            
           <h1 class="text-center m-3">Section 6 Login/ Register</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
-
-            Ut metus leo, vulputate ac egestas ultricies, porta iaculis nibh. Nullam justo magna, cursus vel ornare sit amet, pellentesque sagittis diam. Donec sit amet nisi vitae ligula sagittis ullamcorper. Etiam at diam felis. Ut tincidunt volutpat erat. Vestibulum lacus neque, commodo nec facilisis quis, hendrerit id justo. Vestibulum dui sapien, consectetur sed eros non, sollicitudin congue leo. Aliquam luctus interdum quam, in scelerisque nulla suscipit eget. Nunc feugiat dui vitae libero faucibus consectetur. Donec gravida molestie dolor nec elementum. Morbi aliquet malesuada ipsum a iaculis. Cras cursus magna vitae eleifend accumsan. Nam condimentum nisi vestibulum metus fringilla, vitae facilisis leo imperdiet. Cras metus mi, eleifend quis diam at, porttitor posuere enim. Aenean velit lacus, iaculis ac aliquet at, efficitur sed libero. Nulla est augue, ultrices non fermentum vitae, pharetra id nisi.
-
-            Aliquam vitae urna est. Cras congue ultricies enim, eu pharetra diam sodales a. Cras quis blandit purus, eget porta erat. Integer gravida facilisis diam, elementum maximus lectus pulvinar vitae. Praesent non ultrices est. Praesent non tempor ex. Quisque luctus dictum scelerisque. Proin vestibulum finibus odio ut vehicula. Fusce vestibulum, urna id sagittis lacinia, magna nisi mollis sem, vel iaculis nisi tellus ac mauris. Sed turpis tortor, tristique sed mi in, vehicula dictum risus.
-
-            Phasellus bibendum vitae metus ac bibendum. Duis in cursus tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent venenatis, eros vel accumsan efficitur, ipsum sapien ornare ex, a interdum nisl tortor id nulla. Sed rutrum eu lacus in vestibulum. Nulla commodo sem vitae lacus gravida bibendum. Donec id euismod turpis. In feugiat odio sodales neque venenatis, eu consequat lacus luctus.
-
-            In vel ante nibh. Etiam ut purus ac arcu iaculis consequat dictum quis dui. Nulla sagittis sapien risus, sed eleifend ipsum aliquam nec. Sed sollicitudin dignissim ante, sed tempor ante sagittis at. Quisque eu dapibus nisl. Praesent commodo sit amet urna at tempor. Cras non porta massa.
-          </p>
+          <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <h1 class="mb-3">Register</h1>
+                    <form method="post">
+                        <div class="mb-1">
+                            <label class="col-form-label" asp-for="RegisterEmail"></label>
+                            <input type="text" asp-for="RegisterEmail" class="form-control" />
+                            <span asp-validation-for="RegisterEmail" class="text-danger"></span>
+                        </div>
+                        <div class="mb-1">
+                            <label class="col-form-label" asp-for="RegisterPassword"></label>
+                            <input type="password" asp-for="RegisterPassword" class="form-control" />
+                            <span asp-validation-for="RegisterPassword" class="text-danger"></span>
+                        </div>
+                        <div class="mb-1 pb-5">
+                            <label class="col-form-label" asp-for="ConfirmPassword"></label>
+                            <input type="password" asp-for="ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <div class="mb-1">
+                            <label class="col-form-label" asp-for="FirstName"></label>
+                            <input type="text" asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-1">
+                            <label class="col-form-label" asp-for="LastName"></label>
+                            <input type="text" asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-1">
+                            <label class="col-form-label" asp-for="ContactNumber"></label>
+                            <input type="text" asp-for="ContactNumber" class="form-control" />
+                            <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-1">
+                            <label class="col-form-label" asp-for="State"></label>
+                            <input type="text" asp-for="State" class="form-control" />
+                            <span asp-validation-for="State" class="text-danger"></span>
+                        </div>
+                        <div class="mb-1">
+                            <label class="col-form-label" asp-for="Address"></label>
+                            <input type="text" asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                        <div class="mb-1">
+                            <label class="col-form-label" asp-for="Suburb"></label>
+                            <input type="text" asp-for="Suburb" class="form-control" />
+                            <span asp-validation-for="Suburb" class="text-danger"></span>
+                        </div>
+                        <div class="mb-1">
+                            <label class="col-form-label" asp-for="Postcode"></label>
+                            <input type="text" asp-for="Postcode" class="form-control" />
+                            <span asp-validation-for="Postcode" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" asp-for="DateOfBirth"></label>
+                            <input type="text" asp-for="DateOfBirth" class="form-control" />
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+                        <button class="btn btn-primary" asp-action="Register">Register</button>
+                    </form>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <h1 class="mb-3">Login</h1>
+                    <form method="post">
+                        <div class="mb-1">
+                            <label class="col-form-label" asp-for="LoginEmail"></label>
+                            <input type="text" asp-for="LoginEmail" class="form-control" />
+                            <span asp-validation-for="LoginEmail" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label" asp-for="LoginPassword"></label>
+                            <input type="password" asp-for="LoginPassword" class="form-control" />
+                            <span asp-validation-for="LoginPassword" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" asp-for="RememberMe" class="form-check-input" />
+                            <label class="form-check-label" asp-for="RememberMe">Remember Me?</label>
+                        </div>
+                        <button class="btn btn-primary" asp-action="Login">Login</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 </div>

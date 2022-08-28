@@ -18,4 +18,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Shared\Components\Main\" />
+  </ItemGroup>
+
 </Project>
