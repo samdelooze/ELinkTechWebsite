@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace ELinkTech.Models
 {
@@ -10,5 +12,6 @@ namespace ELinkTech.Models
         public string? Address { get; set; }
         public string? Suburb { get; set; }
         public string? Postcode { get; set; }
+        public DateTime? DateOfBirth { get; set; }
     }
 }

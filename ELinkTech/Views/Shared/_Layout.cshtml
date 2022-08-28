@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,14 +40,35 @@
                         </li>
                         -->
                     </ul>
-                    <ul class="navbar nav justify-content-end pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Main" asp-action="Login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Main" asp-action="Register">Register</a>
-                        </li>
-                    </ul>
+                    @{
+                        var userId = userManager.GetUserId(User);
+                        var user = await userManager.FindByIdAsync(userId);
+
+                        if (signInManager.IsSignedIn(User))
+                        {
+                            
+                            <ul class="navbar nav justify-content-end pe-3">
+                                <li class="nav-item">
+                                    <a class="nav-link text-light">Hello @User.Identity?.Name!</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-action="Logout">Logout</a>
+                                </li>
+                            </ul>
+                            
+                        }
+                        else
+                        {
+                            <ul class="navbar nav justify-content-end pe-3">
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="#sect6">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="#sect6">Register</a>
+                                </li>
+                            </ul>
+                        }
+                     }
                 </div>
             </div>
         </nav>
