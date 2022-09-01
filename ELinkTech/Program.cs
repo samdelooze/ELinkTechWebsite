@@ -21,9 +21,18 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Main/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    /* app.UseExceptionHandler("/Main/Error");
+     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+     app.UseHsts();*/
+    app.UseExceptionHandler("/error.html");
+
+    app.Use(async (context, next) =>
+    {
+        if (context.Request.Path.Value.Contains("invalid"))
+            throw new Exception("ERROR!");
+
+        await next();
+    });
 }
 
 app.UseHttpsRedirection();
