@@ -6,6 +6,19 @@
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
 <div class="container">
+    @if(TempData["AlertSuccess"] != null) {
+        <div class="alert alert-success" role="alert">
+          <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="alert-heading">Success!</h4>
+          <p>@TempData["AlertSuccess"]</p>
+        </div>
+    } else if(TempData["AlertFail"] != null) {
+        <div class="alert alert-danger" role="alert">
+          <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="alert-heading">Fail</h4>
+          <p>@TempData["AlertFail"]</p>
+        </div>
+    }
     <section>
         <div id="sect1">
 
@@ -166,7 +179,7 @@
           <div class="row">
             <div class="col-12 col-lg-4">
               <h1 class="text-center m-3">Section 5-1 Quote</h1>
-              <form class="information">
+              <form class="information" method="post">
                 
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Service</label>
@@ -195,7 +208,7 @@
                   <textarea name="message" style="width: 100%; max-width: 600px;" rows="6" class="input-message" ></textarea>
                 </div>
 					      <div class="form-group mt-3">
-                  <button type="button" class="btn btn-block btn-dark"><span>Submit<i class="fas fa-arrow-right"></i></span></button>
+                  <button class="btn btn-primary" asp-action="Quote">Submit</button>
                 </div>
 				      </form>
             </div>
