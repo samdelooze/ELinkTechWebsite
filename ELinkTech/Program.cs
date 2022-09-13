@@ -57,7 +57,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseSession();
-app.UseRouting();
+app.UseRouting(); //Git ignore test
 
 app.UseAuthentication();
 app.UseAuthorization();
