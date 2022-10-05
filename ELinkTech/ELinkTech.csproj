@@ -9,7 +9,8 @@
     <!-- 2. Run CLI (dotnet user-secrets init) -->
     <!-- 3. Run CLI (dotnet user-secrets set SendGridKey "PUT YOUR SENDGRIDKEY HERE") -->
     <!-- 4. Check your own <UserSecretsId> property here and 'secret.json' file in your local storage -->
-    <UserSecretsId>9cce1275-3037-41b3-a291-8f59e9d589eb</UserSecretsId>
+    
+    <UserSecretsId>0c179add-18d3-4d12-8a06-c2252cd66dd5</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
