@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  scroll-padding-top: 65px;
 }
 
 @media (min-width: 768px) {
