@@ -1,0 +1,37 @@
+﻿@model ELinkTech.Models.Product
+@{
+}
+
+<h1>Add Service</h1>
+<form method="post" action="AddProduct" class="mt-5">
+    @using (Html.BeginForm())
+    {
+       <div class="mb-3">
+            <label>@Html.LabelFor(m => m.ProductID)</label>
+            <input type="text" class="form-control" asp-for="ProductID" placeholder="ID" />
+        </div>
+         <div class="mb-3">
+            <label>@Html.LabelFor(m => m.ProductName)</label>
+            <input type="text" class="form-control" asp-for="ProductName" placeholder="Name of service" />
+        </div>
+        <div>
+            <label>@Html.LabelFor(m => m.SupplierID)</label>
+        </div>
+         <div class="row mb-2">
+            <label class="form-label">
+               @Html.DropDownListFor(m => m.SupplierID, new SelectList(Model.SupplierList, "Value", "Text"), "Select Supplier", new {@class = "form-control"})
+            </label>
+        </div>
+          <div>
+            <label>@Html.LabelFor(m => m.CategoryID)</label>
+        </div>
+         <div class="row mb-2">
+            <label class="form-label">
+               @Html.DropDownListFor(m => m.CategoryID, new SelectList(Model.CategoryList, "Value", "Text"), "Select Category", new {@class = "form-control"})
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button> 
+    }
+    
+</form>
+

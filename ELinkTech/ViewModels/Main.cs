@@ -7,7 +7,7 @@ namespace ELinkTech.ViewModels
         //LOGIN
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email Address")]
-
+        
         public string? LoginEmail { get; set; }
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
