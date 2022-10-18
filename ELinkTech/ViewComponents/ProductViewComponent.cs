@@ -20,6 +20,7 @@ namespace ELinkTech.ViewComponents
                           on products.CategoryID equals categories.CategoryID
                           select new
                           {
+                              ProductID = products.ProductID,
                               ProductName = products.ProductName,
                               SupplierName = suppliers.SupplierName,
                               CategoryName = categories.CategoryName
@@ -31,6 +32,7 @@ namespace ELinkTech.ViewComponents
             {
                 productList.Add(new Product
                 {
+                    ProductID = products.ProductID,
                     ProductName = products.ProductName,
                     SupplierID = products.SupplierName,
                     CategoryID = products.CategoryName

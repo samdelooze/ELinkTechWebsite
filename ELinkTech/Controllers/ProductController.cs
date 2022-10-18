@@ -111,7 +111,7 @@ namespace ELinkTech.Controllers
 
             var category = from categories in db.categories select categories;
             Product? product = db.products.Where(p => p.ProductID == id).FirstOrDefault();
-
+            
             RetrieveSuppliers(supplier, product);
             RetrieveCategories(category, product);
             return View(product);
