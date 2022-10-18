@@ -1,0 +1,33 @@
+﻿@model ELinkTech.Models.Customers;
+    
+
+<h1> Add Customer</h1>
+<form method="post" action="Add">
+     
+  <div class="mb-3">
+    <label for="" class="form-label">Name</label>
+    <input type="text" class="form-control"  asp-for="Name">
+    
+  </div>
+
+  <div class="mb-3">
+    <label for="" class="form-label">Email Address</label>
+    <input type="email" class="form-control"  asp-for="Email">
+    
+  </div>
+
+   <div class="mb-3">
+    <label for="" class="form-label">PhoneNo</label>
+    <input type="number" class="form-control"  asp-for="Phone">
+    
+  </div>
+   
+
+    <div class="mb-3">
+    <label for="" class="form-label">Department</label>
+    <input type="textarea" class="form-control"  asp-for="Message">
+    
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

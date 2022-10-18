@@ -23,6 +23,30 @@ public class MainController : Controller
         this.signInManager = signInManager;
         this.db = db;
     }
+   /* [HttpGet]
+    public IActionResult Add()
+    {
+        return View();
+    }*/
+   /* [HttpPost]
+    public async Task<IActionResult> Add(Customers addCustomerRequest)
+    {
+        var customer = new Customers()
+        {
+            Id = Guid.NewGuid(),
+            Name = addCustomerRequest.Name,
+            Email = addCustomerRequest.Email,
+            Phone = addCustomerRequest.Phone,
+            Message = addCustomerRequest.Message
+            
+        };
+        await db.Customers.AddAsync(customer);
+        await db.SaveChangesAsync();
+        return RedirectToAction("Index");
+
+
+
+    }*/
     [HttpGet]
     public IActionResult Index()
     {
@@ -102,5 +126,6 @@ public class MainController : Controller
     {
         return RedirectToAction("Index");
     }
+
 
 }
