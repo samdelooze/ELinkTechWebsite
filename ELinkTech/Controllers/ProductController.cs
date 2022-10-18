@@ -48,11 +48,12 @@ namespace ELinkTech.Controllers
 
         private void RetrieveSuppliers(IQueryable<Supplier> s, Product p)
         {
+            
             foreach (var supplier in s)
             {
                 SelectListItem item = new SelectListItem();
                 item.Text = supplier.SupplierName;
-                item.Value = supplier.SupplierID;
+                item.Value = supplier.SupplierID.ToString();
                 p.SupplierList.Add(item);
             }
         }
@@ -106,26 +107,24 @@ namespace ELinkTech.Controllers
         [HttpGet]
         public IActionResult UpdateProduct(string id)
         {
-            Product product = db.products.Find(id);
+           var supplier = from suppliers in db.suppliers select suppliers;
 
+            var category = from categories in db.categories select categories;
+            Product? product = db.products.Where(p => p.ProductID == id).FirstOrDefault();
 
-            //Product product = db.products.Where(p => p.ProductID == id).FirstOrDefault();
-
-           // var supplier = from suppliers in db.suppliers select suppliers;
-
-            //var category = from categories in db.categories select categories;
-
-            //RetrieveSuppliers(supplier, product);
-            //RetrieveCategories(category, product);
+            RetrieveSuppliers(supplier, product);
+            RetrieveCategories(category, product);
             return View(product);
         }
 
         [HttpPost]
         public IActionResult UpdateProduct(Product p)
         {
-            Product product = db.products.Find(p);
-            db.products.Update(product);
-            return View(product);
+            //Product? product = db.products.Find(p.ProductID);
+            db.Entry(p).State = (Microsoft.EntityFrameworkCore.EntityState.Modified);
+           // db.products.Update(p);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         [HttpGet]

@@ -4,11 +4,15 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ELinkTech.Services;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 var conString = builder.Configuration.GetConnectionString("ConnectionString");
 // Add services to the container.
+
 builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlite(conString));
+builder.Services.AddDbContext<DataContextP>(options =>
     options.UseSqlite(conString));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => 
@@ -33,6 +37,7 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
 
 var app = builder.Build();
 

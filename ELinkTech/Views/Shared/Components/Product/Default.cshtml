@@ -1,0 +1,22 @@
+﻿@model List<ELinkTech.Models.Product>
+<h3>Post summary</h3>
+<table class="table table-bordered">
+
+    <tr><td>PostID</td><td>PostTitle</td></tr>
+    <tr>
+    @foreach (var v in Model)
+    {
+    <div class="col-12 col-md-4">
+              <div class="card">
+                <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">@v.ProductName</h5>
+                  <p class="card-text">@v.ProductID<br>@v.SupplierID<br>@v.CategoryID</p>
+                </div>
+              </div>
+            </div>
+    <td>@Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }) </td>
+    
+    }
+    </tr>
+</table>

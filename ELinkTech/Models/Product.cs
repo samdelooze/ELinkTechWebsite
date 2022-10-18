@@ -18,10 +18,8 @@ namespace ELinkTech.Models
         [Display(Name = "Category")]
         public string CategoryID { get; set; }
 
-        [NotMapped]
-        public List<SelectListItem> SupplierList = new List<SelectListItem>();
+        public List<SelectListItem>? SupplierList = new List<SelectListItem>();
 
-        [NotMapped]
-        public List<SelectListItem> CategoryList = new List<SelectListItem>();
+        public List<SelectListItem>? CategoryList = new List<SelectListItem>();
     }
 }
