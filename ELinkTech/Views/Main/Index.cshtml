@@ -2,7 +2,7 @@
     ViewData["Title"] = "Main Page";
 }
 @using Microsoft.AspNetCore.Identity
-@model ELinkTech.ViewModels.Main
+@*model IEnumerable<ELinkTech.ViewModels.Main>*@ @* Had to do this or the file wouldn't work with services *@
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
 <div class="container">
@@ -102,37 +102,24 @@
         <div id="sect3">
 
           <h1 class="text-center m-3">Section 3 Services</h1>
-
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-4">
+          <div class="row">
+    @foreach (var v in Model)
+    {
+    <div class="col-12 col-md-4">
               <div class="card">
                 <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title">Service 1</h5>
-                  <p class="card-text">Service 1</p>
+                    <div class='col px-3 text-light float-end'>
+                        @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class="btn btn-primary" })
+                        @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class="btn btn-danger" })
+                    </div>
+                  <h5 class="card-title">@v.ProductName</h5>
+                  <p class="card-text">@v.SupplierID<br>@v.CategoryID</p>
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-4">
-              <div class="card">
-                <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Service 2</h5>
-                  <p class="card-text">Service 2</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="card">
-                <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Service 3</h5>
-                  <p class="card-text">Service 3</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+             }
+             </div>
         </div>
     </section>
 
