@@ -12,8 +12,6 @@ var conString = builder.Configuration.GetConnectionString("ConnectionString");
 
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlite(conString));
-builder.Services.AddDbContext<DataContextP>(options =>
-    options.UseSqlite(conString));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => 
 {
