@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ELinkTech.Models.Product>
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.ProductName)</th>
+            <th>@Html.DisplayNameFor(m => m.SupplierID)</th>
+            <th>@Html.DisplayNameFor(m => m.CategoryID)</th>
+            <th></th>
+        </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.ProductName</td>
+            <td>@product.SupplierID</td>
+            <td>@product.CategoryID</td>
+            <td>@Html.ActionLink("Edit", "UpdateProduct", new { id = product.ProductID })</td>
+            <td>@Html.ActionLink("Delete", "DeleteProduct", new { id = product.ProductID })</td>
+        </tr>
+    }
+</table>
