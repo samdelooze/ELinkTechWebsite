@@ -13,23 +13,27 @@ public class MainController : Controller
 {
     private UserManager<ApplicationUser> userManager { get; }
     private SignInManager<ApplicationUser> signInManager { get; }
+    private RoleManager<IdentityRole> roleManager { get; }
     private IEmailSender emailSender;
 
     private readonly DataContext db;
     
     public MainController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            RoleManager<IdentityRole> roleManager,
             IEmailSender emailSender,
             DataContext db)
     {
         this.userManager = userManager;
         this.signInManager = signInManager;
+        this.roleManager = roleManager;
         this.emailSender = emailSender;
         this.db = db;
     }
-    [HttpGet]
+
     public IActionResult Index()
     {
+        SeedData.Seed(userManager, roleManager);
         var product = from products in db.products
                       join suppliers in db.suppliers
                       on products.SupplierID equals suppliers.SupplierID

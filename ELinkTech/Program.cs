@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ELinkTech.Services;
+using ELinkTech;
 
 var builder = WebApplication.CreateBuilder(args);
 var conString = builder.Configuration.GetConnectionString("ConnectionString");
@@ -34,6 +35,8 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -52,6 +55,8 @@ if (!app.Environment.IsDevelopment())
         await next();
     });
 }
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
