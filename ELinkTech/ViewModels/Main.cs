@@ -4,6 +4,7 @@ namespace ELinkTech.ViewModels
 {
     public class Main
     {
+        public Models.Product? product;
         //LOGIN
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email Address")]
