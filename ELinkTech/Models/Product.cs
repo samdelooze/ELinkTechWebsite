@@ -7,16 +7,16 @@ namespace ELinkTech.Models
     public class Product
     {
         [Key]
-        public string ProductID { get; set; }
+        public string? ProductID { get; set; }
 
         [Display(Name = "Product Name")]
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
 
         [Display(Name = "Supplier")]
-        public string SupplierID { get; set; }
+        public string? SupplierID { get; set; }
 
         [Display(Name = "Category")]
-        public string CategoryID { get; set; }
+        public string? CategoryID { get; set; }
 
         public List<SelectListItem>? SupplierList = new List<SelectListItem>();
 

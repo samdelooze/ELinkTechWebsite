@@ -13,24 +13,30 @@ public class MainController : Controller
 {
     private UserManager<ApplicationUser> userManager { get; }
     private SignInManager<ApplicationUser> signInManager { get; }
+    private RoleManager<IdentityRole> roleManager { get; }
+
     private IEmailSender emailSender;
 
     private readonly DataContext db;
     
     public MainController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            RoleManager<IdentityRole> roleManager,
             IEmailSender emailSender,
             DataContext db)
     {
         this.userManager = userManager;
         this.signInManager = signInManager;
+        this.roleManager = roleManager;
         this.emailSender = emailSender;
         this.db = db;
     }
-    [HttpGet]
-    public IActionResult Index()
+
+    public async Task<IActionResult> Index()
     {
-        /*var product = from products in db.products
+
+        //await SeedData.SeedAsync(userManager, roleManager);
+        var product = from products in db.products
                       join suppliers in db.suppliers
                       on products.SupplierID equals suppliers.SupplierID
                       join categories in db.categories
@@ -55,29 +61,17 @@ public class MainController : Controller
                 CategoryID = products.CategoryName
             });
         }
-*/
-        return View();
+        ELinkTech.ViewModels.Main m = new ELinkTech.ViewModels.Main();
+        m.product = productList;
+        return View(m);
     }
+
     [HttpGet]
     public IActionResult Login()
     {
         return View();
     }
-    [HttpGet]
-    public IActionResult Register()
-    {
-        return View();
-    }
-    public IActionResult Privacy()
-    {
-        return View();
-    }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
     [HttpPost]
     public async Task<IActionResult> Login(Main m)//login the user
     {
@@ -89,7 +83,7 @@ public class MainController : Controller
             {
                 //ModelState.AddModelError(string.Empty, "Email not confirmed yet");
                 TempData["AlertFail"] = "Email not confirmed yet";
-                return RedirectToAction("Index");
+                return View();
             }
 
             var result = await signInManager.PasswordSignInAsync(m.LoginEmail, m.LoginPassword, m.RememberMe, false);
@@ -101,11 +95,20 @@ public class MainController : Controller
 
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "Username or Password is incorrect");
+            //ModelState.AddModelError("", "Username or Password is incorrect");
+            TempData["AlertFail"] = "Username or Password is incorrect";
+            return View();
         }
         TempData["AlertFail"] = "Invalid Login Attempt. Try again";
-        return RedirectToAction("Index");
+        return View();
     }
+
+    [HttpGet]
+    public IActionResult Register()
+    {
+        return View();
+    }
+
     [HttpPost]
     public async Task<IActionResult> Register(Main m)//create an account
     {
@@ -139,7 +142,7 @@ public class MainController : Controller
 
                 //await userManager.AddToRoleAsync(user, "User");
                 //await signInManager.SignInAsync(user, false); // Restrict login before user comfirm the email
-                return View("Index");
+                return RedirectToAction("Index");
 
             }
             foreach (var error in result.Errors)
@@ -148,8 +151,9 @@ public class MainController : Controller
             }
 
         }
-        return View("Index");
+        return View();
     }
+
     [HttpGet]
     //[AllowAnonymous]
     public async Task<IActionResult> ConfirmEmail(string userId, string token)
@@ -183,22 +187,28 @@ public class MainController : Controller
     {            
         return View();
     }
+
     [HttpPost]
     public async Task<IActionResult> LogoutYes()//sign out user
     {
         await signInManager.SignOutAsync();
         return RedirectToAction("Index");
     }
+
     [HttpPost]
     public IActionResult LogoutNo()//redirect to home
     {
         return RedirectToAction("Index");
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Quote()//make a quote
+    public IActionResult Privacy()
     {
         return View();
     }
 
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
 }
