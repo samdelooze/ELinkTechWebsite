@@ -4,7 +4,7 @@ namespace ELinkTech.ViewModels
 {
     public class Main
     {
-        /*public Models.Product? product;*/
+        public List<Models.Product>? product { get; set; }
 
         //LOGIN
         [DataType(DataType.EmailAddress)]
