@@ -105,16 +105,26 @@
           <div class="row">
    @foreach (var v in Model.product)
     {
-    <div class="col-12 col-md-4">
-              <div class="card">
-                <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
-                <div class="card-body">
+                <div class="col-12 col-md-4">
+                  <div class="card">
+                  <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
+                  <div class="card-body">
                     <div class='col px-3 text-light float-end'>
-                        @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class="btn btn-primary" })
-                        @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class="btn btn-danger" })
-                    </div>
-                  <h5 class="card-title">@v.ProductName</h5>
-                  <p class="card-text">@v.SupplierID<br>@v.CategoryID</p>
+                      @{
+                        var userId = userManager.GetUserId(User);
+                        var user = await userManager.FindByIdAsync(userId);
+                        if (signInManager.IsSignedIn(User))
+                        {
+                            if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
+                            {
+                                @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-danger" })
+                            }
+                        }
+                      }
+                </div>
+                <h5 class="card-title">@v.ProductName</h5>
+                <p class="card-text">@v.SupplierID<br>@v.CategoryID</p>
                 </div>
               </div>
             </div>
