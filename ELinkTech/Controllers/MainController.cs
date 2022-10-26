@@ -35,7 +35,7 @@ public class MainController : Controller
     {
 
         await SeedData.SeedAsync(userManager, roleManager);
-        /*var product = from products in db.products
+        var product = from products in db.products
 
                       join suppliers in db.suppliers
                       on products.SupplierID equals suppliers.SupplierID
@@ -64,8 +64,6 @@ public class MainController : Controller
         ELinkTech.ViewModels.Main m = new ELinkTech.ViewModels.Main();
         m.product = productList;
         return View(m);
-        */
-        return View();
     }
     [HttpGet]
     public IActionResult Login()
