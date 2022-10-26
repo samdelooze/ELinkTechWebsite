@@ -20,7 +20,7 @@
     </script>
     -->
 </head>
-<body>
+<body style="padding-top: 70px;">
     <header>
         <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-dark mb-3">
             <div class="container-fluid ps-5">
@@ -56,26 +56,26 @@
                         if (signInManager.IsSignedIn(User))
                         {
                             
-                            <ul class="navbar nav justify-content-end pe-3">
-                                <li class="nav-item">
-                                    <a class="nav-link text-light">Hello @User.Identity?.Name!</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" asp-action="Logout">Logout</a>
-                                </li>
-                            </ul>
+                                <ul class="navbar nav justify-content-end pe-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light">Hello @User.Identity?.Name!</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-action="Logout">Logout</a>
+                                    </li>
+                                </ul>
                             
                         }
                         else
                         {
-                            <ul class="navbar nav justify-content-end pe-3">
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" asp-controller="Main" asp-action="Login" >Login</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" asp-controller="Main" asp-action="Register" >Register</a>
-                                </li>
-                            </ul>
+                                <ul class="navbar nav justify-content-end pe-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-controller="Main" asp-action="Login" >Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-controller="Main" asp-action="Register" >Register</a>
+                                    </li>
+                                </ul>
                         }
                      }
                 </div>

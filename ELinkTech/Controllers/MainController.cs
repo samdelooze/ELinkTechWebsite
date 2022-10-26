@@ -65,26 +65,13 @@ public class MainController : Controller
         m.product = productList;
         return View(m);
     }
+
     [HttpGet]
     public IActionResult Login()
     {
         return View();
     }
-    [HttpGet]
-    public IActionResult Register()
-    {
-        return View();
-    }
-    public IActionResult Privacy()
-    {
-        return View();
-    }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
     [HttpPost]
     public async Task<IActionResult> Login(Main m)//login the user
     {
@@ -111,15 +98,23 @@ public class MainController : Controller
             ModelState.AddModelError("", "Username or Password is incorrect");
         }
         TempData["AlertFail"] = "Invalid Login Attempt. Try again";
-        return RedirectToAction("Index");
+        return View();
     }
+
+    [HttpGet]
+    public IActionResult Register()
+    {
+        return View();
+    }
+
     [HttpPost]
     public async Task<IActionResult> Register(Main m)//create an account
     {
         if (ModelState.IsValid)
         {
-            var user = new ApplicationUser { 
-                UserName = m.RegisterEmail, 
+            var user = new ApplicationUser
+            {
+                UserName = m.RegisterEmail,
                 Email = m.RegisterEmail,
                 FirstName = m.FirstName,
                 LastName = m.LastName,
@@ -137,7 +132,7 @@ public class MainController : Controller
                 // Confirmation email start
                 var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
                 var EmailConfirmationUrl = Url.Action("ConfirmEmail", "Main", new { userId = user.Id, token = token }, Request.Scheme);
-                
+
                 await emailSender.SendEmailAsync(m.RegisterEmail, "[ELinkTech] Welcome to ELinkTech! Confirm your email", "Please confirm your email by clicking <a href =\"" + EmailConfirmationUrl + "\">here</a> so you can start using ELinkTech web service.");
 
                 TempData["AlertSuccess"] = "Registration is successful. Confirmation link was sent to your email address(" + m.RegisterEmail + "). Please check and verify it.";
@@ -155,8 +150,21 @@ public class MainController : Controller
             }
 
         }
-        return View("Index");
+        return View();
     }
+
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+    
+    
     [HttpGet]
     //[AllowAnonymous]
     public async Task<IActionResult> ConfirmEmail(string userId, string token)
@@ -190,12 +198,14 @@ public class MainController : Controller
     {            
         return View();
     }
+
     [HttpPost]
     public async Task<IActionResult> LogoutYes()//sign out user
     {
         await signInManager.SignOutAsync();
         return RedirectToAction("Index");
     }
+
     [HttpPost]
     public IActionResult LogoutNo()//redirect to home
     {
