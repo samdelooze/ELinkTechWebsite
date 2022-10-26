@@ -13,24 +13,30 @@ public class MainController : Controller
 {
     private UserManager<ApplicationUser> userManager { get; }
     private SignInManager<ApplicationUser> signInManager { get; }
+    private RoleManager<IdentityRole> roleManager { get; }
+
     private IEmailSender emailSender;
 
     private readonly DataContext db;
     
     public MainController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            RoleManager<IdentityRole> roleManager,
             IEmailSender emailSender,
             DataContext db)
     {
         this.userManager = userManager;
         this.signInManager = signInManager;
+        this.roleManager = roleManager;
         this.emailSender = emailSender;
         this.db = db;
     }
-    [HttpGet]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var product = from products in db.products
+
+        await SeedData.SeedAsync(userManager, roleManager);
+        /*var product = from products in db.products
+
                       join suppliers in db.suppliers
                       on products.SupplierID equals suppliers.SupplierID
                       join categories in db.categories
@@ -58,6 +64,8 @@ public class MainController : Controller
         ELinkTech.ViewModels.Main m = new ELinkTech.ViewModels.Main();
         m.product = productList;
         return View(m);
+        */
+        return View();
     }
     [HttpGet]
     public IActionResult Login()
