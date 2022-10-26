@@ -42,6 +42,7 @@ public class MainController : Controller
                           SupplierName = suppliers.SupplierName,
                           CategoryName = categories.CategoryName
                       };
+
         List<Product> productList = new List<Product>();
 
         foreach (var products in product)
@@ -54,7 +55,6 @@ public class MainController : Controller
                 CategoryID = products.CategoryName
             });
         }
-
         ELinkTech.ViewModels.Main m = new ELinkTech.ViewModels.Main();
         m.product = productList;
         return View(m);
@@ -194,12 +194,6 @@ public class MainController : Controller
     public IActionResult LogoutNo()//redirect to home
     {
         return RedirectToAction("Index");
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Quote()//make a quote
-    {
-        return View();
     }
 
 }
