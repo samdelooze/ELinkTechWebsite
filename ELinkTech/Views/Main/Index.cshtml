@@ -2,25 +2,25 @@
     ViewData["Title"] = "Main Page";
 }
 @using Microsoft.AspNetCore.Identity
-@model IEnumerable<ELinkTech.ViewModels.Main>
+@model ELinkTech.ViewModels.Main
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
 <div class="container">
     <p class="pt-2">bruh</p>
     <div class="pt-5">
-    @if(TempData["AlertSuccess"] != null) {
-        <div class="alert alert-success" role="alert">
-          <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="alert-heading">Success!</h4>
-          <p>@TempData["AlertSuccess"]</p>
-        </div>
-    } else if(TempData["AlertFail"] != null) {
-        <div class="alert alert-danger" role="alert">
-          <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="alert-heading">Fail</h4>
-          <p>@TempData["AlertFail"]</p>
-        </div>
-    }
+        @if (TempData["AlertSuccess"] != null) {
+            <div class="alert alert-success" role="alert">
+                <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="alert-heading">Success!</h4>
+                <p>@TempData["AlertSuccess"]</p>
+            </div>
+        } else if (TempData["AlertFail"] != null) {
+            <div class="alert alert-danger" role="alert">
+                <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="alert-heading">Fail</h4>
+                <p>@TempData["AlertFail"]</p>
+            </div>
+        }
     </div>
     <section>
         <div id="sect1">
@@ -103,7 +103,7 @@
 
           <h1 class="text-center m-3">Section 3 Services</h1>
           <div class="row">
-   @* @foreach (var v in Model)
+   @foreach (var v in Model.product)
     {
     <div class="col-12 col-md-4">
               <div class="card">
@@ -118,7 +118,7 @@
                 </div>
               </div>
             </div>
-             }*@
+             }
              </div>
         </div>
     </section>
