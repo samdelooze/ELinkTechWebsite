@@ -30,7 +30,7 @@ public class MainController : Controller
     [HttpGet]
     public IActionResult Index()
     {
-        var product = from products in db.products
+        /*var product = from products in db.products
                       join suppliers in db.suppliers
                       on products.SupplierID equals suppliers.SupplierID
                       join categories in db.categories
@@ -55,8 +55,8 @@ public class MainController : Controller
                 CategoryID = products.CategoryName
             });
         }
-
-        return View(productList);
+*/
+        return View();
     }
     [HttpGet]
     public IActionResult Login()
