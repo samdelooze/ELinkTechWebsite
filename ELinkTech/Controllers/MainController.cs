@@ -155,10 +155,6 @@ public class MainController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
@@ -173,14 +169,14 @@ public class MainController : Controller
         if (userId == null || token == null)
         {
             TempData["AlertFail"] = "Invalid trial";
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         var user = await userManager.FindByIdAsync(userId);
         if (user == null)
         {
             TempData["AlertFail"] = "Invalid trial";
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         var result = await userManager.ConfirmEmailAsync(user, token);
@@ -188,10 +184,10 @@ public class MainController : Controller
         if (result.Succeeded)
         {
             TempData["AlertSuccess"] = "Email verification is successful. You can login now";
-            return View("Index");
+            return RedirectToAction("Index");
         }
         TempData["AlertFail"] = "Fail to verify your email";
-        return View("Index");
+        return RedirectToAction("Index");
     }
 
     [HttpGet]
@@ -218,9 +214,4 @@ public class MainController : Controller
         return View();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
 }
