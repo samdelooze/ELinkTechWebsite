@@ -83,7 +83,7 @@ public class MainController : Controller
             {
                 //ModelState.AddModelError(string.Empty, "Email not confirmed yet");
                 TempData["AlertFail"] = "Email not confirmed yet";
-                return RedirectToAction("Index");
+                return View();
             }
 
             var result = await signInManager.PasswordSignInAsync(m.LoginEmail, m.LoginPassword, m.RememberMe, false);
@@ -95,7 +95,9 @@ public class MainController : Controller
 
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "Username or Password is incorrect");
+            //ModelState.AddModelError("", "Username or Password is incorrect");
+            TempData["AlertFail"] = "Username or Password is incorrect";
+            return View();
         }
         TempData["AlertFail"] = "Invalid Login Attempt. Try again";
         return View();
@@ -141,7 +143,7 @@ public class MainController : Controller
 
                 //await userManager.AddToRoleAsync(user, "User");
                 //await signInManager.SignInAsync(user, false); // Restrict login before user comfirm the email
-                return View("Index");
+                return RedirectToAction("Index");
 
             }
             foreach (var error in result.Errors)
@@ -162,8 +164,7 @@ public class MainController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
-    
+    }    
     
     [HttpGet]
     //[AllowAnonymous]
@@ -212,4 +213,14 @@ public class MainController : Controller
         return RedirectToAction("Index");
     }
 
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
 }

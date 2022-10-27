@@ -1,24 +1,46 @@
 ﻿@model ELinkTech.ViewModels.Main
-<div asp-validation-summary="All" class="text-danger"></div>
-<div class="row">
-    <div class="col-12 col-lg-6">
-        <h1 class="mb-3">Login</h1>
-        <form method="post">
-            <div class="mb-1">
-                <label class="col-form-label" asp-for="LoginEmail"></label>
-                <input type="text" asp-for="LoginEmail" class="form-control" />
-                <span asp-validation-for="LoginEmail" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label class="col-form-label" asp-for="LoginPassword"></label>
-                <input type="password" asp-for="LoginPassword" class="form-control" />
-                <span asp-validation-for="LoginPassword" class="text-danger"></span>
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" asp-for="RememberMe" class="form-check-input" />
-                <label class="form-check-label" asp-for="RememberMe">Remember Me?</label>
-            </div>
-            <button class="btn btn-primary" asp-action="Login">Login</button>
-        </form>
+<div class="container">
+    <div>
+    @if (TempData["AlertSuccess"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="alert-heading">Success!</h4>
+            <p>@TempData["AlertSuccess"]</p>
+        </div>
+    }
+    else if (TempData["AlertFail"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="alert-heading">Fail</h4>
+            <p>@TempData["AlertFail"]</p>
+        </div>
+    }
+    </div>
+    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6">
+            <h1 class="mb-3 text-center">Login</h1>
+            <form method="post">
+                <div class="mb-1">
+                    <label class="col-form-label" asp-for="LoginEmail"></label>
+                    <input type="text" asp-for="LoginEmail" class="form-control" required />
+                    <span asp-validation-for="LoginEmail" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="col-form-label" asp-for="LoginPassword"></label>
+                    <input type="password" asp-for="LoginPassword" class="form-control" required />
+                    <span asp-validation-for="LoginPassword" class="text-danger"></span>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" asp-for="RememberMe" class="form-check-input" />
+                    <label class="form-check-label" asp-for="RememberMe">Remember Me?</label>
+                </div>
+                <div class="d-grid">
+                    <button class="btn btn-primary" asp-action="Login">Login</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

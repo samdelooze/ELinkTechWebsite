@@ -10,105 +10,105 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="https://kit.fontawesome.com/64301a05d6.js" crossorigin="anonymous"></script>
-    <!--
-    <script>
-        window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
+
+    <script>window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
             });
-        }, 10000);
-    </script>
-    -->
+        }, 10000);</script>
+
 </head>
 <body style="padding-top: 70px;">
     <header>
-        <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-dark mb-3">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dark mb-5">
             <div class="container-fluid ps-5">
                 <a class="navbar-brand text-light " asp-area="" asp-controller="Main" asp-action="Index">ELinkTech</a>
-        
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-light page-scroll" href="#sect1">Home</a>
+                            <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect1">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light page-scroll" href="#sect2">About Us</a>
+                            <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect2">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light page-scroll" href="#sect3">Services</a>
+                            <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect3">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light page-scroll" href="#sect4">Resellers</a>
+                            <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect4">Resellers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light page-scroll" href="#sect5">Contact</a>
+                            <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect5">Contact</a>
                         </li>
-                        <!--
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             a class="nav-link text-light " asp-area="" asp-controller="Main" asp-action="Privacy">Privacy</a>
-                        </li>
-                        -->
+                        </li>-->
                     </ul>
-                    @{
-                        var userId = userManager.GetUserId(User);
-                        var user = await userManager.FindByIdAsync(userId);
+                    <ul class="navbar-nav ms-auto">
+                        @{
+                            var userId = userManager.GetUserId(User);
+                            var user = await userManager.FindByIdAsync(userId);
 
-                        if (signInManager.IsSignedIn(User))
-                        {
-                            
-                                <ul class="navbar nav justify-content-end pe-3">
-                                    <li class="nav-item">
-                                        <a class="nav-link text-light">Hello @User.Identity?.Name!</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-light" asp-action="Logout">Logout</a>
-                                    </li>
-                                </ul>
-                            
+
+                            if (signInManager.IsSignedIn(User))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-light">Hello @User.Identity?.Name!</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-action="Logout">Logout</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-controller="Main" asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-controller="Main" asp-action="Register">Register</a>
+                                </li>
+                            }
                         }
-                        else
-                        {
-                                <ul class="navbar nav justify-content-end pe-3">
-                                    <li class="nav-item">
-                                        <a class="nav-link text-light" asp-controller="Main" asp-action="Login" >Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-light" asp-controller="Main" asp-action="Register" >Register</a>
-                                    </li>
-                                </ul>
-                        }
-                     }
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
     <main role="main" class="pb-3 px-5">
-    <div class="container-fluid">
+        <div class="container-fluid" style="padding-bottom: 70px;">
             @RenderBody()
-    </div>
+        </div>
     </main>
-    <footer class="border-top footer text-muted bg-dark">
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark mb-3">
-            <div class="container-fluid ps-5">
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    &copy; 2022 - ELinkTech
-                    <ul class="navbar nav justify-content-end pe-3">
-                        <li class="nav-item pe-1">
-                            <i class="nav-link fa-brands fa-facebook"></i>
-                        </li>
-                        <li class="nav-item pe-1">
-                            <i class="nav-link fa-brands fa-instagram"></i>
-                        </li>
-                        <li class="nav-item pe-1">
-                            <i class="nav-link fa-brands fa-twitter"></i>
-                        </li>
-                        <li class="nav-item pe-1">
-                            <i class="nav-link fa-brands fa-linkedin"></i>
-                        </li>
-                    </ul>
+    <footer class="border-top footer text-muted bg-dark fixed-bottom">
+        <div class="container p-3">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                        &copy;
+                        <script>document.write(new Date().getFullYear())</script>&nbsp;<b>ELinkTech</b>&nbsp;|&nbsp;All Rights Reserved.
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="d-flex justify-content-center justify-content-lg-end">
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="" class="text-reset">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

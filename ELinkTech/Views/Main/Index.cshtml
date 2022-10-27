@@ -6,7 +6,7 @@
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
 <div class="container">
-    <p class="pt-2">bruh</p>
+    @*<p class="pt-2">bruh</p>*@
     <div class="pt-5">
     @if(TempData["AlertSuccess"] != null) {
         <div class="alert alert-success" role="alert">
@@ -103,33 +103,34 @@
 
           <h1 class="text-center m-3">Section 3 Services</h1>
           <div class="row">
-   @foreach (var v in Model.product)
-    {
-                <div class="col-12 col-md-4">
-                  <div class="card">
-                  <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
-                  <div class="card-body">
-                    <div class='col px-3 text-light float-end'>
-                      @{
-                        var userId = userManager.GetUserId(User);
-                        var user = await userManager.FindByIdAsync(userId);
-                        if (signInManager.IsSignedIn(User))
-                        {
-                            if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
+            @foreach (var v in Model.product)
+            {
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
+                    <div class="card-body">
+                        <div class='col px-3 text-light float-end'>
+                            @{
+                            var userId = userManager.GetUserId(User);
+                            var user = await userManager.FindByIdAsync(userId);
+                            if (signInManager.IsSignedIn(User))
                             {
-                                @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-primary" })
-                                @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-danger" })
+                                if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
+                                {
+                                    @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-danger" })
+                                }
                             }
-                        }
-                      }
+                            }
+                        </div>
+                        <h5 class="card-title">@v.ProductName</h5>
+                        <p class="card-text">@v.SupplierID<br>@v.CategoryID</p>
+                    </div>
                 </div>
-                <h5 class="card-title">@v.ProductName</h5>
-                <p class="card-text">@v.SupplierID<br>@v.CategoryID</p>
-                </div>
-              </div>
             </div>
-             }
-             </div>
+            }
+          </div>
+
         </div>
     </section>
 
