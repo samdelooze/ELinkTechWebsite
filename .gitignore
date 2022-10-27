@@ -364,3 +364,5 @@ FodyWeavers.xsd
 ELinkTech/obj/
 ELinkTech/bin/
 ELinkTech/.vs/
+ElinkTech/ELinkTechDB.db-wal
+ElinkTech/ELinkTechDB.db-shm

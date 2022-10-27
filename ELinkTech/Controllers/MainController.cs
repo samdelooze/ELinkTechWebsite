@@ -31,12 +31,12 @@ public class MainController : Controller
         this.emailSender = emailSender;
         this.db = db;
     }
-
     public async Task<IActionResult> Index()
     {
 
-        //await SeedData.SeedAsync(userManager, roleManager);
+        await SeedData.SeedAsync(userManager, roleManager);
         var product = from products in db.products
+
                       join suppliers in db.suppliers
                       on products.SupplierID equals suppliers.SupplierID
                       join categories in db.categories
@@ -114,8 +114,9 @@ public class MainController : Controller
     {
         if (ModelState.IsValid)
         {
-            var user = new ApplicationUser { 
-                UserName = m.RegisterEmail, 
+            var user = new ApplicationUser
+            {
+                UserName = m.RegisterEmail,
                 Email = m.RegisterEmail,
                 FirstName = m.FirstName,
                 LastName = m.LastName,
@@ -133,7 +134,7 @@ public class MainController : Controller
                 // Confirmation email start
                 var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
                 var EmailConfirmationUrl = Url.Action("ConfirmEmail", "Main", new { userId = user.Id, token = token }, Request.Scheme);
-                
+
                 await emailSender.SendEmailAsync(m.RegisterEmail, "[ELinkTech] Welcome to ELinkTech! Confirm your email", "Please confirm your email by clicking <a href =\"" + EmailConfirmationUrl + "\">here</a> so you can start using ELinkTech web service.");
 
                 TempData["AlertSuccess"] = "Registration is successful. Confirmation link was sent to your email address(" + m.RegisterEmail + "). Please check and verify it.";
@@ -154,6 +155,17 @@ public class MainController : Controller
         return View();
     }
 
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }    
+    
     [HttpGet]
     //[AllowAnonymous]
     public async Task<IActionResult> ConfirmEmail(string userId, string token)

@@ -9,10 +9,10 @@ namespace ELinkTech
 {
     public class SeedData
     {
-        public static void Seed(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             SeedRoles(roleManager);
-            SeedUsersAsync(userManager);
+            await SeedUsersAsync(userManager);
         }
 
         private static async Task SeedUsersAsync(UserManager<ApplicationUser> userManager)

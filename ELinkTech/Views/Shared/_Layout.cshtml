@@ -52,6 +52,7 @@
                             var userId = userManager.GetUserId(User);
                             var user = await userManager.FindByIdAsync(userId);
 
+
                             if (signInManager.IsSignedIn(User))
                             {
                                 <li class="nav-item">
