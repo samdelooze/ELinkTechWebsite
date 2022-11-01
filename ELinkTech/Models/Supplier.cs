@@ -5,7 +5,7 @@ namespace ELinkTech.Models
     public class Supplier
     {
         [Key]
-        public string SupplierID { get; set; }
+        public int SupplierID { get; set; }
 
         [Display(Name = "Supplier Name")]
         public string SupplierName { get; set; }
