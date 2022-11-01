@@ -18,7 +18,7 @@ public class MainController : Controller
     private IEmailSender emailSender;
 
     private readonly DataContext db;
-    
+
     public MainController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager,
@@ -118,8 +118,9 @@ public class MainController : Controller
     {
         if (ModelState.IsValid)
         {
-            var user = new ApplicationUser { 
-                UserName = m.RegisterEmail, 
+            var user = new ApplicationUser
+            {
+                UserName = m.RegisterEmail,
                 Email = m.RegisterEmail,
                 FirstName = m.FirstName,
                 LastName = m.LastName,
@@ -137,7 +138,7 @@ public class MainController : Controller
                 // Confirmation email start
                 var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
                 var EmailConfirmationUrl = Url.Action("ConfirmEmail", "Main", new { userId = user.Id, token = token }, Request.Scheme);
-                
+
                 await emailSender.SendEmailAsync(m.RegisterEmail, "[ELinkTech] Welcome to ELinkTech! Confirm your email", "Please confirm your email by clicking <a href =\"" + EmailConfirmationUrl + "\">here</a> so you can start using ELinkTech web service.");
 
                 TempData["AlertSuccess"] = "Registration is successful. Confirmation link was sent to your email address(" + m.RegisterEmail + "). Please check and verify it.";
@@ -187,7 +188,7 @@ public class MainController : Controller
 
     [HttpGet]
     public IActionResult Logout()//open logout view
-    {            
+    {
         return View();
     }
     [HttpPost]
@@ -201,5 +202,18 @@ public class MainController : Controller
     {
         return RedirectToAction("Index");
     }
-
 }
+
+/*    [HttpGet]*/
+/*    public IActionResult Quotes(string id)
+    {
+        var product = from products in db.products select products;
+
+        var category = from categories in db.categories select categories;
+        Quote? quote = db.quotes.Where(p => p.ProductID == id).FirstOrDefault();
+
+        RetrieveSuppliers(supplier, product);
+        RetrieveCategories(category, product);
+        return View(product);
+    }*/
+
