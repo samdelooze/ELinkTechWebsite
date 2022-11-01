@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using ELinkTech.ViewModels;
 using Microsoft.Win32;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ELinkTech.Controllers;
 
@@ -31,12 +32,21 @@ public class MainController : Controller
         this.emailSender = emailSender;
         this.db = db;
     }
-    public async Task<IActionResult> Index()
+    [HttpGet]
+    public async Task<IActionResult> Index(Main m)
     {
 
         await SeedData.SeedAsync(userManager, roleManager);
-        var product = from products in db.products
+        var userID = HttpContext.Session.GetString("userid");
+        var getProduct = from products in db.products select products;
+           
+        Quote? quote = new Quote() {
+            UserID = userID,
+            UserEmail = User.Identity?.Name!
+        };
+        RetrieveProducts(getProduct, quote);
 
+        var product = from products in db.products
                       join suppliers in db.suppliers
                       on products.SupplierID equals suppliers.SupplierID
                       join categories in db.categories
@@ -61,7 +71,7 @@ public class MainController : Controller
                 CategoryID = products.CategoryName
             });
         }
-        ELinkTech.ViewModels.Main m = new ELinkTech.ViewModels.Main();
+        SubmitQuote(m);
         m.product = productList;
         return View(m);
     }
@@ -204,6 +214,7 @@ public class MainController : Controller
     }
 }
 
+<<<<<<< Updated upstream
 /*    [HttpGet]*/
 /*    public IActionResult Quotes(string id)
     {
@@ -216,4 +227,40 @@ public class MainController : Controller
         RetrieveCategories(category, product);
         return View(product);
     }*/
+=======
+    [HttpGet]
+    public IActionResult SubmitQuote(Main m)
+    {
+        var userID = HttpContext.Session.GetString("userid");
+        var getProduct = from products in db.products select products;
+
+        Quote? quote = new Quote()
+        {
+            UserID = userID,
+            UserEmail = User.Identity?.Name!
+        };
+        RetrieveProducts(getProduct, quote);
+        m.quote = quote;
+        return View(m);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> SubmitQuote(Quote quote)
+    {
+
+        await db.quotes.AddAsync(quote);
+        await db.SaveChangesAsync();
+        return RedirectToAction("Index", "Main");
+    }
+    private void RetrieveProducts(IQueryable<Product> p, Quote q)
+    {
+        foreach (var product in p)
+        {
+            SelectListItem item = new SelectListItem();
+            item.Text = product.ProductName;
+            item.Value = product.ProductID.ToString();
+            q.ProductList.Add(item);
+        }
+    }
+>>>>>>> Stashed changes
 

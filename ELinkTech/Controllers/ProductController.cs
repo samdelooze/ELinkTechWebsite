@@ -69,37 +69,6 @@ namespace ELinkTech.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult FindProducts()
-        {
-            var product = from products in db.products
-                    join suppliers in db.suppliers
-                    on products.SupplierID equals suppliers.SupplierID
-                    join categories in db.categories
-                    on products.CategoryID equals categories.CategoryID
-                    select new
-                    {
-                        ProductID = products.ProductID,
-                        ProductName = products.ProductName,
-                        SupplierName = suppliers.SupplierName,
-                        CategoryName = categories.CategoryName
-                    };
-
-            List<Product> productList = new List<Product>();
-
-            foreach(var products in product)
-            {
-                productList.Add(new Product
-                {
-                    ProductID=products.ProductID,
-                    ProductName = products.ProductName,
-                    SupplierID = products.SupplierName,
-                    CategoryID = products.CategoryName
-                });
-            }
-
-            return View(productList);
-        }
 
         public void FindSingleProduct(Product product)
         {

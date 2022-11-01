@@ -14,6 +14,8 @@ namespace ELinkTech.Models
 
         public DbSet<Supplier> suppliers { get; set; }
 
+        public DbSet<Quote> quotes { get; set; }
+
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
             
