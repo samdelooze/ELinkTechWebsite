@@ -103,18 +103,19 @@
 
           <h1 class="text-center m-3">Section 3 Services</h1>
           <div class="row">
-@{
-                            var userId = userManager.GetUserId(User);
-                            var user = await userManager.FindByIdAsync(userId);
+
+                            
                 @foreach (var v in Model.product)
             {
                 <div class="col-12 col-md-4">
                     <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/f0b848/fff" alt="Card image cap">
+                        <img class="card-img-top" src="@v.ProductImage" alt="Card image cap">
                         <div class="card-body">
                             <div class='col px-3 text-light float-end'>
-                                
-                                if (signInManager.IsSignedIn(User))
+                                    @{
+                                        var userId = userManager.GetUserId(User);
+                                        var user = await userManager.FindByIdAsync(userId);
+                                        if (signInManager.IsSignedIn(User))
                                 {
                                     if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
                                     {
@@ -122,18 +123,16 @@
                                                     @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-danger" })
                                     }
                                 }
-                            </div>
+                            }</div>
                             <h5 class="card-title">@v.ProductName</h5>
-                            <p class="card-text">@v.SupplierID<br>@v.CategoryID</p>
-                        </div>
-                      <h5 class="card-title">@v.ProductName</h5>
-                      <p class="card-text">@v.SupplierID<br>@v.CategoryID</p>
+                            <p class="card-text">@v.SupplierName<br>@v.CategoryName</p>
                     </div>
+                
                   </div>
-          }
-          }
+         
             </div>
-             
+              
+          }
              </div>
     </section>
    <section>
