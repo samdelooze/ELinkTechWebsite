@@ -134,7 +134,7 @@ namespace ELinkTech.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeleteProduct(string id)
+        public IActionResult DeleteProduct(int id)
         {
             Product product = db.products.Find(id);
             db.products.Remove(product);
