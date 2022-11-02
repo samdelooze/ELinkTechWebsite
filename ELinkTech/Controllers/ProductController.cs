@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace ELinkTech.Controllers
 {
-   // [Authorize(Roles = "Administrator")]
+   [Authorize(Roles = "Administrator")]
     public class ProductController : Controller
     {
         private readonly DataContext db;
