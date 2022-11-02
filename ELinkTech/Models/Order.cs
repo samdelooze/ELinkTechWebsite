@@ -5,7 +5,7 @@ namespace ELinkTech.Models
     {
         [Key]
 
-        public string OrderId { get; set; }
+        public int OrderId { get; set; }
 
         [Display(Name = "Quantity")]
         public string Quantity { get; set; }

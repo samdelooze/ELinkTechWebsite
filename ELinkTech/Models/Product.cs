@@ -7,19 +7,34 @@ namespace ELinkTech.Models
     public class Product
     {
         [Key]
-        public string? ProductID { get; set; }
+        public int? ProductID { get; set; }
 
         [Display(Name = "Product Name")]
         public string? ProductName { get; set; }
 
         [Display(Name = "Supplier")]
-        public string? SupplierID { get; set; }
+        public int? SupplierID { get; set; }
 
         [Display(Name = "Category")]
-        public string? CategoryID { get; set; }
+        public int? CategoryID { get; set; }
 
+        [Display(Name = "Image")]
+        public string? ProductImage { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Supplier Name")]
+        public string? SupplierName { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Category Name")]
+        public string? CategoryName { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Select a Supplier")]
         public List<SelectListItem>? SupplierList = new List<SelectListItem>();
 
+        [NotMapped]
+        [Display(Name = "Select a Category")]
         public List<SelectListItem>? CategoryList = new List<SelectListItem>();
     }
 }

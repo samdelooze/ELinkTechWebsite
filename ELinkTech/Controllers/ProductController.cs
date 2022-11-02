@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace ELinkTech.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+   [Authorize(Roles = "Administrator")]
     public class ProductController : Controller
     {
         private readonly DataContext db;
@@ -83,6 +83,7 @@ namespace ELinkTech.Controllers
                     {
                         ProductID = products.ProductID,
                         ProductName = products.ProductName,
+                        ProductImage = products.ProductImage,
                         SupplierName = suppliers.SupplierName,
                         CategoryName = categories.CategoryName
                     };
@@ -95,8 +96,9 @@ namespace ELinkTech.Controllers
                 {
                     ProductID=products.ProductID,
                     ProductName = products.ProductName,
-                    SupplierID = products.SupplierName,
-                    CategoryID = products.CategoryName
+                    ProductImage=products.ProductImage,
+                    SupplierName = products.SupplierName,
+                    CategoryName = products.CategoryName
                 });
             }
 
@@ -109,7 +111,7 @@ namespace ELinkTech.Controllers
         }
 
         [HttpGet]
-        public IActionResult UpdateProduct(string id)
+        public IActionResult UpdateProduct(int id)
         {
            var supplier = from suppliers in db.suppliers select suppliers;
 

@@ -4,7 +4,7 @@ namespace ELinkTech.Models
     public class Category
     {
         [Key]
-        public string CategoryID { get; set; }
+        public int CategoryID { get; set; }
 
         [Required]
         [Display(Name = "Category Name")]

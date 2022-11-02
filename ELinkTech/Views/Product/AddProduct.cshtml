@@ -6,13 +6,17 @@
 <form method="post" action="AddProduct" class="mt-5">
     @using (Html.BeginForm())
     {
-       <div class="mb-3">
+       /*<div class="mb-3">
             <label>@Html.LabelFor(m => m.ProductID)</label>
             <input type="text" class="form-control" asp-for="ProductID" placeholder="ID" />
-        </div>
+        </div>*/
          <div class="mb-3">
             <label>@Html.LabelFor(m => m.ProductName)</label>
             <input type="text" class="form-control" asp-for="ProductName" placeholder="Name of service" />
+        </div>
+        <div class="mb-3">
+            <label>@Html.LabelFor(m => m.ProductImage)</label>
+            <input type="url" class="form-control" asp-for="ProductImage" placeholder="Please provide URL of image" />
         </div>
         <div>
             <label>@Html.LabelFor(m => m.SupplierID)</label>
