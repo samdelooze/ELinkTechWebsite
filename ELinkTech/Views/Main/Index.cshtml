@@ -98,134 +98,93 @@
         </div>
     </section>
 
-    <section>
+        <section>
         <div id="sect3">
 
           <h1 class="text-center m-3">Section 3 Services</h1>
           <div class="row">
-            @foreach (var v in Model.product)
+
+                            
+                @foreach (var v in Model.product)
             {
-            <div class="col-12 col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="@v.ProductImage" alt="Card image cap">
-                    <div class="card-body">
-                        <div class='col px-3 text-light float-end'>
-                            @{
-                            var userId = userManager.GetUserId(User);
-                            var user = await userManager.FindByIdAsync(userId);
-                            if (signInManager.IsSignedIn(User))
-                            {
-                                if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
+                <div class="col-12 col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="@v.ProductImage" alt="Card image cap">
+                        <div class="card-body">
+                            <div class='col px-3 text-light float-end'>
+                                    @{
+                                        var userId = userManager.GetUserId(User);
+                                        var user = await userManager.FindByIdAsync(userId);
+                                        if (signInManager.IsSignedIn(User))
                                 {
-                                    @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-primary" })
-                                    @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-danger" })
+                                    if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
+                                    {
+                                                    @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-primary" })
+                                                    @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-danger" })
+                                    }
                                 }
-                            }
-                            }
-                        </div>
-                        <h5 class="card-title">@v.ProductName</h5>
-                        <p class="card-text">@v.SupplierName<br>@v.CategoryName</p>
+                            }</div>
+                            <h5 class="card-title">@v.ProductName</h5>
+                            <p class="card-text">@v.SupplierName<br>@v.CategoryName</p>
                     </div>
-                </div>
-            </div>
-            }
-          </div>
-
-        </div>
-    </section>
-
-    <!--
-    <section>
-        <div id="sect4">
-
-          <h1 class="text-center m-3">Section 4 Resellers</h1>
-
-          <div class="row">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="https://dummyimage.com/600x400/f0b848/fff" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="https://dummyimage.com/600x400/f0b848/fff" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-           </div>
-
-        </div>
-    </section>
-    -->
-
-    <section>
-        <div id="sect5">
-
-          <div class="row">
-            <div class="col-12 col-lg-4">
-              <h1 class="text-center m-3">Section 5-1 Quote</h1>
-              <form class="information" method="post">
                 
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Service</label>
-                  <select class="form-control" id="exampleFormControlSelect1" style="width: 100%; max-width: 600px;">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-control-placeholder" for="name">Name</label>
-                  <input type="text" style="width: 100%; max-width: 600px;" class="form-control" id="name" required>
-                </div>
-					      <div class="form-group">
-                  <label class="form-control-placeholder" for="email">Email address</label>
-                  <input type="email" style="width: 100%; max-width: 600px;" class="form-control" id="email" required>
-                </div>
-      					<div class="form-group">
-                  <label class="form-control-placeholder" for="number">Phone</label>
-                  <input type="text" style="width: 100%; max-width: 600px;" class="form-control" id="number" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-control-placeholder" for="messaage">Message</label>
-                  <textarea name="message" style="width: 100%; max-width: 600px;" rows="6" class="input-message" ></textarea>
-                </div>
-					      <div class="form-group mt-3">
-                  <button class="btn btn-primary" asp-action="Quote">Submit</button>
-                </div>
-				      </form>
+                  </div>
+         
             </div>
+              
+          }
+             </div>
+    </section>
+   <section>
 
-            <div class="col-12 col-lg-8">
-              <h1 class="text-center m-3">Section 5-2 What we do</h1>
-              <div>
-                <img src="https://dummyimage.com/1000x400/60aba7" class="w-100" alt="...">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
-                </p>
-              </div>
-            </div>
+                <div id="sect5">
 
-          </div>
-        </div>
+                  <div class="row">        
+                      @{
+            if (signInManager.IsSignedIn(User))
+                            {
+                    <div class="col-12 col-lg-4">
+                      <h1 class="text-center m-3">Section 5-1 Quote</h1>
+                      <form class="information" method="post">
+                        
+                        <div class="row mb-2">
+                            <label class="form-label">
+                                @Html.DropDownListFor(m => m.quote.ProductID, new SelectList(Model.quote.ProductList, "Value", "Text"), "Select Product", new {@class = "form-control"})
+                            </label>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-placeholder" for="name">Name</label>
+                          @Html.EditorFor(m => m.quote.UserID, new { htmlAttributes = new { @readonly = "readonly" } })
+                        </div>
+                                  <div class="form-group">
+                          <label class="form-control-placeholder" for="email">Email address</label>
+                          @Html.EditorFor(m => m.quote.UserEmail, new { htmlAttributes = new { @readonly = "readonly" } })
+                        </div>
+
+                        <div class="form-group">
+                          <label class="form-control-placeholder" for="messaage">Message</label>
+                          @Html.EditorFor(m => m.quote.Message,  new {@class = "form-control"})
+                        </div>
+                                  <div class="form-group mt-3">
+                          <button class="btn btn-primary" asp-action="SubmitQuote">Submit</button>
+                        </div>
+                              </form>
+                    </div>
+      }
+        }
+                    <div class="col-12 col-lg-8">
+                      <h1 class="text-center m-3">Section 5-2 What we do</h1>
+                      <div>
+                        <img src="https://dummyimage.com/1000x400/60aba7" class="w-100" alt="...">
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+  
+    </section>
     </section>
 </div>
