@@ -70,6 +70,7 @@ public class MainController : Controller
                 ProductID = products.ProductID,
                 ProductName = products.ProductName,
                 ProductImage = products.ProductImage,
+                ProductDetails = products.ProductDetails,
                 SupplierName = products.SupplierName,
                 CategoryName = products.CategoryName
             });
