@@ -1,21 +1,50 @@
 ﻿@model IEnumerable<ELinkTech.Models.Product>
 
-
-    <table class="table table-striped">
-        <tr>
-            <th>@Html.DisplayNameFor(m => m.ProductName)</th>
-            <th>@Html.DisplayNameFor(m => m.SupplierID)</th>
-            <th>@Html.DisplayNameFor(m => m.CategoryID)</th>
-            <th></th>
-        </tr>
-    @foreach (var product in Model)
-    {
-        <tr>
-            <td>@product.ProductName</td>
-            <td>@product.SupplierID</td>
-            <td>@product.CategoryID</td>
-            <td>@Html.ActionLink("Edit", "UpdateProduct", new { id = product.ProductID })</td>
-            <td>@Html.ActionLink("Delete", "DeleteProduct", new { id = product.ProductID })</td>
-        </tr>
-    }
-</table>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12 col-lg-10">
+            <h1 class="mb-3 text-center">Service List</h1>
+            <table class="table table-striped">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.ProductName)</th>
+                    <th>@Html.DisplayNameFor(m => m.SupplierID)</th>
+                    <th>@Html.DisplayNameFor(m => m.CategoryID)</th>
+                    <th>@Html.DisplayNameFor(m => m.ProductDetails)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.ProductName</td>
+                        <td>@product.SupplierName</td>
+                        <td>@product.CategoryName</td>
+                        <td>
+                            <a href="" type="button" data-bs-toggle="modal" data-bs-target="#ModalLabel-@product.ProductID">View</a>
+                            <div class="modal fade" id="ModalLabel-@product.ProductID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title w-100 text-center">Service Details - @product.ProductName</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body lh-base px-5">
+                                            <img class="m-2 mx-auto d-block" src="@product.ProductImage" />
+                                            <p>@Html.Raw(product.ProductDetails)</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = product.ProductID }, new { @class = "btn btn-primary" })
+                                            @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = product.ProductID }, new { @class = "btn btn-danger", @onClick = "return confirm('Are you sure you want to delete?')" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>@Html.ActionLink("Edit", "UpdateProduct", new { id = product.ProductID })</td>
+                        <td>@Html.ActionLink("Delete", "DeleteProduct", new { id = product.ProductID })</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

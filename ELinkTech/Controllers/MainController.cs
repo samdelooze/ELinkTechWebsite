@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using ELinkTech.ViewModels;
 using Microsoft.Win32;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ELinkTech.Controllers;
 
@@ -46,6 +47,7 @@ public class MainController : Controller
                           ProductID = products.ProductID,
                           ProductName = products.ProductName,
                           ProductImage = products.ProductImage,
+                          ProductDetails = products.ProductDetails,
                           SupplierName = suppliers.SupplierName,
                           CategoryName = categories.CategoryName
                       };
@@ -59,6 +61,7 @@ public class MainController : Controller
                 ProductID = products.ProductID,
                 ProductName = products.ProductName,
                 ProductImage= products.ProductImage,
+                ProductDetails = products.ProductDetails,
                 SupplierName = products.SupplierName,
                 CategoryName = products.CategoryName
             });
@@ -68,12 +71,14 @@ public class MainController : Controller
         return View(m);
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public IActionResult Login()
     {
         return View();
     }
 
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> Login(Main m)//login the user
     {
@@ -105,12 +110,14 @@ public class MainController : Controller
         return View();
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public IActionResult Register()
     {
         return View();
     }
 
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> Register(Main m)//create an account
     {
@@ -162,10 +169,10 @@ public class MainController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }    
-    
+    }
+
+    [AllowAnonymous]
     [HttpGet]
-    //[AllowAnonymous]
     public async Task<IActionResult> ConfirmEmail(string userId, string token)
     {
         if (userId == null || token == null)
