@@ -21,6 +21,9 @@ namespace ELinkTech.Models
         [Display(Name = "Image")]
         public string? ProductImage { get; set; }
 
+        [Display(Name = "Details")]
+        public string? ProductDetails { get; set; }
+
         [NotMapped]
         [Display(Name = "Supplier Name")]
         public string? SupplierName { get; set; }
