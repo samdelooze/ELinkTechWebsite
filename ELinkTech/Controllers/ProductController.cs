@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace ELinkTech.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+   [Authorize(Roles = "Administrator")]
     public class ProductController : Controller
     {
         private readonly DataContext db;
@@ -84,7 +84,6 @@ namespace ELinkTech.Controllers
                         ProductID = products.ProductID,
                         ProductName = products.ProductName,
                         ProductImage = products.ProductImage,
-                        ProductDetails = products.ProductDetails,
                         SupplierName = suppliers.SupplierName,
                         CategoryName = categories.CategoryName
                     };
@@ -98,7 +97,6 @@ namespace ELinkTech.Controllers
                     ProductID=products.ProductID,
                     ProductName = products.ProductName,
                     ProductImage=products.ProductImage,
-                    ProductDetails = products.ProductDetails,
                     SupplierName = products.SupplierName,
                     CategoryName = products.CategoryName
                 });
@@ -136,7 +134,7 @@ namespace ELinkTech.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeleteProduct(int id)
+        public IActionResult DeleteProduct(string id)
         {
             Product product = db.products.Find(id);
             db.products.Remove(product);
