@@ -1,0 +1,50 @@
+﻿@model ELinkTech.Models.Supplier
+
+<div class="container">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <h1>Add Supplier</h1>
+    <form method="post" action="AddSupplier" class="mt-5">
+        @using (Html.BeginForm())
+        {
+            <div class="mb-3">
+                <label>@Html.LabelFor(m => m.SupplierName)</label>
+                <input type="text" class="form-control" asp-for="SupplierName" placeholder="Name of supplier" required />
+                <span asp-validation-for="SupplierName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label>@Html.LabelFor(m => m.Phone)</label>
+                <input type="text" class="form-control" asp-for="Phone" placeholder="Contact number of supplier" required/>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label>@Html.LabelFor(m => m.Email)</label>
+                <input type="text" class="form-control" asp-for="Email" placeholder="Email address" required/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label>@Html.LabelFor(m => m.Street)</label>
+                <input type="text" class="form-control" asp-for="Street" placeholder="Street address" required/>
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label>@Html.LabelFor(m => m.Suburb)</label>
+                <input type="text" class="form-control" asp-for="Suburb" placeholder="Suburb/City" required/>
+                <span asp-validation-for="Suburb" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label>@Html.LabelFor(m => m.State)</label>
+                <input type="text" class="form-control" asp-for="State" placeholder="State" required/>
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label>@Html.LabelFor(m => m.Postcode)</label>
+                <input type="text" class="form-control" asp-for="Postcode" placeholder="" required/>
+                <span asp-validation-for="Postcode" class="text-danger"></span>
+            </div>
+
+        
+            <button type="submit" class="btn btn-primary">Submit</button> 
+        }
+    
+    </form>
+</div>

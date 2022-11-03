@@ -6,7 +6,7 @@
 <form method="post" action="UpdateProduct" class="mt-5">
     @using (Html.BeginForm())
     {
-       <div class="mb-3">
+       <div class="mb-3" hidden> 
             <label>@Html.LabelFor(m => m.ProductID)</label>
             <input type="text" class="form-control" asp-for="ProductID" readonly />
         </div>
