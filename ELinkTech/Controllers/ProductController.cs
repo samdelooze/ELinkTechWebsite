@@ -84,6 +84,7 @@ namespace ELinkTech.Controllers
                         ProductID = products.ProductID,
                         ProductName = products.ProductName,
                         ProductImage = products.ProductImage,
+                        ProductDetails = products.ProductDetails,
                         SupplierName = suppliers.SupplierName,
                         CategoryName = categories.CategoryName
                     };
@@ -97,6 +98,7 @@ namespace ELinkTech.Controllers
                     ProductID=products.ProductID,
                     ProductName = products.ProductName,
                     ProductImage=products.ProductImage,
+                    ProductDetails = products.ProductDetails,
                     SupplierName = products.SupplierName,
                     CategoryName = products.CategoryName
                 });

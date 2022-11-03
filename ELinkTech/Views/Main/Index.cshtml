@@ -8,183 +8,242 @@
 <div class="container">
     @*<p class="pt-2">bruh</p>*@
     <div class="pt-5">
-    @if(TempData["AlertSuccess"] != null) {
-        <div class="alert alert-success" role="alert">
-          <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="alert-heading">Success!</h4>
-          <p>@TempData["AlertSuccess"]</p>
-        </div>
-    } else if(TempData["AlertFail"] != null) {
-        <div class="alert alert-danger" role="alert">
-          <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="alert-heading">Fail</h4>
-          <p>@TempData["AlertFail"]</p>
-        </div>
-    }
+        @if (TempData["AlertSuccess"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="alert-heading">Success!</h4>
+                <p>@TempData["AlertSuccess"]</p>
+            </div>
+        }
+        else if (TempData["AlertFail"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="alert-heading">Fail</h4>
+                <p>@TempData["AlertFail"]</p>
+            </div>
+        }
     </div>
     <section>
         <div id="sect1">
-
-          <h1 class="text-center m-3">Section 1 Welcome</h1>
-
-          <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <h1 class="text-center m-3">Section 1 Welcome</h1>
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="https://dummyimage.com/1000x400/60aba7" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Service1</h5>
+                            <p>Some representative placeholder content for the first slide.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="https://dummyimage.com/1000x400/ab9561" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Service2</h5>
+                            <p>Some representative placeholder content for the second slide.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://dummyimage.com/1000x400/61ab62" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Service3</h5>
+                            <p>Some representative placeholder content for the third slide.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-interval="10000">
-                <img src="https://dummyimage.com/1000x400/60aba7" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Service1</h5>
-                  <p>Some representative placeholder content for the first slide.</p>
+        </div>
+    </section>
+    <section>
+        <div id="sect2">
+            <h1 class="text-center m-3">Section 2 About</h1>
+            <div class="row">
+                <div class="col-sm-12 col-xl-6">
+                    <img src="https://images.unsplash.com/photo-1570215171323-4ec328f3f5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" style="max-width: 100%; min-width: 100%;">
                 </div>
-              </div>
-              <div class="carousel-item" data-bs-interval="2000">
-                <img src="https://dummyimage.com/1000x400/ab9561" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Service2</h5>
-                  <p>Some representative placeholder content for the second slide.</p>
+                <div class="col-sm-12 col-xl-6">
+                    <P>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
+                    </P>
                 </div>
-              </div>
-              <div class="carousel-item">
-                <img src="https://dummyimage.com/1000x400/61ab62" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Service3</h5>
-                  <p>Some representative placeholder content for the third slide.</p>
-                </div>
-              </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-
+            <div class="row">
+                <div class="col-sm-12 col-xl-6">
+                    <P>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
+                    </P>
+                </div>
+                <div class="col-sm-12 col-xl-6">
+                    <img src="https://images.unsplash.com/photo-1570215171323-4ec328f3f5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" style="max-width: 100%; min-width: 100%;">
+                </div>
+            </div>
         </div>
     </section>
 
     <section>
-        <div id="sect2">
+        <div id="sect3">
+            <div class="container-fluid d-flex align-items-center justify-content-center">
+                <h1 class="text-center m-3">Section 3 Services</h1>
+                @{
+                    var userId = userManager.GetUserId(User);
+                    var user = await userManager.FindByIdAsync(userId);
+                    if (signInManager.IsSignedIn(User))
+                    {
+                        if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
+                        {
+                            <a asp-controller="Product" asp-action="AddProduct"><i class="bi bi-plus-circle mx-2" style="font-size: 1.8rem; color: #F39C12;"></i></a>
+                            <a asp-controller="Product" asp-action="FindProducts"><i class="bi bi-arrow-up-right-circle mx-2" style="font-size: 1.8rem; color: #F39C12;"></i></a>
+                        }
+                    }
+                }
 
-          <h1 class="text-center m-3">Section 2 About</h1>
+            </div>
 
-          <div class="row">
-            <div class="col-sm-12 col-xl-6">
-              <img src="https://images.unsplash.com/photo-1570215171323-4ec328f3f5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" style="max-width: 100%; min-width: 100%;">
-            </div>
-            <div class="col-sm-12 col-xl-6">
-              <P>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
-              </P>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12 col-xl-6">
-              <P>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
-              </P>
-            </div>
-            <div class="col-sm-12 col-xl-6">
-              <img src="https://images.unsplash.com/photo-1570215171323-4ec328f3f5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" style="max-width: 100%; min-width: 100%;">
-            </div>
-          </div>
+            <div class="row">
+                @foreach (var v in Model.product)
+                {
+                    <div class="col-12 col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="@v.ProductImage" alt="Card image cap">
+                            <div class="card-body text-center">
+                                @*<div class='col px-3 text-light float-end'></div>*@
+                                <h5 class="card-title">@v.ProductName</h5>
+                                <p class="card-text">@v.SupplierName<br>@v.CategoryName</p>
 
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalLabel-@v.ProductID">Read more</button>
+                                <div class="modal fade" id="ModalLabel-@v.ProductID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title w-100 text-center">Service Details - @v.ProductName</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body lh-base px-5">
+                                                <img class="m-2 mx-auto d-block" src="@v.ProductImage" />
+                                                <p>@Html.Raw(v.ProductDetails)</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                @{
+                                                    if (signInManager.IsSignedIn(User))
+                                                    {
+                                                        if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
+                                                        {
+                                                            @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-primary" })
+                                                            @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-danger", @onClick = "return confirm('Are you sure you want to delete?')" })
+                                                        }
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     </section>
-
-        <section>
-        <div id="sect3">
-
-          <h1 class="text-center m-3">Section 3 Services</h1>
+    <!--
+    <section>
+        <div id="sect4">
+          <h1 class="text-center m-3">Section 4 Resellers</h1>
           <div class="row">
-
-                            
-                @foreach (var v in Model.product)
-            {
-                <div class="col-12 col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="@v.ProductImage" alt="Card image cap">
-                        <div class="card-body">
-                            <div class='col px-3 text-light float-end'>
-                                    @{
-                                        var userId = userManager.GetUserId(User);
-                                        var user = await userManager.FindByIdAsync(userId);
-                                        if (signInManager.IsSignedIn(User))
-                                {
-                                    if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
-                                    {
-                                                    @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-primary" })
-                                                    @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-danger" })
-                                    }
-                                }
-                            }</div>
-                            <h5 class="card-title">@v.ProductName</h5>
-                            <p class="card-text">@v.SupplierName<br>@v.CategoryName</p>
-                    </div>
-                
-                  </div>
-         
-            </div>
-              
-          }
-             </div>
-    </section>
-   <section>
-
-                <div id="sect5">
-
-                  <div class="row">        
-                      @{
-            if (signInManager.IsSignedIn(User))
-                            {
-                    <div class="col-12 col-lg-4">
-                      <h1 class="text-center m-3">Section 5-1 Quote</h1>
-                      <form class="information" method="post">
-                        
-                        <div class="row mb-2">
-                            <label class="form-label">
-                                @Html.DropDownListFor(m => m.quote.ProductID, new SelectList(Model.quote.ProductList, "Value", "Text"), "Select Product", new {@class = "form-control"})
-                            </label>
-                        </div>
-                        <div class="form-group">
-                          <label class="form-control-placeholder" for="name">Name</label>
-                          @Html.EditorFor(m => m.quote.UserID, new { htmlAttributes = new { @readonly = "readonly" } })
-                        </div>
-                                  <div class="form-group">
-                          <label class="form-control-placeholder" for="email">Email address</label>
-                          @Html.EditorFor(m => m.quote.UserEmail, new { htmlAttributes = new { @readonly = "readonly" } })
-                        </div>
-
-                        <div class="form-group">
-                          <label class="form-control-placeholder" for="messaage">Message</label>
-                          @Html.EditorFor(m => m.quote.Message,  new {@class = "form-control"})
-                        </div>
-                                  <div class="form-group mt-3">
-                          <button class="btn btn-primary" asp-action="SubmitQuote">Submit</button>
-                        </div>
-                              </form>
-                    </div>
-      }
-        }
-                    <div class="col-12 col-lg-8">
-                      <h1 class="text-center m-3">Section 5-2 What we do</h1>
-                      <div>
-                        <img src="https://dummyimage.com/1000x400/60aba7" class="w-100" alt="...">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
-                        </p>
-                      </div>
-                    </div>
-
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="https://dummyimage.com/600x400/f0b848/fff" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                   </div>
                 </div>
-  
+              </div>
+            </div>
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="https://dummyimage.com/600x400/f0b848/fff" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
     </section>
+    -->
+    <section>
+        <div id="sect5">
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <h1 class="text-center m-3">Section 5-1 Quote</h1>
+                    <form class="information" method="post">
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Service</label>
+                            <select class="form-control" id="exampleFormControlSelect1" style="width: 100%; max-width: 600px;">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-placeholder" for="name">Name</label>
+                            <input type="text" style="width: 100%; max-width: 600px;" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-placeholder" for="email">Email address</label>
+                            <input type="email" style="width: 100%; max-width: 600px;" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-placeholder" for="number">Phone</label>
+                            <input type="text" style="width: 100%; max-width: 600px;" class="form-control" id="number" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-placeholder" for="messaage">Message</label>
+                            <textarea name="message" style="width: 100%; max-width: 600px;" rows="6" class="input-message"></textarea>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button class="btn btn-primary" asp-action="Quote">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 col-lg-8">
+                    <h1 class="text-center m-3">Section 5-2 What we do</h1>
+                    <div>
+                        <img src="https://dummyimage.com/1000x400/60aba7" class="w-100" alt="...">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porta efficitur consectetur. Praesent blandit aliquam dolor id pretium. In hac habitasse platea dictumst. Mauris tincidunt congue cursus. Praesent fermentum justo quis auctor blandit. In sagittis mollis neque, eu pellentesque ante imperdiet eu. Ut tincidunt, lacus a fringilla euismod, leo velit sodales est, ut finibus ex mi quis ipsum. Vestibulum maximus nisi vitae justo sollicitudin, sed interdum orci efficitur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </div>

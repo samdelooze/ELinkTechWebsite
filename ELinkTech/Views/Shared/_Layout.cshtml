@@ -5,18 +5,80 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>@ViewData["Title"] - ELinkTech</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/64301a05d6.js" crossorigin="anonymous"></script>
 
-    <script>window.setTimeout(function () {
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#editor',
+            plugins: 'lists, link, image, media',
+            toolbar: 'undo redo | styles bold italic strikethrough blockquote bullist numlist forecolor backcolor | removeformat | link image media | alignleft aligncenter alignright alignjustify | outdent indent',
+            menubar: false,
+            setup: (editor) => {
+                // Apply the focus effect
+                editor.on("init", () => {
+                    editor.getContainer().style.transition = "border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out";
+                });
+                editor.on("focus", () => {
+                    (editor.getContainer().style.boxShadow = "0 0 0 .2rem rgba(0, 123, 255, .25)"),
+                        (editor.getContainer().style.borderColor = "#80bdff");
+                });
+                editor.on("blur", () => {
+                    (editor.getContainer().style.boxShadow = ""),
+                        (editor.getContainer().style.borderColor = "");
+                });
+            },
+            height: 'calc(100vh - 20rem)',
+            content_css: false,
+            content_style: `
+                        body {
+                          color: #3d3d3d;
+                          font-size: 18px;
+                          line-height: 1.4;
+                          margin: .5rem auto;
+                          padding: .5rem;
+                          width: 95%;
+                        }
+                        blockquote {
+                          border-left: 8px solid #F39C12;
+                          color: #555555;
+                          font-size: 1.2em;
+                          width: 75%;
+                          margin: 50px auto;
+                          padding: 1.2em 30px 1.2em 75px;
+                          position: relative;
+                          background: #EDEDED;
+                          font-family: Open Sans;
+                          font-style: italic;
+                          line-height: 1.6;
+                        }
+                        blockquote::before {
+                          font-family: Arial;
+                          color: #F39C12;
+                          content: '“';
+                          font-size: 5em;
+                          left: 10px;
+                          pointer-events: none;
+                          position: absolute;
+                          top: -10px;
+                        }
+                        blockquote::after {
+                          content: '';
+                        }
+                    `
+        });
+    </script>
+
+    <script>        window.setTimeout(function () {
             $(".alert").fadeTo(500, 0).slideUp(500, function () {
                 $(this).remove();
             });
         }, 10000);</script>
-
 </head>
 <body style="padding-top: 70px;">
     <header>
@@ -51,8 +113,6 @@
                         @{
                             var userId = userManager.GetUserId(User);
                             var user = await userManager.FindByIdAsync(userId);
-
-
                             if (signInManager.IsSignedIn(User))
                             {
                                 <li class="nav-item">
@@ -111,6 +171,7 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js" integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA==" crossorigin="anonymous"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
