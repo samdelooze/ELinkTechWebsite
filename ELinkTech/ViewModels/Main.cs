@@ -4,6 +4,7 @@ namespace ELinkTech.ViewModels
 {
     public class Main
     {
+        public Models.Quote? quote { get; set; }
         public List<Models.Product>? product { get; set; }
 
         //LOGIN

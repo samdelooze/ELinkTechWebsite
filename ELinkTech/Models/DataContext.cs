@@ -13,6 +13,7 @@ namespace ELinkTech.Models
         public DbSet<Product> products { get; set; }
 
         public DbSet<Supplier> suppliers { get; set; }
+        public DbSet<Quote> quotes { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {

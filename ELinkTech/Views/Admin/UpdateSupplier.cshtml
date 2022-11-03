@@ -1,0 +1,46 @@
+﻿@model ELinkTech.Models.Supplier
+@{
+}
+
+<h1>Update Supplier</h1>
+<form method="post" action="UpdateSupplier" class="mt-5">
+    @using (Html.BeginForm())
+    {
+        <div class="mb-3" hidden> 
+            <label>@Html.LabelFor(m => m.SupplierID)</label>
+            <input type="text" class="form-control" asp-for="SupplierID" readonly />
+        </div>
+        <div class="mb-3">
+            <label>@Html.LabelFor(m => m.SupplierName)</label>
+            <input type="text" class="form-control" asp-for="SupplierName" placeholder="Name of supplier" />
+        </div>
+        <div class="mb-3">
+            <label>@Html.LabelFor(m => m.Phone)</label>
+            <input type="text" class="form-control" asp-for="Phone" placeholder="Contact number of supplier" />
+        </div>
+        <div class="mb-3">
+            <label>@Html.LabelFor(m => m.Email)</label>
+            <input type="text" class="form-control" asp-for="Email" placeholder="Email address" />
+        </div>
+        <div class="mb-3">
+            <label>@Html.LabelFor(m => m.Street)</label>
+            <input type="text" class="form-control" asp-for="Street" placeholder="Street address" />
+        </div>
+        <div class="mb-3">
+            <label>@Html.LabelFor(m => m.Suburb)</label>
+            <input type="text" class="form-control" asp-for="Suburb" placeholder="Suburb/City" />
+        </div>
+        <div class="mb-3">
+            <label>@Html.LabelFor(m => m.State)</label>
+            <input type="text" class="form-control" asp-for="State" placeholder="State" />
+        </div>
+        <div class="mb-3">
+            <label>@Html.LabelFor(m => m.Postcode)</label>
+            <input type="text" class="form-control" asp-for="Postcode" placeholder="" />
+        </div>
+
+        
+        <button type="submit" class="btn btn-primary">Submit</button> 
+    }
+    
+</form>
