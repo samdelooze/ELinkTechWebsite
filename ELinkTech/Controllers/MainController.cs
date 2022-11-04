@@ -159,8 +159,8 @@ public class MainController : Controller
                 // Confirmation email end
 
 
-                //await userManager.AddToRoleAsync(user, "User");
-                //await signInManager.SignInAsync(user, false); // Restrict login before user comfirm the email
+                await userManager.AddToRoleAsync(user, "User");
+                await signInManager.SignInAsync(user, false); // Restrict login before user comfirm the email
                 return RedirectToAction("Index");
 
             }
