@@ -1,0 +1,46 @@
+﻿@model ELinkTech.Models.ApplicationUser
+ 
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12 col-lg-10">
+            <h1 class="mb-3 text-center">Update Profile</h1>
+            <form method="post" asp-action="Edit" class="mt-5">
+                @using (Html.BeginForm())
+                {
+                    <div class="mb-3">
+                        <label>@Html.LabelFor(m => m.FirstName)</label>
+                        <input type="text" class="form-control" asp-for="FirstName" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label>@Html.LabelFor(m => m.LastName)</label>
+                        <input type="text" class="form-control" asp-for="LastName" placeholder="Last Name" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label>@Html.LabelFor(m => m.State)</label>
+                        <input type="text" class="form-control" asp-for="State" placeholder="State" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label>@Html.LabelFor(m => m.Address)</label>
+                        <input type="text" class="form-control" asp-for="Address" placeholder="Address" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label>@Html.LabelFor(m => m.Suburb)</label>
+                        <input type="text" class="form-control" asp-for="Suburb" placeholder="Suburb" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label>@Html.LabelFor(m => m.Postcode)</label>
+                        <input type="text" class="form-control" asp-for="Postcode" placeholder="Suburb" readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label>@Html.LabelFor(m => m.DateOfBirth)</label>
+                        <input type="text" class="form-control" asp-for="DateOfBirth" placeholder="Date of birth" readonly />
+                    </div>
+
+                    <td>@Html.ActionLink("Edit", "Edit", "Customer", new { @id = Model.Id }, new { @class = "btn btn-primary"})</td>
+                }
+
+            </form>
+        </div>
+    </div>
+</div>
