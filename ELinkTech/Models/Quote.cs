@@ -12,8 +12,12 @@ namespace ELinkTech.Models
         [Display(Name = "Service Name")]
         public string? ProductID { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "User ID")]
         public string? UserID { get; set; }
+
+        [NotMapped]
+        [Display(Name = "User Name")]
+        public string? UserName { get; set; }
 
         [Display(Name = "Email")]
         public string? UserEmail { get; set; }

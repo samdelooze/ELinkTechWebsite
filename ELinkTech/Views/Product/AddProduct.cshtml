@@ -14,18 +14,18 @@
                     </div>*/
                     <div class="mb-3">
                         <label>@Html.LabelFor(m => m.ProductName)</label>
-                        <input type="text" class="form-control" asp-for="ProductName" placeholder="Name of service" />
+                        <input type="text" class="form-control" asp-for="ProductName" placeholder="Name of service" required />
                     </div>
                     <div class="mb-3">
                         <label>@Html.LabelFor(m => m.ProductImage)</label>
-                        <input type="url" class="form-control" asp-for="ProductImage" placeholder="Please provide URL of image" />
+                        <input type="url" class="form-control" asp-for="ProductImage" placeholder="Please provide URL of image" required />
                     </div>
                     <div>
                         <label>@Html.LabelFor(m => m.SupplierID)</label>
                     </div>
                     <div class="row mb-2">
                         <label class="form-label">
-                            @Html.DropDownListFor(m => m.SupplierID, new SelectList(Model.SupplierList, "Value", "Text"), "Select Supplier", new { @class = "form-control" })
+                            @Html.DropDownListFor(m => m.SupplierID, new SelectList(Model.SupplierList, "Value", "Text"), "Select Supplier", new { @class = "form-control", @required = "required" })
                         </label>
                     </div>
                     <div>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="row mb-2">
                         <label class="form-label">
-                            @Html.DropDownListFor(m => m.CategoryID, new SelectList(Model.CategoryList, "Value", "Text"), "Select Category", new { @class = "form-control" })
+                            @Html.DropDownListFor(m => m.CategoryID, new SelectList(Model.CategoryList, "Value", "Text"), "Select Category", new { @class = "form-control", @required = "required" })
                         </label>
                     </div>
                     <div class="mb-3">
