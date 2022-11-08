@@ -38,14 +38,26 @@ public class MainController : Controller
     {
 
         await SeedData.SeedAsync(userManager, roleManager);
-        var userID = HttpContext.Session.GetString("userid");
+
         var getProduct = from products in db.products select products;
 
-        Quote? quote = new Quote()
+        var userId = userManager.GetUserId(User);
+        var user = await userManager.FindByIdAsync(userId);
+
+        Quote? quote = new Quote();
+
+        if (user != null)
         {
-            UserID = userID,
-            UserEmail = User.Identity?.Name!
-        };
+            quote.UserID = userId;
+            quote.UserName = user.FirstName + " " + user.LastName;
+        }
+        else
+        {
+            quote.UserID = "";
+            quote.UserName = "";
+        }
+        quote.UserEmail = User.Identity?.Name!;
+
         RetrieveProducts(getProduct, quote);
 
         var product = from products in db.products
@@ -75,7 +87,7 @@ public class MainController : Controller
                 CategoryName = products.CategoryName
             });
         }
-        SubmitQuote(m);
+        SubmitQuoteAsync(m);
         m.product = productList;
         return View(m);
     }
@@ -160,7 +172,7 @@ public class MainController : Controller
 
 
                 await userManager.AddToRoleAsync(user, "User");
-                await signInManager.SignInAsync(user, false); // Restrict login before user comfirm the email
+                //await signInManager.SignInAsync(user, false); // Remove to restrict login before user comfirm the email
                 return RedirectToAction("Index");
 
             }
@@ -182,7 +194,6 @@ public class MainController : Controller
 
     [AllowAnonymous]
     [HttpGet]
-    //[AllowAnonymous]
     public async Task<IActionResult> ConfirmEmail(string userId, string token)
     {
         if (userId == null || token == null)
@@ -234,29 +245,31 @@ public class MainController : Controller
     }
 
     [HttpGet]
-    public IActionResult SubmitQuote(Main m)
+    public async Task<IActionResult> SubmitQuoteAsync(Main m)
     {
-        var userID = HttpContext.Session.GetString("userid");
         var getProduct = from products in db.products select products;
 
-        Quote? quote = new Quote()
+        var userId = userManager.GetUserId(User);
+        var user = await userManager.FindByIdAsync(userId);
+
+        Quote? quote = new Quote();
+
+        if (user != null)
         {
-            UserID = userID,
-            UserEmail = User.Identity?.Name!
-        };
+            quote.UserID = userId;
+            quote.UserName = user.FirstName + " " + user.LastName;
+        }
+        else
+        {
+            quote.UserID = "";
+            quote.UserName = "";
+        }
+        quote.UserEmail = User.Identity?.Name!;
         RetrieveProducts(getProduct, quote);
         m.quote = quote;
         return View(m);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> SubmitQuote(Quote quote)
-    {
-
-        await db.quotes.AddAsync(quote);
-        await db.SaveChangesAsync();
-        return RedirectToAction("Index", "Main");
-    }
     private void RetrieveProducts(IQueryable<Product> p, Quote q)
     {
         foreach (var product in p)
@@ -266,5 +279,33 @@ public class MainController : Controller
             item.Value = product.ProductID.ToString();
             q.ProductList.Add(item);
         }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> SubmitQuote(Quote quote)
+    {
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                await db.quotes.AddAsync(quote);
+                await db.SaveChangesAsync();
+
+                var product = db.products.Where(m => m.ProductID.ToString() == quote.ProductID).FirstOrDefault();
+                var productName = product.ProductName;
+
+                await emailSender.SendEmailAsync(
+                    "", //Put ToEmail address here
+                    "[ELinkTech] User submitted a quote",
+                    "User Information: " + quote.UserName + "(" + quote.UserEmail + ")<br>Quote about: " + productName + "<br>Message: " + quote.Message);
+
+                TempData["AlertSuccess"] = "Your quote is successfully submitted";
+            }
+            catch (Exception e)
+            {
+                TempData["AlertFail"] = "Fail to submit your quote";
+            }
+        }
+        return RedirectToAction("Index");
     }
 }
