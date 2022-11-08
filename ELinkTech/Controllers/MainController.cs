@@ -50,6 +50,7 @@ public class MainController : Controller
         {
             quote.UserID = userId;
             quote.UserName = user.FirstName + " " + user.LastName;
+
         }
         else
         {
@@ -258,11 +259,13 @@ public class MainController : Controller
         {
             quote.UserID = userId;
             quote.UserName = user.FirstName + " " + user.LastName;
+
         }
         else
         {
             quote.UserID = "";
             quote.UserName = "";
+
         }
         quote.UserEmail = User.Identity?.Name!;
         RetrieveProducts(getProduct, quote);

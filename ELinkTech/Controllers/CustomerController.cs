@@ -28,7 +28,7 @@ namespace ELinkTech.Controllers
         [HttpGet]
         public async Task<ActionResult> UserProfile()
         {
-            var userID = HttpContext.Session.GetString("userid");
+            var userID = userManager.GetUserId(User);
             var user = await userManager.FindByIdAsync(userID);
 
             ApplicationUser d = db.users.Where(user => user.Id == userID).FirstOrDefault();
@@ -85,6 +85,8 @@ namespace ELinkTech.Controllers
                     p.Postcode = Postcode;
                 else
                     ModelState.AddModelError("", "Postcode cannot be empty");
+
+                p.DateOfBirth = DateOfBirth;
 
                 if (ModelState.IsValid)
                 {
