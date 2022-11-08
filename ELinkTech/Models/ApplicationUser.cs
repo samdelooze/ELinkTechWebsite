@@ -24,6 +24,7 @@ namespace ELinkTech.Models
         [Display(Name = "Postcode")]
         public string? Postcode { get; set; }
 
+        [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
         public DateTime? DateOfBirth { get; set; }
     }
