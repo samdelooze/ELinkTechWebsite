@@ -38,14 +38,24 @@ public class MainController : Controller
     {
 
         await SeedData.SeedAsync(userManager, roleManager);
-        var userID = HttpContext.Session.GetString("userid");
+
         var getProduct = from products in db.products select products;
 
-        Quote? quote = new Quote()
+        var userId = userManager.GetUserId(User);
+        var user = await userManager.FindByIdAsync(userId);
+
+        Quote? quote = new Quote();
+        
+        if(user != null)
         {
-            UserID = userID,
-            UserEmail = User.Identity?.Name!
-        };
+            quote.UserID = user.FirstName;
+        }
+        else
+        {
+            quote.UserID = "";
+        }
+        quote.UserEmail = User.Identity?.Name!;
+        
         RetrieveProducts(getProduct, quote);
 
         var product = from products in db.products
@@ -75,7 +85,7 @@ public class MainController : Controller
                 CategoryName = products.CategoryName
             });
         }
-        SubmitQuote(m);
+        SubmitQuoteAsync(m);
         m.product = productList;
         return View(m);
     }
@@ -234,16 +244,24 @@ public class MainController : Controller
     }
 
     [HttpGet]
-    public IActionResult SubmitQuote(Main m)
+    public async Task<IActionResult> SubmitQuoteAsync(Main m)
     {
-        var userID = HttpContext.Session.GetString("userid");
         var getProduct = from products in db.products select products;
 
-        Quote? quote = new Quote()
+        var userId = userManager.GetUserId(User);
+        var user = await userManager.FindByIdAsync(userId);
+
+        Quote? quote = new Quote();
+
+        if (user != null)
         {
-            UserID = userID,
-            UserEmail = User.Identity?.Name!
-        };
+            quote.UserID = user.FirstName;
+        }
+        else
+        {
+            quote.UserID = "";
+        }
+        quote.UserEmail = User.Identity?.Name!;
         RetrieveProducts(getProduct, quote);
         m.quote = quote;
         return View(m);
