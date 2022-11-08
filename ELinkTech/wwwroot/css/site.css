@@ -26,6 +26,10 @@ a.nav-link:hover {
     display: flex;
     justify-content: center;
 }
+#quote-product-list {
+    width: 100%;
+    max-width: 600px;
+}
 
 #sect2, #sect3, #sect4, #sect5 {
     margin-top: 40px;

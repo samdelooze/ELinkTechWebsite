@@ -115,12 +115,21 @@
                             var user = await userManager.FindByIdAsync(userId);
                             if (signInManager.IsSignedIn(User))
                             {
+                        if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
+                        {
                                 <li class="nav-item">
+                                    <a class="nav-link text-light" asp-controller="Admin" asp-action="Index">Hello @User.Identity?.Name!</a>
+                                </li>
+                                    }
+                        else if (userManager.IsInRoleAsync(user, "User").Result == true)
+                        {
+                                 <li class="nav-item">
                                     <a class="nav-link text-light" asp-controller="Customer" asp-action="UserProfile">Hello @User.Identity?.Name!</a>
-                                </li>
-                                <li class="nav-item">
+                                 </li>
+                                    }
+                                 <li class="nav-item">
                                     <a class="nav-link text-light" asp-action="Logout">Logout</a>
-                                </li>
+                                 </li>
                             }
                             else
                             {

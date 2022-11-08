@@ -8,11 +8,19 @@ namespace ELinkTech.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? QuoteId { get; set; }
-        public string? ProductID { get; set; }
-        public string? UserID { get; set; }
-        public string? UserEmail { get; set; }
-        public string? Message { get; set; }
 
+        [Display(Name = "Service Name")]
+        public string? ProductID { get; set; }
+
+        [Display(Name = "Name")]
+        public string? UserID { get; set; }
+
+        [Display(Name = "Email")]
+        public string? UserEmail { get; set; }
+
+        [Display(Name = "Message")]
+        public string? Message { get; set; }
+        
         public List<SelectListItem>? ProductList = new List<SelectListItem>();
 
     }
