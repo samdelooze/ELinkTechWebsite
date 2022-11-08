@@ -1,0 +1,15 @@
+﻿@model ELinkTech.Models.Category
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="mb-3">Category</h1>
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="mb-3">
+                <label class="col-form-label" asp-for="CategoryName"></label>
+                <input type="text" asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
