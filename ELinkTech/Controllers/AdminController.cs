@@ -25,30 +25,96 @@ namespace ELinkTech.Controllers
             GetSuppliers();
             return View();
         }
+        //Quotes
+        [HttpGet]
+        public IActionResult GetQuotes()
+        {
+
+            var quote = from quotes in db.quotes
+                           select new
+                           {
+                               QuoteId = quotes.QuoteId,
+                               ProductID = quotes.ProductID,
+                               UserID = quotes.UserID,
+                               UserEmail = quotes.UserEmail,
+                               Message = quotes.Message,
+                           };
+            List<Quote> quotesList = new List<Quote>();
+
+            foreach (var quotes in quote)
+            {
+                quotesList.Add(new Quote
+                {
+                    QuoteId = quotes.QuoteId,
+                    ProductID = quotes.ProductID,
+                    UserID = quotes.UserID,
+                    UserEmail = quotes.UserEmail,
+                    Message = quotes.Message,
+                });
+            }
+            return View(quotesList);
+        }
 
         //Categories
         [HttpGet]
         public IActionResult GetCategories()
         {
-            return View();
+
+            var category = from categories in db.categories
+                           select new
+                           {
+                               CategoryID = categories.CategoryID,
+                               CategoryName = categories.CategoryName,
+                           };
+            List<Category> categoryList = new List<Category>();
+
+            foreach (var categories in category)
+            {
+                categoryList.Add(new Category
+                {
+                    CategoryID = categories.CategoryID,
+                    CategoryName = categories.CategoryName,
+                });
+            }
+
+            return View(categoryList);
         }
 
         [HttpGet]
         public IActionResult AddCategory()
         {
-            return View();
+            Category category = new Category();
+            return View(category);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddCategoryAsync(Category category)
+        {
+            await db.categories.AddAsync(category);
+            await db.SaveChangesAsync();
+            return RedirectToAction("GetCategories");
         }
 
         [HttpGet]
-        public IActionResult EditCategory()
+        public IActionResult UpdateCategory(int id)
         {
-            return View();
+            Category category = db.categories.Where(s => s.CategoryID == id).FirstOrDefault();
+            return View(category);
+        }
+        [HttpPost]
+        public IActionResult UpdateCategory(Category category)
+        {
+            db.categories.Update(category);
+            db.SaveChanges();
+            return RedirectToAction("GetCategories");
         }
 
         [HttpGet]
-        public IActionResult DeleteCategory()
+        public IActionResult DeleteCategory(int id)
         {
-            return View();
+            Category category = db.categories.Find(id);
+            db.categories.Remove(category);
+            db.SaveChanges();
+            return RedirectToAction("GetCategories");
         }
 
         //Suppliers
@@ -104,10 +170,8 @@ namespace ELinkTech.Controllers
         }
 
         [HttpGet]
-        public IActionResult UpdateSupplier(int id)
-        {
+        public IActionResult UpdateSupplier(int id)        {
             Supplier supplier = db.suppliers.Where(s => s.SupplierID == id).FirstOrDefault();
-
             return View(supplier);
         }
 
