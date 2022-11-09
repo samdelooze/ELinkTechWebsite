@@ -99,9 +99,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect3">Services</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect4">Resellers</a>
-                        </li>
+                        @*<li class="nav-item">
+                                <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect4">Resellers</a>
+                            </li>*@
                         <li class="nav-item">
                             <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect5">Contact</a>
                         </li>
@@ -112,16 +112,29 @@
                             {
                                 if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
                                 {
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light" asp-controller="Admin" asp-action="GetCategories">Categories</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light" asp-controller="Admin" asp-action="GetQuotes">Quotes</a>
-                                        </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Admin
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                            <li class="dropdown-item">
+                                                <a class="nav-link" asp-controller="Product" asp-action="FindProducts">Services</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a class="nav-link" asp-controller="Admin" asp-action="GetCategories">Categories</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a class="nav-link" asp-controller="Admin" asp-action="GetSuppliers">Suppliers</a>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <a class="nav-link" asp-controller="Admin" asp-action="GetQuotes">Quotes</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 }
                             }
                         }
-                            <!--<li class="nav-item">
+                        <!--<li class="nav-item">
                             a class="nav-link text-light " asp-area="" asp-controller="Main" asp-action="Privacy">Privacy</a>
                         </li>-->
                     </ul>
@@ -131,28 +144,28 @@
                             {
                                 if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
                                 {
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light" asp-controller="Admin" asp-action="Index">Hello @User.Identity?.Name!</a>
-                                        </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-controller="Admin" asp-action="Index">Hello @User.Identity?.Name!</a>
+                                    </li>
                                 }
                                 else if (userManager.IsInRoleAsync(user, "User").Result == true)
                                 {
-                                        <li class="nav-item">
-                                            <a class="nav-link text-light" asp-controller="Customer" asp-action="UserProfile">Hello @User.Identity?.Name!</a>
-                                        </li>
-                                }
                                     <li class="nav-item">
-                                        <a class="nav-link text-light" asp-controller="Main" asp-action="Logout">Logout</a>
+                                        <a class="nav-link text-light" asp-controller="Customer" asp-action="UserProfile">Hello @User.Identity?.Name!</a>
                                     </li>
+                                }
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-controller="Main" asp-action="Logout">Logout</a>
+                                </li>
                             }
                             else
                             {
-                                    <li class="nav-item">
-                                        <a class="nav-link text-light" asp-controller="Main" asp-action="Login">Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-light" asp-controller="Main" asp-action="Register">Register</a>
-                                    </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-controller="Main" asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-controller="Main" asp-action="Register">Register</a>
+                                </li>
                             }
                         }
                     </ul>
@@ -165,15 +178,16 @@
             @RenderBody()
         </div>
     </main>
-    <footer class="border-top footer text-muted bg-dark fixed-bottom">
+    <footer class="border-top footer text-muted bg-dark offcanvas-bottom">
         <div class="container p-3">
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <div class="d-flex justify-content-center justify-content-lg-start">
+                    <div class="d-flex justify-content-left justify-content-lg-start">
                         &copy;
                         <script>document.write(new Date().getFullYear())</script>&nbsp;<b>ELinkTech</b>&nbsp;|&nbsp;All Rights Reserved.
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-6">
                     <div class="d-flex justify-content-center justify-content-lg-end">
                         <a href="" class="me-4 text-reset">
@@ -188,6 +202,27 @@
                         <a href="" class="text-reset">
                             <i class="fab fa-linkedin"></i>
                         </a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-5">
+                    <h6 class="text-uppercase fw-bold mt-3 mb-2">
+                        Main Page
+                    </h6>
+
+                    <div class="justify-content-end justify-content-lg-end">
+                        <!-- Links -->
+
+                        <a href="@Url.Action("Index","Main")#sect1" class="nav-link p-0 text-light">Home</a>
+
+
+                        <a href="@Url.Action("Index","Main")#sect2" class="nav-link p-0 text-light">About Us</a>
+
+
+                        <a href="@Url.Action("Index","Main")#sect3" class="nav-link p-0 text-light">Services</a>
+
+
+                        <a href="@Url.Action("Index","Main")#sect5" class="nav-link p-0 text-light">Contact</a>
+
                     </div>
                 </div>
             </div>
