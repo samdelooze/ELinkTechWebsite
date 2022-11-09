@@ -68,6 +68,71 @@
             </div>
         </div>
     </section>
+     <section>
+        <div id="sect3">
+            <div class="container-fluid d-flex align-items-center justify-content-center">
+                <h1 class="text-center m-3">Services</h1>
+                @{
+                    var userId = userManager.GetUserId(User);
+                    var user = await userManager.FindByIdAsync(userId);
+                    if (signInManager.IsSignedIn(User) && User != null)
+                    {
+                        if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
+                        {
+                            <a asp-controller="Product" asp-action="AddProduct"><i class="bi bi-plus-circle mx-2" style="font-size: 1.8rem; color: #F39C12;"></i></a>
+                            <a asp-controller="Product" asp-action="FindProducts"><i class="bi bi-arrow-up-right-circle mx-2" style="font-size: 1.8rem; color: #F39C12;"></i></a>
+                        }
+                    }
+                }
+
+            </div>
+
+            <div class="row">
+                @foreach (var v in Model.product)
+                {
+                    <div class="col-12 col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="@v.ProductImage" alt="Card image cap">
+                            <div class="card-body text-center">
+                                @*<div class='col px-3 text-light float-end'></div>*@
+                                <h5 class="card-title">@v.ProductName</h5>
+                                <p class="card-text">@v.SupplierName<br>@v.CategoryName</p>
+
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalLabel-@v.ProductID">Read more</button>
+                                <div class="modal fade" id="ModalLabel-@v.ProductID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title w-100 text-center">Service Details - @v.ProductName</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body lh-base px-5">
+                                                <img class="m-2 mx-auto d-block" src="@v.ProductImage" />
+                                                <p>@Html.Raw(v.ProductDetails)</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                @{
+                                                    if (signInManager.IsSignedIn(User) && User != null)
+                                                    {
+                                                        if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
+                                                        {
+                                                            @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-primary" })
+                                                            @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-danger", @onClick = "return confirm('Are you sure you want to delete?')" })
+                                                        }
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
     <section>
         <div id="sect2">
             <h1 class="text-center m-3">About Us</h1>
@@ -168,71 +233,7 @@
         </div>
     </section>
 
-    <section>
-        <div id="sect3">
-            <div class="container-fluid d-flex align-items-center justify-content-center">
-                <h1 class="text-center m-3">Services</h1>
-                @{
-                    var userId = userManager.GetUserId(User);
-                    var user = await userManager.FindByIdAsync(userId);
-                    if (signInManager.IsSignedIn(User) && User != null)
-                    {
-                        if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
-                        {
-                            <a asp-controller="Product" asp-action="AddProduct"><i class="bi bi-plus-circle mx-2" style="font-size: 1.8rem; color: #F39C12;"></i></a>
-                            <a asp-controller="Product" asp-action="FindProducts"><i class="bi bi-arrow-up-right-circle mx-2" style="font-size: 1.8rem; color: #F39C12;"></i></a>
-                        }
-                    }
-                }
-
-            </div>
-
-            <div class="row">
-                @foreach (var v in Model.product)
-                {
-                    <div class="col-12 col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="@v.ProductImage" alt="Card image cap">
-                            <div class="card-body text-center">
-                                @*<div class='col px-3 text-light float-end'></div>*@
-                                <h5 class="card-title">@v.ProductName</h5>
-                                <p class="card-text">@v.SupplierName<br>@v.CategoryName</p>
-
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalLabel-@v.ProductID">Read more</button>
-                                <div class="modal fade" id="ModalLabel-@v.ProductID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title w-100 text-center">Service Details - @v.ProductName</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body lh-base px-5">
-                                                <img class="m-2 mx-auto d-block" src="@v.ProductImage" />
-                                                <p>@Html.Raw(v.ProductDetails)</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                @{
-                                                    if (signInManager.IsSignedIn(User) && User != null)
-                                                    {
-                                                        if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
-                                                        {
-                                                            @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-primary" })
-                                                            @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = v.ProductID }, new { @class = "btn btn-danger", @onClick = "return confirm('Are you sure you want to delete?')" })
-                                                        }
-                                                    }
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-    </section>
+   
     <!--
     <section>
         <div id="sect4">
