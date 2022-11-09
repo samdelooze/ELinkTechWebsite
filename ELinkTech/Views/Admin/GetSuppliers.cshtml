@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ELinkTech.Models.Supplier>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12 col-lg-10">
+            <h1 class="mb-3 text-center">Supplier List</h1>
+            <form method="get">
+                <button class="btn btn-primary float-end mb-3" asp-action="AddSupplier">Add</button>
+            </form>
+            <table class="table table-striped">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.SupplierName)</th>
+                    <th>@Html.DisplayNameFor(m => m.Phone)</th>
+                    <th>@Html.DisplayNameFor(m => m.Email)</th>
+                    <th>@Html.DisplayNameFor(m => m.Street)</th>
+                    <th>@Html.DisplayNameFor(m => m.Suburb)</th>
+                    <th>@Html.DisplayNameFor(m => m.State)</th>
+                    <th>@Html.DisplayNameFor(m => m.Postcode)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @foreach (var supplier in Model)
+                {
+                    <tr>
+                        <td>@supplier.SupplierName</td>
+                        <td>@supplier.Phone</td>
+                        <td>@supplier.Email</td>
+                        <td>@supplier.Street</td>
+                        <td>@supplier.Suburb</td>
+                        <td>@supplier.State</td>
+                        <td>@supplier.Postcode</td>
+                        <td>@Html.ActionLink("Edit", "UpdateSupplier", new { id = supplier.SupplierID })</td>
+                        <td>@Html.ActionLink("Delete", "DeleteSupplier", new { id = supplier.SupplierID }, new { @onClick = "return confirm('Are you sure you want to delete?')" })</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,21 +1,29 @@
 ﻿@model IEnumerable<ELinkTech.Models.Quote>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12 col-lg-10">
+            <h1 class="mb-3 text-center">Quote List</h1>
 
-
-<table class="table table-striped">
-    <tr>
-        <th>@Html.DisplayNameFor(m => m.ProductID)</th>
-        <th>@Html.DisplayNameFor(m => m.UserID)</th>
-        <th>@Html.DisplayNameFor(m => m.UserEmail)</th>
-        <th>@Html.DisplayNameFor(m => m.Message)</th>
-        <th></th>
-    </tr>
-    @foreach (var quote in Model)
-    {
-        <tr>
-            <td>@quote.ProductID</td>
-            <td>@quote.UserID</td>
-            <td>@quote.UserEmail</td>
-            <td>@quote.Message</td>
-        </tr>
-    }
-</table>
+            <table class="table table-striped">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.ProductID)</th>
+                    <th>@Html.DisplayNameFor(m => m.ProductName)</th>
+                    <th>@Html.DisplayNameFor(m => m.UserName)</th>
+                    <th>@Html.DisplayNameFor(m => m.UserEmail)</th>
+                    <th>@Html.DisplayNameFor(m => m.Message)</th>
+                    <th></th>
+                </tr>
+                @foreach (var quote in Model)
+                {
+                    <tr>
+                        <td>@quote.ProductID</td>
+                        <td>@quote.ProductName</td>
+                        <td>@quote.UserName</td>
+                        <td>@quote.UserEmail</td>
+                        <td>@quote.Message</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

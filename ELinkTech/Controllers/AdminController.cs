@@ -27,27 +27,33 @@ namespace ELinkTech.Controllers
         }
         //Quotes
         [HttpGet]
-        public IActionResult GetQuotes()
+        public async Task<IActionResult> GetQuotes()
         {
-
             var quote = from quotes in db.quotes
-                           select new
-                           {
-                               QuoteId = quotes.QuoteId,
-                               ProductID = quotes.ProductID,
-                               UserID = quotes.UserID,
-                               UserEmail = quotes.UserEmail,
-                               Message = quotes.Message,
-                           };
+                        select new
+                        {
+                            QuoteId = quotes.QuoteId,
+                            ProductID = quotes.ProductID,
+                            UserID = quotes.UserID,
+                            UserEmail = quotes.UserEmail,
+                            Message = quotes.Message,
+                        };
             List<Quote> quotesList = new List<Quote>();
 
             foreach (var quotes in quote)
             {
+                var user = await userManager.FindByIdAsync(quotes.UserID);
+
+                var product = db.products.Where(m => m.ProductID.ToString() == quotes.ProductID).FirstOrDefault();
+                var productName = product.ProductName;
+
                 quotesList.Add(new Quote
                 {
                     QuoteId = quotes.QuoteId,
                     ProductID = quotes.ProductID,
+                    ProductName = productName,
                     UserID = quotes.UserID,
+                    UserName = user.FirstName + " " + user.LastName,
                     UserEmail = quotes.UserEmail,
                     Message = quotes.Message,
                 });
