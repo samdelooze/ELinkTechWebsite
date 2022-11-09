@@ -43,6 +43,12 @@ namespace ELinkTech.Controllers
                 ProductName = newProduct.ProductName,
             };*/
 
+            if (string.IsNullOrEmpty(product.ProductDetails))
+            {
+                TempData["AlertFail"] = "Details cannot be empty";
+                return RedirectToAction();
+            }
+                
             await db.products.AddAsync(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index", "Main");
@@ -128,9 +134,16 @@ namespace ELinkTech.Controllers
         [HttpPost]
         public IActionResult UpdateProduct(Product p)
         {
+            if (string.IsNullOrEmpty(p.ProductDetails))
+            {
+                TempData["AlertFail"] = "Details cannot be empty";
+                return RedirectToAction();
+            }
+
             //Product? product = db.products.Find(p.ProductID);
             db.Entry(p).State = (Microsoft.EntityFrameworkCore.EntityState.Modified);
-           // db.products.Update(p);
+            
+            // db.products.Update(p);
             db.SaveChanges();
             return RedirectToAction("Index", "Main");
         }
