@@ -1,16 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <!-- change UserSecretsId to use emailing function -->
-    <!-- 1. Remove <UserSecretsId> property  -->
-    <!-- 2. Run CLI (dotnet user-secrets init) -->
-    <!-- 3. Run CLI (dotnet user-secrets set SendGridKey "PUT YOUR SENDGRIDKEY HERE") -->
-    <!-- 4. Check your own <UserSecretsId> property here and 'secret.json' file in your local storage -->
-    
-    <UserSecretsId>0c179add-18d3-4d12-8a06-c2252cd66dd5</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

@@ -7,24 +7,23 @@ namespace ELinkTech.Services;
 
 public class EmailSender : IEmailSender
 {
+    private readonly IConfiguration Configuration;
     private readonly ILogger _logger;
 
-    public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor,
+    public EmailSender(IConfiguration configuration,
                        ILogger<EmailSender> logger)
     {
-        Options = optionsAccessor.Value;
+        Configuration = configuration;
         _logger = logger;
     }
 
-    public AuthMessageSenderOptions Options { get; } //Set with Secret Manager.
-
     public async Task SendEmailAsync(string toEmail, string subject, string message)
     {
-        if (string.IsNullOrEmpty(Options.SendGridKey))
+        if (string.IsNullOrEmpty(Configuration["SendGrid:SendGridKey"]))
         {
             throw new Exception("Null SendGridKey");
         }
-        await Execute(Options.SendGridKey, subject, message, toEmail);
+        await Execute(Configuration["SendGrid:SendGridKey"], subject, message, toEmail);
     }
 
     public async Task Execute(string apiKey, string subject, string message, string toEmail)
@@ -32,7 +31,7 @@ public class EmailSender : IEmailSender
         var client = new SendGridClient(apiKey);
         var msg = new SendGridMessage()
         {
-            From = new EmailAddress("samstruk7822@gmail.com", "ELinkTech"),
+            From = new EmailAddress(Configuration["SendGrid:SenderEmail"], Configuration["SendGrid:SenderName"]),
             Subject = subject,
             PlainTextContent = message,
             HtmlContent = message
