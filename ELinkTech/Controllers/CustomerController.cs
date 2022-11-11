@@ -5,6 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Data.Entity;
+using ELinkTech.ViewModels;
+using ELinkTech.Controllers;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using ELinkTech.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace ELinkTech.Controllers
 {
@@ -14,15 +19,21 @@ namespace ELinkTech.Controllers
         private UserManager<ApplicationUser> userManager { get; }
         private SignInManager<ApplicationUser> signInManager { get; }
         private readonly DataContext db;
+        private IEmailSender emailSender;
+        private readonly IConfiguration configuration;
 
         public CustomerController(UserManager<ApplicationUser> userManager,
                 SignInManager<ApplicationUser> signInManager,
                 RoleManager<IdentityRole> roleManager,
+                IEmailSender emailSender,
+                IConfiguration configuration,
                 DataContext db)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.db = db;
+            this.emailSender = emailSender;
+            this.configuration = configuration;
         }
 
         [HttpGet]
@@ -111,6 +122,70 @@ namespace ELinkTech.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> QuoteFormAsync()
+        {
+            var userId = userManager.GetUserId(User);
+            var user = await userManager.FindByIdAsync(userId);
+
+            Quote quote = new Quote();
+
+            if (user != null)
+            {
+                quote.UserID = userId;
+                quote.UserName = user.FirstName + " " + user.LastName;
+            }
+            else
+            {
+                quote.UserID = "";
+                quote.UserName = "";
+            }
+            quote.UserEmail = User.Identity?.Name!;
+
+
+            var getProduct = from products in db.products select products;
+
+            foreach (var product in getProduct)
+            {
+                SelectListItem item = new SelectListItem();
+                item.Text = product.ProductName;
+                item.Value = product.ProductID.ToString();
+                quote.ProductList.Add(item);
+            }
+
+
+            return View(quote);
+        }
+        [HttpPost]
+        public async Task<IActionResult> SubmitQuote(Quote quote)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await db.quotes.AddAsync(quote);
+                    await db.SaveChangesAsync();
+
+                    var product = db.products.Where(m => m.ProductID.ToString() == quote.ProductID).FirstOrDefault();
+                    var productName = product.ProductName;
+
+                    var senderEmail = configuration["SendGrid:SenderEmail"];
+
+                    await emailSender.SendEmailAsync(
+                        senderEmail,
+                        "[ELinkTech] User submitted a quote",
+                        "User Information: " + quote.UserName + "(" + quote.UserEmail + ")<br>Quote about: " + productName + "<br>Message: " + quote.Message);
+
+                    TempData["AlertSuccess"] = "Your quote is successfully submitted";
+                }
+                catch (Exception e)
+                {
+                    TempData["AlertFail"] = "Fail to submit your quote";
+                }
+            }
+            return RedirectToAction("Index", "Main");
         }
     }
 }

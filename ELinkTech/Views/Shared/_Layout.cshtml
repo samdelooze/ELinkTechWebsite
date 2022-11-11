@@ -106,6 +106,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect5">Contact</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-controller="Customer" asp-action="QuoteForm">Quote</a>
+                        </li>
                         @{
                             var userId = userManager.GetUserId(User);
                             var user = await userManager.FindByIdAsync(userId);

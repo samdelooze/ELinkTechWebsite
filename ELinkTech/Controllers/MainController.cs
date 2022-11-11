@@ -275,7 +275,7 @@ public class MainController : Controller
         return View(m);
     }
 
-    private void RetrieveProducts(IQueryable<Product> p, Quote q)
+    public void RetrieveProducts(IQueryable<Product> p, Quote q)
     {
         foreach (var product in p)
         {
@@ -284,33 +284,5 @@ public class MainController : Controller
             item.Value = product.ProductID.ToString();
             q.ProductList.Add(item);
         }
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> SubmitQuote(Quote quote)
-    {
-        if (ModelState.IsValid)
-        {
-            try
-            {
-                await db.quotes.AddAsync(quote);
-                await db.SaveChangesAsync();
-
-                var product = db.products.Where(m => m.ProductID.ToString() == quote.ProductID).FirstOrDefault();
-                var productName = product.ProductName;
-
-                await emailSender.SendEmailAsync(
-                    configuration["SendGrid:SenderEmail"],
-                    "[ELinkTech] User submitted a quote",
-                    "User Information: " + quote.UserName + "(" + quote.UserEmail + ")<br>Quote about: " + productName + "<br>Message: " + quote.Message);
-
-                TempData["AlertSuccess"] = "Your quote is successfully submitted";
-            }
-            catch (Exception e)
-            {
-                TempData["AlertFail"] = "Fail to submit your quote";
-            }
-        }
-        return RedirectToAction("Index");
-    }
+    }    
 }
