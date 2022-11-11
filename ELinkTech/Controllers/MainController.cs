@@ -18,19 +18,22 @@ public class MainController : Controller
     private RoleManager<IdentityRole> roleManager { get; }
 
     private IEmailSender emailSender;
+    private readonly IConfiguration configuration;
 
     private readonly DataContext db;
     
     public MainController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            RoleManager<IdentityRole> roleManager,
-            IEmailSender emailSender,
-            DataContext db)
+                          SignInManager<ApplicationUser> signInManager,
+                          RoleManager<IdentityRole> roleManager,
+                          IEmailSender emailSender,
+                          IConfiguration configuration,
+                          DataContext db)
     {
         this.userManager = userManager;
         this.signInManager = signInManager;
         this.roleManager = roleManager;
         this.emailSender = emailSender;
+        this.configuration = configuration;
         this.db = db;
     }
     [HttpGet]
@@ -50,7 +53,6 @@ public class MainController : Controller
         {
             quote.UserID = userId;
             quote.UserName = user.FirstName + " " + user.LastName;
-
         }
         else
         {
@@ -298,7 +300,7 @@ public class MainController : Controller
                 var productName = product.ProductName;
 
                 await emailSender.SendEmailAsync(
-                    "", //Put ToEmail address here
+                    configuration["SendGrid:SenderEmail"],
                     "[ELinkTech] User submitted a quote",
                     "User Information: " + quote.UserName + "(" + quote.UserEmail + ")<br>Quote about: " + productName + "<br>Message: " + quote.Message);
 

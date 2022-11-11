@@ -24,7 +24,6 @@ builder.Services.AddControllersWithViews();
 
 // Add EmailSender
 builder.Services.AddTransient<IEmailSender, EmailSender>();
-builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 // Session management
 builder.Services.AddDistributedMemoryCache();
