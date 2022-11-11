@@ -273,60 +273,7 @@
     -->
     <section>
         <div id="sect5">
-            <div class="row">
-                <div class="col-12 col-lg-4">
-                    <h1 class="text-center m-3">Ask for a Quote</h1> 
-                    @{
-                        if (signInManager.IsSignedIn(User))
-                        {
-                            <form class="information" method="post">
-                                <div class="mb-3">
-                                    <label>@Html.LabelFor(m => m.quote.ProductID)</label>
-                                    @Html.DropDownListFor(m => m.quote.ProductID, new SelectList(Model.quote.ProductList, "Value", "Text"), "Select Service", new {@class = "form-control", @id = "quote-product-list", @required = "required"}) 
-                                </div>
-
-                                <div class="mb-3" hidden>
-                                    <label>@Html.LabelFor(m => m.quote.UserID)</label>
-                                    <input type="text" class="form-control" asp-for="quote.UserID" placeholder="Name">
-                                    <span asp-validation-for="quote.UserID" class="text-danger"></span>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label>@Html.LabelFor(m => m.quote.UserName)</label>
-                                    <input type="text" class="form-control" asp-for="quote.UserName" placeholder="Name">
-                                    <span asp-validation-for="quote.UserName" class="text-danger"></span>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label>@Html.LabelFor(m => m.quote.UserEmail)</label>
-                                    <input type="email" class="form-control" asp-for="quote.UserEmail" placeholder="Email" required>
-                                    <span asp-validation-for="quote.UserEmail" class="text-danger"></span>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label>@Html.LabelFor(m => m.quote.Message)</label>
-                                    <textarea rows="5" type="text" class="form-control" asp-for="quote.Message" placeholder="Message" required></textarea>
-                                    <span asp-validation-for="quote.Message" class="text-danger"></span>
-                                </div>
-
-                                <div class="mt-3 text-center">
-                                    <button class="btn btn-primary" asp-action="SubmitQuote">Submit</button>
-                                </div>
-                            </form>
-                        }
-                        else
-                        {
-                            <div class="mb-3 text-center">
-                                <p>Please login<br>
-                                    <a class="btn btn-primary" asp-controller="Main" asp-action="Login">Login</a>
-                                </p>
-                                <p>Don't have an account? Register here<br>
-                                    <a class="btn btn-primary" asp-controller="Main" asp-action="Register">Register</a>
-                                </p>
-                            </div>
-                        }
-                    }
-                </div>
+            <div class="row">                
                 <div class="col-12 col-lg-8">
                     <h1 class="text-center m-3">What we do</h1>
                     <div class="p-3">
