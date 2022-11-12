@@ -62,7 +62,7 @@ a.nav-link:hover {
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
 
-blockquote {
+.modal blockquote {
     font-size: 1.2em;
     width: 85%;
     margin: 50px auto;
@@ -76,20 +76,30 @@ blockquote {
     background: #EDEDED;
 }
 
-    blockquote p {
-        margin-bottom: 0px;
-    }
+.modal blockquote p {
+    margin-bottom: 0px;
+}
 
-    blockquote::before {
-        font-family: Arial;
-        content: "\201C";
-        color: #F39C12;
-        font-size: 5em;
-        position: absolute;
-        left: 10px;
-        top: -10px;
-    }
+.modal blockquote::before {
+    font-family: Arial;
+    content: "\201C";
+    color: #F39C12;
+    font-size: 5em;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+}
 
-    blockquote::after {
-        content: '';
-    }
+.modal blockquote::after {
+    content: '';
+}
+
+#filled:hover {
+    background-color: white !important;
+    color: black !important;
+}
+
+#outlined:hover {
+    background-color: #F39C12;
+    color: white;
+}

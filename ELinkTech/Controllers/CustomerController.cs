@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace ELinkTech.Controllers
 {
-    [Authorize(Roles = "Administrator, User")]
+    
     public class CustomerController : Controller
     {
         private UserManager<ApplicationUser> userManager { get; }
@@ -36,6 +36,7 @@ namespace ELinkTech.Controllers
             this.configuration = configuration;
         }
 
+        [Authorize(Roles = "Administrator, User")]
         [HttpGet]
         public async Task<ActionResult> UserProfile()
         {
@@ -54,6 +55,7 @@ namespace ELinkTech.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrator, User")]
         [HttpGet]
         public async Task<IActionResult> Edit(string Id)
         {
@@ -61,6 +63,7 @@ namespace ELinkTech.Controllers
             return View(p);
         }
 
+        [Authorize(Roles = "Administrator, User")]
         [HttpPost] // Update
         public async Task<IActionResult> Edit(string Id, string FirstName, string LastName, string State, string Address, string Suburb, string Postcode, DateTime DateOfBirth)
         {
@@ -113,6 +116,7 @@ namespace ELinkTech.Controllers
             return View(p);
         }
 
+        [AllowAnonymous]
         private void Errors(IdentityResult result)
         {
             foreach (IdentityError error in result.Errors)
@@ -124,6 +128,7 @@ namespace ELinkTech.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> QuoteFormAsync()
         {
@@ -158,6 +163,8 @@ namespace ELinkTech.Controllers
 
             return View(quote);
         }
+
+        [Authorize(Roles = "Administrator, User")]
         [HttpPost]
         public async Task<IActionResult> SubmitQuote(Quote quote)
         {

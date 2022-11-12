@@ -1,23 +1,25 @@
 ﻿@model ELinkTech.ViewModels.Main
 <div class="container">
-    <div>
     @if (TempData["AlertSuccess"] != null)
     {
-        <div class="alert alert-success" role="alert">
-            <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="alert-heading">Success!</h4>
-            <p>@TempData["AlertSuccess"]</p>
+        <div class="pt-3">
+            <div class="alert alert-success" role="alert">
+                <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="alert-heading">Success!</h4>
+                <p>@TempData["AlertSuccess"]</p>
+            </div>
         </div>
     }
     else if (TempData["AlertFail"] != null)
     {
-        <div class="alert alert-danger" role="alert">
-            <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="alert-heading">Fail</h4>
-            <p>@TempData["AlertFail"]</p>
+        <div class="pt-3">
+            <div class="alert alert-danger" role="alert">
+                <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="alert-heading">Fail</h4>
+                <p>@TempData["AlertFail"]</p>
+            </div>
         </div>
     }
-    </div>
     @*<div asp-validation-summary="All" class="text-danger"></div>*@
     <div class="row justify-content-center">
         <div class="col-12 col-lg-6">
