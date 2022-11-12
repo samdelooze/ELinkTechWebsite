@@ -5,73 +5,34 @@
 @model ELinkTech.ViewModels.Main
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
+
 <div class="container">
-    @*<p class="pt-2">bruh</p>*@
-    <div class="pt-5">
-        @if (TempData["AlertSuccess"] != null)
-        {
+    
+    @if (TempData["AlertSuccess"] != null)
+    {
+        <div class="pt-3">
             <div class="alert alert-success" role="alert">
                 <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="alert-heading">Success!</h4>
                 <p>@TempData["AlertSuccess"]</p>
             </div>
-        }
-        else if (TempData["AlertFail"] != null)
-        {
+        </div>
+    }
+    else if (TempData["AlertFail"] != null)
+    {
+        <div class="pt-3">
             <div class="alert alert-danger" role="alert">
                 <button hidden type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="alert-heading">Fail</h4>
                 <p>@TempData["AlertFail"]</p>
             </div>
-        }
-    </div>
-    <section>
-        <div id="sect1">
-            <h1 class="text-center m-3">Welcome</h1>
-            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="10000">
-                        <img src="https://dummyimage.com/1000x400/60aba7" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Service1</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <img src="https://dummyimage.com/1000x400/ab9561" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Service2</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://dummyimage.com/1000x400/61ab62" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Service3</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
         </div>
-    </section>
-     <section>
-        <div id="sect3">
+    }
+    
+    <section>
+        <div id="sect2">
             <div class="container-fluid d-flex align-items-center justify-content-center">
-                <h1 class="text-center m-3">Services</h1>
+                <h1 class="text-center m-3">OUR SERVICES</h1>
                 @{
                     var userId = userManager.GetUserId(User);
                     var user = await userManager.FindByIdAsync(userId);
@@ -134,8 +95,8 @@
         </div>
     </section>
     <section>
-        <div id="sect2">
-            <h1 class="text-center m-3">About Us</h1>
+        <div id="sect3">
+            <h1 class="text-center m-3">ABOUT US</h1>
             <div class="row">
                 <div class="col-sm-12 col-xl-6">
                     <img src="https://elinktech.net.au/img/about/about-cargo.png" style="max-width: 100%; min-width: 100%;">
@@ -233,61 +194,95 @@
         </div>
     </section>
 
-   
-    <!--
     <section>
         <div id="sect4">
-          <h1 class="text-center m-3">Section 4 Resellers</h1>
-          <div class="row">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="https://dummyimage.com/600x400/f0b848/fff" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="https://dummyimage.com/600x400/f0b848/fff" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-           </div>
-        </div>
-    </section>
-    -->
-    <section>
-        <div id="sect5">
-            <div class="row">                
-                <div class="col-12 col-lg-8">
-                    <h1 class="text-center m-3">What we do</h1>
-                    <div class="p-3">
-                        <h4 class="my-2">WELCOME TO ELINK TECHNOLOGY!</h4>
-                        <p>
-                            eLink Technology is a fully Australian owned cloud computing and Manage IT service Provider, which provides you with both full and part time information technology services with the latest computing power technology. Our philosophy is to lighten up the burden of IT management with cost effective solutions on technology infrastructure, which will not only aid the company to concentrate on the business without any IT issues, but will guarantee excelled performance, leading to higher profits.
-                        </p>
-                        <h4 class="my-2">WHAT WE DO?</h4>
-                        <p>
-                            eLink takes the existing company’s infrastructure and moves that to cloud (private/public) based infrastructure. We predominantly use Microsoft remote desktop services to manage all client devices. Client workstations are transformed as dump terminal/thin client and all user will be provided with an RDP connection to the server. With this RDP connection, users will be able to access their sessions from any device which supports remote desktop protocol. In addition to RDS services we also provide backup, IT out sourcing to small and medium companies, Web hosting and email solutions.
-                        </p>
+            <h1 class="text-center m-3">WHAT CLIENT’S SAY</h1>
+
+            <!-- Carousel wrapper -->
+            <div id="carouselExampleControls" class="carousel slide text-center carousel-dark mt-5" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="rounded-circle shadow-1-strong mb-4"
+                             src="https://elinktech.net.au/img/testmonial/1.jpg" alt="avatar" style="width: 150px;" />
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <h5 class="mb-3">KC Foo</h5>
+                                <p>CEO, HEMAC</p>
+                                <p class="text-muted">
+                                    <i class="fas fa-quote-left pe-2"></i>
+                                    Elink technology provides single window solution for our medical surgery center with cloud networking solution which covers almost all the aspects and need of medical center. i am happy with the support of Elink.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="rounded-circle shadow-1-strong mb-4"
+                             src="https://elinktech.net.au/img/testmonial/2.jpg" alt="avatar" style="width: 150px;" />
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <h5 class="mb-3">Dr.Param</h5>
+                                <p>Director, Lifeline Medicals</p>
+                                <p class="text-muted">
+                                    <i class="fas fa-quote-left pe-2"></i>
+                                    Elink technology provides Complete IT solution for our medical centers with cloud/networking/Server support which covers almost all the aspects and need of medical center. We are please to continue our relationship for a longer period.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="rounded-circle shadow-1-strong mb-4"
+                             src="https://elinktech.net.au/img/testmonial/3.jpg" alt="avatar" style="width: 150px;" />
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <h5 class="mb-3">Kugan Raja</h5>
+                                <p>Director, MKSFoods</p>
+                                <p class="text-muted">
+                                    <i class="fas fa-quote-left pe-2"></i>
+                                    We are with Elink Technology for the last 7 years and never had any disappoinments with the support we get from eLink, Karan and Sathi was always very supportive. We believe the relationship will continue for ever.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="rounded-circle shadow-1-strong mb-4"
+                             src="https://elinktech.net.au/img/testmonial/4.jpg" alt="avatar" style="width: 150px;" />
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <h5 class="mb-3">Andy/Josh</h5>
+                                <p>CEO, SummitIB</p>
+                                <p class="text-muted">
+                                    <i class="fas fa-quote-left pe-2"></i>
+                                    Initially we had some other IT support then we got introduced to Karan and Sathi at Elink, since 2016 we are with elink. We recomend elink , they provide professional level suport.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="rounded-circle shadow-1-strong mb-4"
+                             src="https://elinktech.net.au/img/testmonial/5.jpg" alt="avatar" style="width: 150px;" />
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <h5 class="mb-3">Helen Strangos</h5>
+                                <p>DPSC</p>
+                                <p class="text-muted">
+                                    <i class="fas fa-quote-left pe-2"></i>
+                                    We at DPSC moved to eLink IT support since 2014 and happy with the way they engaged with us. Highly Recomendable.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
+            <!-- Carousel wrapper -->
+
         </div>
     </section>
 </div>
