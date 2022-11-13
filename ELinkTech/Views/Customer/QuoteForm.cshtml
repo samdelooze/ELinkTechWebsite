@@ -1,66 +1,66 @@
-﻿@{
-    ViewData["Title"] = "Quote Form";
-}
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
 @model ELinkTech.Models.Quote
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-6">
-            <h1 class="text-center m-3">Ask for a Quote</h1>
-            @{
-                if (signInManager.IsSignedIn(User))
-                {
-                    <form class="information" method="post">
-                        <div class="mb-3">
-                            <label>@Html.LabelFor(m => m.ProductID)</label>
-                            @Html.DropDownListFor(m => m.ProductID, new SelectList(Model.ProductList, "Value", "Text"), "Select Service", new { @class = "form-control", @id = "quote-product-list", @required = "required" })
-                        </div>
 
-                        <div class="mb-3" hidden>
-                            <label>@Html.LabelFor(m => m.UserID)</label>
-                            <input type="text" class="form-control" asp-for="UserID" placeholder="Name">
-                            <span asp-validation-for="UserID" class="text-danger"></span>
-                        </div>
+<div class="modal fade" id="modal-quoteForm" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title w-100 text-center" id="modalLabel">Request a Quote</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @{
+                    if (signInManager.IsSignedIn(User))
+                    {
+                        <form asp-controller="Customer" asp-action="SubmitQuote" method="post">
+                            <div class="mb-3">
+                                <label>Service</label>
+                                @Html.DropDownListFor(m => m.ProductID, new SelectList(Model.ProductList, "Value", "Text"), "Select Service", new { @class = "form-control", @id = "quote-product-list", @required = "required", @style = "max-width:100%;" })
+                            </div>
 
-                        <div class="mb-3">
-                            <label>@Html.LabelFor(m => m.UserName)</label>
-                            <input type="text" class="form-control" asp-for="UserName" placeholder="Name">
-                            <span asp-validation-for="UserName" class="text-danger"></span>
-                        </div>
+                            <div class="mb-3" hidden>
+                                <label>@Html.LabelFor(m => m.UserID)</label>
+                                <input type="text" class="form-control" asp-for="UserID" placeholder="Name" required>
+                            </div>
 
-                        <div class="mb-3">
-                            <label>@Html.LabelFor(m => m.UserEmail)</label>
-                            <input type="email" class="form-control" asp-for="UserEmail" placeholder="Email" required>
-                            <span asp-validation-for="UserEmail" class="text-danger"></span>
-                        </div>
+                            <div class="mb-3">
+                                <label>@Html.LabelFor(m => m.UserName)</label>
+                                <input type="text" class="form-control" asp-for="UserName" placeholder="Name" required>
+                            </div>
 
-                        <div class="mb-3">
-                            <label>@Html.LabelFor(m => m.Message)</label>
-                            <textarea rows="5" type="text" class="form-control" asp-for="Message" placeholder="Message" required></textarea>
-                            <span asp-validation-for="Message" class="text-danger"></span>
-                        </div>
+                            <div class="mb-3">
+                                <label>@Html.LabelFor(m => m.UserEmail)</label>
+                                <input type="email" class="form-control" asp-for="UserEmail" placeholder="Email" required>
+                            </div>
 
-                        <div class="mt-3 text-center">
-                            <button class="btn btn-primary" asp-action="SubmitQuote">Submit</button>
+                            <div class="mb-3">
+                                <label>@Html.LabelFor(m => m.Message)</label>
+                                <textarea rows="10" type="text" class="form-control" asp-for="Message" placeholder="Message" required></textarea>
+                            </div>
+
+                            <div class="mt-3 text-center">
+                                <button class="btn btn-primary" type="submit" data-save="ajax-modal2">Submit</button>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="mb-3 text-center">
+                            <p class="mt-2">Please login to request a quote</p>
+                            <div class="d-grid gap-2 col-12 col-md-4 mx-auto">
+                                <a class="btn btn-primary" asp-controller="Main" asp-action="Login">Login</a>
+                            </div>
+
+                            <p class="mt-4">Don't have an account? Register here</p>
+                            <div class="d-grid gap-2 col-12 col-md-4 mx-auto">
+                                <a class="btn btn-primary" asp-controller="Main" asp-action="Register">Register</a>
+                            </div>
                         </div>
-                    </form>
+                    }
                 }
-                else
-                {
-                    <div class="mb-3 text-center">
-                        <p>
-                            Please login<br>
-                            <a class="btn btn-primary" asp-controller="Main" asp-action="Login">Login</a>
-                        </p>
-                        <p>
-                            Don't have an account? Register here<br>
-                            <a class="btn btn-primary" asp-controller="Main" asp-action="Register">Register</a>
-                        </p>
-                    </div>
-                }
-            }
+            </div>
         </div>
     </div>
 </div>

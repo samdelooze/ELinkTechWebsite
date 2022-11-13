@@ -128,7 +128,6 @@ namespace ELinkTech.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> QuoteFormAsync()
         {
@@ -160,11 +159,9 @@ namespace ELinkTech.Controllers
                 quote.ProductList.Add(item);
             }
 
-
-            return View(quote);
+            return PartialView("QuoteForm", quote);
         }
 
-        [Authorize(Roles = "Administrator, User")]
         [HttpPost]
         public async Task<IActionResult> SubmitQuote(Quote quote)
         {
@@ -181,9 +178,9 @@ namespace ELinkTech.Controllers
                     var senderEmail = configuration["SendGrid:SenderEmail"];
 
                     await emailSender.SendEmailAsync(
-                        senderEmail,
-                        "[ELinkTech] User submitted a quote",
-                        "User Information: " + quote.UserName + "(" + quote.UserEmail + ")<br>Quote about: " + productName + "<br>Message: " + quote.Message);
+                          senderEmail,
+                          "[ELinkTech] User submitted a quote",
+                          "User Information: " + quote.UserName + "(" + quote.UserEmail + ")<br>Quote about: " + productName + "<br>Message: " + quote.Message);
 
                     TempData["AlertSuccess"] = "Your quote is successfully submitted";
                 }

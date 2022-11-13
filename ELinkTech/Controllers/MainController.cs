@@ -36,6 +36,7 @@ public class MainController : Controller
         this.configuration = configuration;
         this.db = db;
     }
+
     [HttpGet]
     public async Task<IActionResult> Index(Main m)
     {
@@ -90,7 +91,7 @@ public class MainController : Controller
                 CategoryName = products.CategoryName
             });
         }
-        SubmitQuoteAsync(m);
+
         m.product = productList;
         return View(m);
     }
@@ -223,56 +224,17 @@ public class MainController : Controller
         return RedirectToAction("Index");
     }
 
-    [HttpGet]
-    public IActionResult Logout()//open logout view
-    {            
-        return View();
-    }
-
     [HttpPost]
     public async Task<IActionResult> LogoutYes()//sign out user
     {
         await signInManager.SignOutAsync();
-        return RedirectToAction("Index");
-    }
-
-    [HttpPost]
-    public IActionResult LogoutNo()//redirect to home
-    {
+        TempData["AlertSuccess"] = "You are successfully logged out";
         return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()
     {
         return View();
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> SubmitQuoteAsync(Main m)
-    {
-        var getProduct = from products in db.products select products;
-
-        var userId = userManager.GetUserId(User);
-        var user = await userManager.FindByIdAsync(userId);
-
-        Quote? quote = new Quote();
-
-        if (user != null)
-        {
-            quote.UserID = userId;
-            quote.UserName = user.FirstName + " " + user.LastName;
-
-        }
-        else
-        {
-            quote.UserID = "";
-            quote.UserName = "";
-
-        }
-        quote.UserEmail = User.Identity?.Name!;
-        RetrieveProducts(getProduct, quote);
-        m.quote = quote;
-        return View(m);
     }
 
     public void RetrieveProducts(IQueryable<Product> p, Quote q)
@@ -284,5 +246,5 @@ public class MainController : Controller
             item.Value = product.ProductID.ToString();
             q.ProductList.Add(item);
         }
-    }    
+    }
 }

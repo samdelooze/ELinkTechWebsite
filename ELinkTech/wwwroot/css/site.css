@@ -26,12 +26,13 @@ a.nav-link:hover {
     display: flex;
     justify-content: center;
 }
+
 #quote-product-list {
     width: 100%;
     max-width: 600px;
 }
 
-#sect2, #sect3, #sect4, #sect5 {
+#sect2, #sect3, #sect4 {
     margin-top: 40px;
 }
 
@@ -52,7 +53,7 @@ a.nav-link:hover {
     object-fit: cover;
 }
 
-.modal-body h1, h2 {
+.modal-body h1, h2, h3 {
     margin: 30px;
 }
 

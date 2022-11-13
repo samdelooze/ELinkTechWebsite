@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ELinkTech.ViewModels;
+using ELinkTech.Services;
+using Newtonsoft.Json.Linq;
 
 namespace ELinkTech.Controllers
 {
@@ -11,13 +14,20 @@ namespace ELinkTech.Controllers
         private SignInManager<ApplicationUser> signInManager { get; }
         private readonly DataContext db;
 
+        private IEmailSender emailSender;
+        private readonly IConfiguration configuration;
+
         public AdminController(UserManager<ApplicationUser> userManager,
-                SignInManager<ApplicationUser> signInManager,
-                DataContext db)
+                               SignInManager<ApplicationUser> signInManager,
+                               DataContext db,
+                               IEmailSender emailSender,
+                               IConfiguration configuration)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.db = db;
+            this.emailSender = emailSender;
+            this.configuration = configuration;
         }
 
         public async Task<IActionResult> Index()
@@ -27,7 +37,7 @@ namespace ELinkTech.Controllers
         }
         //Quotes
         [HttpGet]
-        public async Task<IActionResult> GetQuotes()
+        public async Task<IActionResult> GetQuotesAsync()
         {
             var quote = from quotes in db.quotes
                         select new
@@ -59,6 +69,49 @@ namespace ELinkTech.Controllers
                 });
             }
             return View(quotesList);
+        }
+
+        [HttpGet]
+        public IActionResult Reply(int quoteId)
+        {
+            var quote = db.quotes.Where(m => m.QuoteId == quoteId).FirstOrDefault();
+            var product = db.products.Where(m => m.ProductID.ToString() == quote.ProductID).FirstOrDefault();
+
+            if (string.IsNullOrEmpty(quote.Message)) quote.Message = "";
+            string shortQuoteMessage = quote.Message.Length <= 20 ? quote.Message : quote.Message.Substring(0, 20) + "...";
+
+            string message = "";
+            message += "<br><br> -----------------------------------------------------------------------------";
+            message += "<br> Quote on: " + product.ProductName;
+            message += "<br> Message: " + quote.Message;
+
+            Email email = new Email
+            {
+                toEmail = quote.UserEmail,
+                fromEmail = configuration["SendGrid:SenderEmail"],
+                subject = "[ELinkTech]Answer to your quote on " + product.ProductName + "(\"" + shortQuoteMessage + "\")",
+                message = message
+            };
+            return PartialView("Reply", email);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Reply(Email email)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await emailSender.SendEmailAsync(email.toEmail, email.subject, email.message);
+
+                    TempData["AlertSuccess"] = "Reply is successfully sent to " + email.toEmail;
+                }
+                catch (Exception e)
+                {
+                    TempData["AlertFail"] = "Fail to send your reply";
+                }
+            }
+            return RedirectToAction("GetQuotes");
         }
 
         //Categories
