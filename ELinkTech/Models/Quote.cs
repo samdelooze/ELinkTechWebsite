@@ -9,6 +9,7 @@ namespace ELinkTech.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? QuoteId { get; set; }
 
+        [Required]
         [Display(Name = "Service ID")]
         public string? ProductID { get; set; }
 
@@ -16,6 +17,7 @@ namespace ELinkTech.Models
         [Display(Name = "Service Name")]
         public string? ProductName { get; set; }
 
+        [Required]
         [Display(Name = "User ID")]
         public string? UserID { get; set; }
 
@@ -23,9 +25,11 @@ namespace ELinkTech.Models
         [Display(Name = "User Name")]
         public string? UserName { get; set; }
 
+        [Required]
         [Display(Name = "User Email")]
         public string? UserEmail { get; set; }
 
+        [Required]
         [Display(Name = "Message")]
         public string? Message { get; set; }
         
