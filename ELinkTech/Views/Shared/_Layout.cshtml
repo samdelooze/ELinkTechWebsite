@@ -11,70 +11,9 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/64301a05d6.js" crossorigin="anonymous"></script>
-
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: 'textarea#editor',
-            plugins: 'lists, link, image, media',
-            toolbar: 'undo redo | styles bold italic strikethrough blockquote bullist numlist forecolor backcolor | removeformat | link image media | alignleft aligncenter alignright alignjustify | outdent indent',
-            menubar: false,
-            setup: (editor) => {
-                // Apply the focus effect
-                editor.on("init", () => {
-                    editor.getContainer().style.transition = "border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out";
-                });
-                editor.on("focus", () => {
-                    (editor.getContainer().style.boxShadow = "0 0 0 .2rem rgba(0, 123, 255, .25)"),
-                        (editor.getContainer().style.borderColor = "#80bdff");
-                });
-                editor.on("blur", () => {
-                    (editor.getContainer().style.boxShadow = ""),
-                        (editor.getContainer().style.borderColor = "");
-                });
-            },
-            height: 'calc(100vh - 20rem)',
-            content_css: false,
-            content_style: `
-                        body {
-                          color: #3d3d3d;
-                          font-size: 18px;
-                          line-height: 1.4;
-                          margin: .5rem auto;
-                          padding: .5rem;
-                          width: 95%;
-                        }
-                        blockquote {
-                          border-left: 8px solid #F39C12;
-                          color: #555555;
-                          font-size: 1.2em;
-                          width: 75%;
-                          margin: 50px auto;
-                          padding: 1.2em 30px 1.2em 75px;
-                          position: relative;
-                          background: #EDEDED;
-                          font-family: Open Sans;
-                          font-style: italic;
-                          line-height: 1.6;
-                        }
-                        blockquote::before {
-                          font-family: Arial;
-                          color: #F39C12;
-                          content: '“';
-                          font-size: 5em;
-                          left: 10px;
-                          pointer-events: none;
-                          position: absolute;
-                          top: -10px;
-                        }
-                        blockquote::after {
-                          content: '';
-                        }
-                    `
-        });
-    </script>
-
     <script>
         window.setTimeout(function () {
             $(".alert").fadeTo(500, 0).slideUp(500, function () {
@@ -275,12 +214,9 @@
 
                         <a href="@Url.Action("Index","Main")#sect1" class="nav-link p-0 text-light">Home</a>
 
-
                         <a href="@Url.Action("Index","Main")#sect2" class="nav-link p-0 text-light">Services</a>
 
-
                         <a href="@Url.Action("Index","Main")#sect3" class="nav-link p-0 text-light">About</a>
-
 
                         <a href="@Url.Action("Index","Main")#sect4" class="nav-link p-0 text-light">Testimonials</a>
 
@@ -296,6 +232,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
