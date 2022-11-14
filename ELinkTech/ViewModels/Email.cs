@@ -2,6 +2,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
+//*******************************************************************
+//Author(s): Soyeong
+//Date: 14 / 11 / 2022
+//Perpose:
+//Version: 1.0.0
+//CopyRight ELinkTech & SoftWe're 2022 (c)
+//********************************************************************
+
 namespace ELinkTech.ViewModels
 {
     public class Email

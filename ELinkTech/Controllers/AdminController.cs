@@ -6,6 +6,14 @@ using ELinkTech.ViewModels;
 using ELinkTech.Services;
 using Newtonsoft.Json.Linq;
 
+//*******************************************************************
+//Author(s): Sam, Soyeong
+//Date: 14 / 11 / 2022
+//Perpose:
+//Version: 1.0.0
+//CopyRight ELinkTech & SoftWe're 2022 (c)
+//********************************************************************
+
 namespace ELinkTech.Controllers
 {
     public class AdminController : Controller
@@ -30,45 +38,56 @@ namespace ELinkTech.Controllers
             this.configuration = configuration;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> AdminForm()
         {
-            GetSuppliers();
-            return View();
+            return PartialView("AdminForm");
         }
         //Quotes
         [HttpGet]
         public async Task<IActionResult> GetQuotesAsync()
         {
-            var quote = from quotes in db.quotes
-                        select new
-                        {
-                            QuoteId = quotes.QuoteId,
-                            ProductID = quotes.ProductID,
-                            UserID = quotes.UserID,
-                            UserEmail = quotes.UserEmail,
-                            Message = quotes.Message,
-                        };
-            List<Quote> quotesList = new List<Quote>();
-
-            foreach (var quotes in quote)
+            if (ModelState.IsValid)
             {
-                var user = await userManager.FindByIdAsync(quotes.UserID);
+                try {
+                var quote = from quotes in db.quotes
+                            select new
+                            {
+                                QuoteId = quotes.QuoteId,
+                                ProductID = quotes.ProductID,
+                                UserID = quotes.UserID,
+                                UserEmail = quotes.UserEmail,
+                                Message = quotes.Message,
+                            };
+                List<Quote> quotesList = new List<Quote>();
+                    if (quotesList.Count >= 1)
+                    {
+                        foreach (var quotes in quote)
+                        {
+                            var user = await userManager.FindByIdAsync(quotes.UserID);
 
-                var product = db.products.Where(m => m.ProductID.ToString() == quotes.ProductID).FirstOrDefault();
-                var productName = product.ProductName;
+                            var product = db.products.Where(m => m.ProductID.ToString() == quotes.ProductID).FirstOrDefault();
+                            var productName = product.ProductName;
 
-                quotesList.Add(new Quote
+                            quotesList.Add(new Quote
+                            {
+                                QuoteId = quotes.QuoteId,
+                                ProductID = quotes.ProductID,
+                                ProductName = productName,
+                                UserID = quotes.UserID,
+                                UserName = user.FirstName + " " + user.LastName,
+                                UserEmail = quotes.UserEmail,
+                                Message = quotes.Message,
+                            });
+                        }
+                        return View(quotesList);
+                    }
+                }
+                catch
                 {
-                    QuoteId = quotes.QuoteId,
-                    ProductID = quotes.ProductID,
-                    ProductName = productName,
-                    UserID = quotes.UserID,
-                    UserName = user.FirstName + " " + user.LastName,
-                    UserEmail = quotes.UserEmail,
-                    Message = quotes.Message,
-                });
+                    TempData["AlertFail"] = "No catagories exist yet";
+                }
             }
-            return View(quotesList);
+            return RedirectToAction("Index","Main");
         }
 
         [HttpGet]
@@ -118,25 +137,36 @@ namespace ELinkTech.Controllers
         [HttpGet]
         public IActionResult GetCategories()
         {
-
-            var category = from categories in db.categories
-                           select new
-                           {
-                               CategoryID = categories.CategoryID,
-                               CategoryName = categories.CategoryName,
-                           };
-            List<Category> categoryList = new List<Category>();
-
-            foreach (var categories in category)
+            if (ModelState.IsValid)
             {
-                categoryList.Add(new Category
-                {
-                    CategoryID = categories.CategoryID,
-                    CategoryName = categories.CategoryName,
-                });
+                try {
+                var category = from categories in db.categories
+                               select new
+                               {
+                                   CategoryID = categories.CategoryID,
+                                   CategoryName = categories.CategoryName,
+                               };
+                List<Category> categoryList = new List<Category>();
+           
+                        foreach (var categories in category)
+                        {
+                            categoryList.Add(new Category
+                            {
+                                CategoryID = categories.CategoryID,
+                                CategoryName = categories.CategoryName,
+                            });
+                        }
+                    if (categoryList.Count >= 1)
+                    {
+                        return View(categoryList);
+                    }
             }
-
-            return View(categoryList);
+                catch
+                {
+                    TempData["AlertFail"] = "No categories exist yet";
+                }
+            }
+            return RedirectToAction("Index", "Main");
         }
 
         [HttpGet]
@@ -180,36 +210,48 @@ namespace ELinkTech.Controllers
         [HttpGet]
         public IActionResult GetSuppliers()
         {
-            var supplier = from suppliers in db.suppliers
-                           select new
-                           {
-                               SupplierID = suppliers.SupplierID,
-                               SupplierName = suppliers.SupplierName,
-                               Phone = suppliers.Phone,
-                               Email = suppliers.Email,
-                               Street = suppliers.Street,
-                               Suburb = suppliers.Suburb,
-                               State = suppliers.State,
-                               Postcode = suppliers.Postcode,
-                           };
-            List<Supplier> supplierList = new List<Supplier>();
-
-            foreach (var suppliers in supplier)
+            if (ModelState.IsValid)
             {
-                supplierList.Add(new Supplier
+                try {
+                    var supplier = from suppliers in db.suppliers
+                                   select new
+                                   {
+                                       SupplierID = suppliers.SupplierID,
+                                       SupplierName = suppliers.SupplierName,
+                                       Phone = suppliers.Phone,
+                                       Email = suppliers.Email,
+                                       Street = suppliers.Street,
+                                       Suburb = suppliers.Suburb,
+                                       State = suppliers.State,
+                                       Postcode = suppliers.Postcode,
+                                   };
+                    List<Supplier> supplierList = new List<Supplier>();
+                    
+                        foreach (var suppliers in supplier)
+                        {
+                            supplierList.Add(new Supplier
+                            {
+                                SupplierID = suppliers.SupplierID,
+                                SupplierName = suppliers.SupplierName,
+                                Phone = suppliers.Phone,
+                                Email = suppliers.Email,
+                                Street = suppliers.Street,
+                                Suburb = suppliers.Suburb,
+                                State = suppliers.State,
+                                Postcode = suppliers.Postcode
+                            });
+                        }
+                    if (supplierList.Count >= 1)
+                    {
+                        return View(supplierList);
+                    }
+                }
+                catch
                 {
-                    SupplierID = suppliers.SupplierID,
-                    SupplierName = suppliers.SupplierName,
-                    Phone = suppliers.Phone,
-                    Email = suppliers.Email,
-                    Street = suppliers.Street,
-                    Suburb = suppliers.Suburb,
-                    State = suppliers.State,
-                    Postcode = suppliers.Postcode
-                });
-            }
-
-            return View(supplierList);
+                    TempData["AlertFail"] = "No suppliers exist yet";
+                }
+    }
+            return RedirectToAction("Index", "Main");
         }
 
         [HttpGet]
@@ -225,7 +267,7 @@ namespace ELinkTech.Controllers
         {
             await db.suppliers.AddAsync(supplier);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Main");
         }
 
         [HttpGet]
@@ -239,7 +281,7 @@ namespace ELinkTech.Controllers
         {
             db.suppliers.Update(s);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Main");
         }
 
         [HttpGet]
@@ -248,7 +290,7 @@ namespace ELinkTech.Controllers
             Supplier supplier = db.suppliers.Find(id);
             db.suppliers.Remove(supplier);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Main");
         }
 
     }

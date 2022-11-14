@@ -4,7 +4,7 @@
         <div class="col-md-12 col-lg-8">
             <h1 class="mb-3 text-center">Category List</h1>
             <form method="get">
-                <button class="btn btn-primary float-end mb-3" asp-action="AddCategory">Add</button>
+                <button class="product-btn btn btn-custom float-end mb-3" asp-action="AddCategory">Add</button>
             </form>
             <table class="table table-striped">
                 <tr>
@@ -16,8 +16,8 @@
                 {
                     <tr>
                         <td>@category.CategoryName</td>
-                        <td>@Html.ActionLink("Edit", "UpdateCategory", new { id = category.CategoryID })</td>
-                        <td>@Html.ActionLink("Delete", "DeleteCategory", new { id = category.CategoryID }, new { @onClick = "return confirm('Are you sure you want to delete?')" })</td>
+                        <td>@Html.ActionLink("Edit", "UpdateCategory", new { id = category.CategoryID }, new { @class = "btn btn-primary"})</td>
+                        <td> @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = category.CategoryID }, new { @onClick = "return confirm('Are you sure you want to delete?')" })</td>
                     </tr>
                 }
             </table>
