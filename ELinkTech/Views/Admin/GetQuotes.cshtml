@@ -1,5 +1,20 @@
 ﻿@model IEnumerable<ELinkTech.Models.Quote>
-<div class="container" style="padding-top: 60px;">
+<div class="container" style="padding-top: 100px;">
+    <ul class="nav nav-tabs nav-justified mb-5">
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Product" asp-action="FindProducts">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetSuppliers">Suppliers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetCategories">Categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" asp-controller="Admin" asp-action="GetQuotes">Quotes</a>
+        </li>
+    </ul>
+
     @if (TempData["AlertSuccess"] != null)
     {
         <div class="pt-3">
@@ -20,7 +35,7 @@
             </div>
         </div>
     }
-    <div class="row justify-content-md-center mt-5">
+    <div class="row justify-content-md-center">
         <div class="col-12">
             <h1 class="mb-3 text-center">Quote List</h1>
 
@@ -35,7 +50,7 @@
                             <th>@Html.DisplayNameFor(m => m.UserName)</th>
                             <th>@Html.DisplayNameFor(m => m.UserEmail)</th>
                             <th>@Html.DisplayNameFor(m => m.Message)</th>
-                            <th></th>
+                            <th>Reply</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,9 +63,9 @@
                                 <td>@quote.UserEmail</td>
                                 <td>@quote.Message</td>
                                 <td>
-                                    <button type="button" class="product-btn btn btn-custom" data-bs-toggle="ajax-modal1" data-bs-target="#replyModal"
+                                    <button type="button" class="btn" data-bs-toggle="ajax-modal1" data-bs-target="#replyModal"
                                             data-url="@Url.Action("Reply", "Admin", new { quoteId = quote.QuoteId })">
-                                        Reply
+                                        <i class="bi bi-envelope" style="font-size: 1.3rem; color: #F39C12;"></i>
                                     </button>
                                 </td>
                             </tr>

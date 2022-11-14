@@ -1,8 +1,23 @@
 ﻿@model ELinkTech.Models.Supplier
 
 <div class="container" style="padding-top: 100px;">
+    <ul class="nav nav-tabs nav-justified mb-5">
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Product" asp-action="FindProducts">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" asp-controller="Admin" asp-action="GetSuppliers">Suppliers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetCategories">Categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetQuotes">Quotes</a>
+        </li>
+    </ul>
+
     <div class="row justify-content-md-center">
-        <div class="col-md-12 col-lg-10">
+        <div class="col-md-12 col-lg-8">
             <div asp-validation-summary="All" class="text-danger"></div>
             <h1 class="mb-3 text-center">Add Supplier</h1>
             <form method="post" action="AddSupplier" class="mt-5">
@@ -20,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         <label>@Html.LabelFor(m => m.Email)</label>
-                        <input type="text" class="form-control" asp-for="Email" placeholder="Email address" required />
+                        <input type="email" class="form-control" asp-for="Email" placeholder="Email address" required />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="mb-3">

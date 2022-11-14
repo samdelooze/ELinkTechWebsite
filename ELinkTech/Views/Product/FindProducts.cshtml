@@ -1,53 +1,72 @@
 ﻿@model IEnumerable<ELinkTech.Models.Product>
 
 <div class="container" style="padding-top: 100px;">
+    <ul class="nav nav-tabs nav-justified mb-5">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" asp-controller="Product" asp-action="FindProducts">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetSuppliers">Suppliers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetCategories">Categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetQuotes">Quotes</a>
+        </li>
+    </ul>
+
     <div class="row justify-content-md-center">
-        <div class="col-md-12 col-lg-10">
+        <div class="col-12">
             <h1 class="mb-3 text-center">Service List</h1>
-            <form method="get">
-                <button class="product-btn btn btn-custom float-end mb-3" asp-action="AddProduct">Add</button>
-            </form>
-            <table class="table table-striped">
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.ProductName)</th>
-                    <th>@Html.DisplayNameFor(m => m.SupplierID)</th>
-                    <th>@Html.DisplayNameFor(m => m.CategoryID)</th>
-                    <th>@Html.DisplayNameFor(m => m.ProductDetails)</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                @foreach (var product in Model)
-                {
+            <div class="row">
+                <form method="get">
+                    <button class="product-btn btn btn-custom float-end mb-3" asp-action="AddProduct">Add</button>
+                </form>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
                     <tr>
-                        <td>@product.ProductName</td>
-                        <td>@product.SupplierName</td>
-                        <td>@product.CategoryName</td>
-                        <td>
-                            <a href="" type="button" data-bs-toggle="modal" data-bs-target="#ModalLabel-@product.ProductID">View</a>
-                            <div class="modal fade" id="ModalLabel-@product.ProductID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title w-100 text-center">Service Details - @product.ProductName</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body lh-base px-5">
-                                            <img class="m-2 mx-auto d-block" src="@product.ProductImage" />
-                                            <p>@Html.Raw(product.ProductDetails)</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = product.ProductID }, new { @class = "btn btn-primary" })
-                                            @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = product.ProductID }, new { @class = "btn btn-danger", @onClick = "return confirm('Are you sure you want to delete?')" })
+                        <th>@Html.DisplayNameFor(m => m.ProductName)</th>
+                        <th>@Html.DisplayNameFor(m => m.SupplierID)</th>
+                        <th>@Html.DisplayNameFor(m => m.CategoryID)</th>
+                        <th>@Html.DisplayNameFor(m => m.ProductDetails)</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td>@product.ProductName</td>
+                            <td>@product.SupplierName</td>
+                            <td>@product.CategoryName</td>
+                            <td>
+                                <a href="" type="button" data-bs-toggle="modal" data-bs-target="#ModalLabel-@product.ProductID">View</a>
+                                <div class="modal fade" id="ModalLabel-@product.ProductID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title w-100 text-center">Service Details - @product.ProductName</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body lh-base px-5">
+                                                <img class="m-2 mx-auto d-block" src="@product.ProductImage" />
+                                                <p>@Html.Raw(product.ProductDetails)</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                @Html.ActionLink("Update", "UpdateProduct", "Product", new { @id = product.ProductID }, new { @class = "btn btn-primary" })
+                                                @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = product.ProductID }, new { @class = "btn btn-danger", @onClick = "return confirm('Are you sure you want to delete?')" })
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>@Html.ActionLink("Edit", "UpdateProduct", new { id = product.ProductID })</td>
-                        <td>@Html.ActionLink("Delete", "DeleteProduct", new { id = product.ProductID }, new { @onClick = "return confirm('Are you sure you want to delete?')" })</td>
-                    </tr>
-                }
-            </table>
+                            </td>
+                            <td>@Html.ActionLink("Edit", "UpdateProduct", new { id = product.ProductID })</td>
+                            <td>@Html.ActionLink("Delete", "DeleteProduct", new { id = product.ProductID }, new { @onClick = "return confirm('Are you sure you want to delete?')" })</td>
+                        </tr>
+                    }
+                </table>
+            </div>
         </div>
     </div>
 </div>

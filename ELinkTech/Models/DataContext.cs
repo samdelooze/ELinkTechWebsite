@@ -2,10 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 //using System.Data.Entity;
 
-//*******************************************************************
+//********************************************************************
 //Author(s): James
 //Date: 14 / 11 / 2022
-//Perpose:
+//Purpose:
 //Version: 1.0.0
 //CopyRight ELinkTech & SoftWe're 2022 (c)
 //********************************************************************
@@ -16,7 +16,7 @@ namespace ELinkTech.Models
     {
         public DbSet<Category> categories { get; set; }
 
-        public DbSet<Order> orders { get; set; }
+        //public DbSet<Order> orders { get; set; }
 
         public DbSet<Product> products { get; set; }
 
