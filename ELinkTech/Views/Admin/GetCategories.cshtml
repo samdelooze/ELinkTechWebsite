@@ -1,26 +1,45 @@
 ﻿@model IEnumerable<ELinkTech.Models.Category>
 <div class="container" style="padding-top: 100px;">
+    <ul class="nav nav-tabs nav-justified mb-5">
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Product" asp-action="FindProducts">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetSuppliers">Suppliers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" asp-controller="Admin" asp-action="GetCategories">Categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetQuotes">Quotes</a>
+        </li>
+    </ul>
+
     <div class="row justify-content-md-center">
-        <div class="col-md-12 col-lg-8">
+        <div class="col-md-12 col-lg-6">
             <h1 class="mb-3 text-center">Category List</h1>
-            <form method="get">
-                <button class="product-btn btn btn-custom float-end mb-3" asp-action="AddCategory">Add</button>
-            </form>
-            <table class="table table-striped">
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.CategoryName)</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                @foreach (var category in Model)
-                {
+            <div class="row">
+                <form method="get">
+                    <button class="product-btn btn btn-custom float-end mb-3" asp-action="AddCategory">Add</button>
+                </form>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
                     <tr>
-                        <td>@category.CategoryName</td>
-                        <td>@Html.ActionLink("Edit", "UpdateCategory", new { id = category.CategoryID }, new { @class = "btn btn-primary"})</td>
-                        <td> @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = category.CategoryID }, new { @onClick = "return confirm('Are you sure you want to delete?')" })</td>
+                        <th>@Html.DisplayNameFor(m => m.CategoryName)</th>
+                        <th></th>
+                        <th></th>
                     </tr>
-                }
-            </table>
+                    @foreach (var category in Model)
+                    {
+                        <tr>
+                            <td>@category.CategoryName</td>
+                            <td>@Html.ActionLink("Edit", "UpdateCategory", "Admin", new { @id = category.CategoryID })</td>
+                            <td>@Html.ActionLink("Delete", "DeleteCategory", "Admin", new { @id = category.CategoryID }, new { @onClick = "return confirm('Are you sure you want to delete?')" })</td>
+                        </tr>
+                    }
+                </table>
+            </div>
         </div>
     </div>
 </div>

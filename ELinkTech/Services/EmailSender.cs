@@ -3,10 +3,10 @@ using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-//*******************************************************************
+//********************************************************************
 //Author(s): Soyeong
 //Date: 14 / 11 / 2022
-//Perpose:
+//Purpose: Emailing system
 //Version: 1.0.0
 //CopyRight ELinkTech & SoftWe're 2022 (c)
 //********************************************************************

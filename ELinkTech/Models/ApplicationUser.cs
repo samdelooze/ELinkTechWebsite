@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
-//*******************************************************************
+//********************************************************************
 //Author(s): James
 //Date: 14 / 11 / 2022
-//Perpose:
+//Purpose:
 //Version: 1.0.0
 //CopyRight ELinkTech & SoftWe're 2022 (c)
 //********************************************************************

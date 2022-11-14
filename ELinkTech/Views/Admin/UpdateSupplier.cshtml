@@ -2,8 +2,23 @@
 @{
 }
 <div class="container" style="padding-top: 100px;">
+    <ul class="nav nav-tabs nav-justified mb-5">
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Product" asp-action="FindProducts">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" asp-controller="Admin" asp-action="GetSuppliers">Suppliers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetCategories">Categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Admin" asp-action="GetQuotes">Quotes</a>
+        </li>
+    </ul>
+
     <div class="row justify-content-md-center">
-        <div class="col-md-12 col-lg-10">
+        <div class="col-md-12 col-lg-8">
             <h1 class="mb-3 text-center">Update Supplier</h1>
             <form method="post" action="UpdateSupplier" class="mt-5">
                 @using (Html.BeginForm())
@@ -22,7 +37,7 @@
                     </div>
                     <div class="mb-3">
                         <label>@Html.LabelFor(m => m.Email)</label>
-                        <input type="text" class="form-control" asp-for="Email" placeholder="Email address" />
+                        <input type="email" class="form-control" asp-for="Email" placeholder="Email address" />
                     </div>
                     <div class="mb-3">
                         <label>@Html.LabelFor(m => m.Street)</label>
