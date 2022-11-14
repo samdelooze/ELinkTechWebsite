@@ -4,7 +4,7 @@
         <div class="col-md-12 col-lg-10">
             <h1 class="mb-3 text-center">Supplier List</h1>
             <form method="get">
-                <button class="btn btn-primary float-end mb-3" asp-action="AddSupplier">Add</button>
+                <button class="product-btn btn btn-custom float-end mb-3" asp-action="AddSupplier">Add</button>
             </form>
             <table class="table table-striped">
                 <tr>
@@ -29,7 +29,7 @@
                         <td>@supplier.State</td>
                         <td>@supplier.Postcode</td>
                         <td>@Html.ActionLink("Edit", "UpdateSupplier", new { id = supplier.SupplierID })</td>
-                        <td>@Html.ActionLink("Delete", "DeleteSupplier", new { id = supplier.SupplierID }, new { @onClick = "return confirm('Are you sure you want to delete?')" })</td>
+                        <td> @Html.ActionLink("Delete", "DeleteProduct", "Product", new { @id = supplier.SupplierID}, new { @onClick = "return confirm('Are you sure you want to delete?')" })</td>
                     </tr>
                 }
             </table>

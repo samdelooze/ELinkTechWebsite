@@ -2,6 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 //using System.Data.Entity;
 
+//*******************************************************************
+//Author(s): James
+//Date: 14 / 11 / 2022
+//Perpose:
+//Version: 1.0.0
+//CopyRight ELinkTech & SoftWe're 2022 (c)
+//********************************************************************
+
 namespace ELinkTech.Models
 {
     public class DataContext:IdentityDbContext<ApplicationUser>

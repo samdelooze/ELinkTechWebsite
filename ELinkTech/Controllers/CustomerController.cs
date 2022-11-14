@@ -11,6 +11,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ELinkTech.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
+//*******************************************************************
+//Author(s): Jian
+//Date: 14 / 11 / 2022
+//Perpose: 
+//Version: 1.0.0
+//CopyRight ELinkTech & SoftWe're 2022 (c)
+//********************************************************************
+
 namespace ELinkTech.Controllers
 {
     

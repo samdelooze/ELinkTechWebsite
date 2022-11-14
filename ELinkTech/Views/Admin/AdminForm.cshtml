@@ -1,0 +1,84 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
+
+<div class="modal fade" id="modal-AdminForm" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title w-100 text-center" id="modalLabel">Admin Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @{
+                    if (signInManager.IsSignedIn(User))
+                    {
+                        <div class="row">
+                            <div class="col mb-3 text-center">
+                            
+                            <p class="mt-2">Catagory Actions</p>
+                            <div class="row">
+                            <div class="d-grid gap-1 col-12 col-md-4 mx-auto">
+                                <a class="product-btn btn btn-custom" asp-controller="Admin" asp-action="GetCategories">Category List</a>
+                            </div>
+                            <div class="d-grid gap-1 col-12 col-md-4 mx-auto">
+                                <a class="product-btn btn btn-custom" asp-controller="Admin" asp-action="AddCategory">Add Category</a>
+                            </div>
+                            </div>
+                            </div>
+                            
+                            <div class="col mb-3 text-center">
+                            <p class="mt-2">Supplier Actions</p>
+                            <div class="row">
+                            <div class="d-grid gap-1 col-12 col-md-4 mx-auto">
+                                <a class="product-btn btn btn-custom" asp-controller="Admin" asp-action="GetSuppliers">Supplier List</a>
+                            </div>
+                            <div class="d-grid gap-1 col-12 col-md-4 mx-auto">
+                                <a class="product-btn btn btn-custom" asp-controller="Admin" asp-action="AddSupplier">Add Supplier</a>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col mb-3 text-center">
+                            <p class="mt-2">Product Actions</p>
+                            <div class="row">
+                            <div class="d-grid gap-1 col-12 col-md-4 mx-auto">
+                                <a class="product-btn btn btn-custom" asp-controller="Admin" asp-action="GetProducts">Product List</a>
+                            </div>
+                            <div class="d-grid gap-1 col-12 col-md-4 mx-auto">
+                                <a class="product-btn btn btn-custom" asp-controller="Admin" asp-action="AddProduct">Add Product</a>
+                            </div>
+                            </div>
+                            </div>
+                            
+                            <div class="col mb-3 text-center">
+                            <p class="mt-2">Quote Actions</p>
+                            <div class="row">
+                            <div class="d-grid gap-1 col-12 col-md-4 mx-auto">
+                                <a class="product-btn btn btn-custom" asp-controller="Admin" asp-action="GetQuotes">Quote List</a>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="mb-3 text-center">
+                            <p class="mt-2">Please login to request a quote</p>
+                            <div class="d-grid gap-2 col-12 col-md-4 mx-auto">
+                                <a class="btn btn-primary" asp-controller="Main" asp-action="Login">Login</a>
+                            </div>
+
+                            <p class="mt-4">Don't have an account? Register here</p>
+                            <div class="d-grid gap-2 col-12 col-md-4 mx-auto">
+                                <a class="btn btn-primary" asp-controller="Main" asp-action="Register">Register</a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

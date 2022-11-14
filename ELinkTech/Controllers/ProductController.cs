@@ -4,6 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data.Entity;
 
+//*******************************************************************
+//Author(s): James, Soyeong
+//Date: 14 / 11 / 2022
+//Perpose:
+//Version: 1.0.0
+//CopyRight ELinkTech & SoftWe're 2022 (c)
+//********************************************************************
+
 namespace ELinkTech.Controllers
 {
     [Authorize(Roles = "Administrator")]
