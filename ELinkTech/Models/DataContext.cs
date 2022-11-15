@@ -16,8 +16,6 @@ namespace ELinkTech.Models
     {
         public DbSet<Category> categories { get; set; }
 
-        //public DbSet<Order> orders { get; set; }
-
         public DbSet<Product> products { get; set; }
 
         public DbSet<Supplier> suppliers { get; set; }
