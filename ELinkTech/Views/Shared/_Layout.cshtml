@@ -55,11 +55,11 @@
                                 if (userManager.IsInRoleAsync(user, "Administrator").Result == true)
                                 {
                                     <li class="nav-item">
-                                    <a class="nav-link text-light" type="button" data-bs-toggle="ajax-modal2" data-bs-target="#modal-AdminForm"
-                                       data-url="@Url.Action("AdminForm", "Admin")">
-                                        @User.Identity?.Name's Dashboard
-                                    </a>
-                                </li>
+                                        <a class="nav-link text-light" type="button" data-bs-toggle="ajax-modal2" data-bs-target="#modal-AdminForm"
+                                           data-url="@Url.Action("AdminForm", "Admin")">
+                                            @User.Identity?.Name's Dashboard
+                                        </a>
+                                    </li>
                                 }
                                 else if (userManager.IsInRoleAsync(user, "User").Result == true)
                                 {

@@ -28,8 +28,13 @@ a.nav-link:hover {
 }
 
 .product-btn:hover {
-    border-color:#F39C12;
+    border-color: #F39C12;
     color: #ffffff !important;
+}
+
+.readmore-btn:hover {
+    border-color: #F39C12;
+    background-color: #F39C12;
 }
 
 .form-center {
