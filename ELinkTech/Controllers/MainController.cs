@@ -180,26 +180,29 @@ public class MainController : Controller
     [HttpPost]
     public async Task<IActionResult> Register(Main m)//create an account
     {
-        try
+        if (ModelState.IsValid)
         {
-            if (ModelState.IsValid)
+            var user = new ApplicationUser
             {
-                var user = new ApplicationUser
-                {
-                    UserName = m.RegisterEmail,
-                    Email = m.RegisterEmail,
-                    FirstName = m.FirstName,
-                    LastName = m.LastName,
-                    PhoneNumber = m.ContactNumber,
-                    State = m.State,
-                    Address = m.Address,
-                    Suburb = m.Suburb,
-                    Postcode = m.Postcode,
-                    DateOfBirth = m.DateOfBirth
-                };
+                UserName = m.RegisterEmail,
+                Email = m.RegisterEmail,
+                FirstName = m.FirstName,
+                LastName = m.LastName,
+                PhoneNumber = m.ContactNumber,
+                State = m.State,
+                Address = m.Address,
+                Suburb = m.Suburb,
+                Postcode = m.Postcode,
+                DateOfBirth = m.DateOfBirth
+            };
+
+            try
+            {
                 var result = await userManager.CreateAsync(user, m.RegisterPassword);
 
-                if (result.Succeeded)
+                var senderEmail = configuration["SendGrid:SenderEmail"];
+
+                if (result.Succeeded && senderEmail != null && senderEmail != "")
                 {
                     // Confirmation email start
                     var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -210,26 +213,30 @@ public class MainController : Controller
                     TempData["AlertSuccess"] = "Registration is successful. Confirmation link was sent to your email address(" + m.RegisterEmail + "). Please check and verify it.";
                     // Confirmation email end
 
-
                     await userManager.AddToRoleAsync(user, "User");
                     //await signInManager.SignInAsync(user, false); // Remove to restrict login before user comfirm the email
                     return RedirectToAction("Index");
 
                 }
-                foreach (var error in result.Errors)
+                else if (senderEmail == null || senderEmail == "")
                 {
-                    ModelState.AddModelError("", error.Description);
+                    await userManager.DeleteAsync(user);
                 }
-
+                else {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
             }
-            return View();
+            catch (Exception e)
+            {
+                await userManager.DeleteAsync(user);
 
-        }
-        catch (Exception e)
-        {
-            string sError = "class: MainController, function: Register-Post\n" + e.Message + "\n";
-            sError += e.StackTrace;
-            _logger.LogError(sError);
+                string sError = "class: MainController, function: Register-Post\n" + e.Message + "\n";
+                sError += e.StackTrace;
+                _logger.LogError(sError);
+            }
         }
 
         return View();

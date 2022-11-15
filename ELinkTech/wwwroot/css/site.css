@@ -51,6 +51,14 @@ a.nav-link:hover {
     margin-top: 40px;
 }
 
+.card {
+    margin-top: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
 .card-img-top {
     width: auto;
     height: 20vh;

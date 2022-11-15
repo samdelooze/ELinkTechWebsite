@@ -155,9 +155,16 @@ namespace ELinkTech.Controllers
             {
                 try
                 {
-                    await emailSender.SendEmailAsync(email.toEmail, email.subject, email.message);
+                    var senderEmail = configuration["SendGrid:SenderEmail"];
 
-                    TempData["AlertSuccess"] = "Reply is successfully sent to " + email.toEmail;
+                    if (senderEmail != null && senderEmail != "")
+                    {
+                        await emailSender.SendEmailAsync(email.toEmail, email.subject, email.message);
+
+                        TempData["AlertSuccess"] = "Reply is successfully sent to " + email.toEmail;
+                    }
+
+                    TempData["AlertFail"] = "Fail to send your reply";
                 }
                 catch (Exception e)
                 {
