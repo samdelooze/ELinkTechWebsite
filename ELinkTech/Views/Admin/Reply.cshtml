@@ -11,12 +11,12 @@
                 <form action="Reply" method="post" id="reply">
                     <div class="mb-3">
                         <label>@Html.LabelFor(m => m.toEmail)</label>
-                        @Html.TextBoxFor(m => m.toEmail, new { @class = "form-control", @type = "email", @required = "required", @style = "width:100%;" })
+                        @Html.TextBoxFor(m => m.toEmail, new { @class = "form-control", @type = "email", @required = "required", @style = "width:100%;", @readonly = "readonly" })
                     </div>
 
                     <div class="mb-3">
                         <label>@Html.LabelFor(m => m.fromEmail)</label>
-                        @Html.TextBoxFor(m => m.fromEmail, new { @class = "form-control", @type = "email", @required = "required", @style = "width:100%;" })
+                        @Html.TextBoxFor(m => m.fromEmail, new { @class = "form-control", @type = "email", @required = "required", @style = "width:100%;", @readonly = "readonly" })
                     </div>
 
                     <div class="mb-3">

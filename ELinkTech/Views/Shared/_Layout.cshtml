@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>ELinkTech</title>
+    <link rel="shortcut icon" type="image/ico" href="https://elinktech.net.au/img/favico.png" />
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>@ViewData["Title"] - ELinkTech</title>
@@ -26,7 +29,10 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid ps-5">
-                <a class="navbar-brand text-light" asp-area="" asp-controller="Main" asp-action="Index">ELinkTech</a>
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Main" asp-action="Index">
+                    <img src="https://elinktech.net.au/img/logo.png" alt="logo" class="d-inline-block align-text-top">
+                </a>
+                @*<a class="navbar-brand text-light" asp-area="" asp-controller="Main" asp-action="Index">ELinkTech</a>*@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -66,7 +72,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-light" asp-controller="Customer" asp-action="UserProfile">Hello @User.Identity?.Name!</a>
                                     </li>
-                                    
+
                                 }
 
                                 <li class="nav-item">
@@ -119,34 +125,34 @@
         </div>
         <!-- Logout wrapper -->
 
-
         @{
             if (Context.Request.RouteValues["controller"].ToString() == "Main" && Context.Request.RouteValues["action"].ToString() != "Login" && Context.Request.RouteValues["action"].ToString() != "Register")
             {
 
                 <!-- Banner image -->
-                <div id="sect1" style="height: 500px; background-image: url(https://elinktech.net.au/img/slider/slide_3.jpg); background-size: cover; background-position: center;" class="position-relative w-100">
+                <div id="sect1" style="margin-top:65px; height: 450px; background-image: url(https://elinktech.net.au/img/slider/slide_3.jpg); background-size: cover; background-position: center;" class="position-relative w-100">
                     <div class="position-absolute text-white d-flex flex-column align-items-center justify-content-center" style="top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(0,0,0,.6);">
-                        <h1 class="mb-4 font-weight-bold text-center">Lighten up the burden of IT management<br />with ELinkTech</h1>
-                        <p class="mb-5 text-center">eLink Technology is a fully Australian owned cloud computing and Manage IT service Provider, <br />which provides you with both full and part time information technology services with the latest computing power technology.</p>
-                        <div class="text-center">
-                            <!-- hover background-color: white; color: black; -->
-                            @{
-                                if (!signInManager.IsSignedIn(User))
-                                {
-                                    <a href="@Url.Action("Login","Main")" id="filled" class="btn px-5 py-3 text-white mt-3 mt-sm-0 mx-1" style="border-radius: 30px; background-color: #F39C12;">Get Started</a>
+                        <div class="container">
+                            <h1 class="mb-4 font-weight-bold text-center">Lighten up the burden of IT management<br />with ELinkTech</h1>
+                            <p class="mb-5 text-center">eLink Technology is a fully Australian owned cloud computing and Manage IT service Provider, <br />which provides you with both full and part time information technology services with the latest computing power technology.</p>
+                            <div class="text-center">
+                                <!-- hover background-color: white; color: black; -->
+                                @{
+                                    if (!signInManager.IsSignedIn(User))
+                                    {
+                                        <a href="@Url.Action("Login","Main")" id="filled" class="btn px-5 py-3 text-white mt-3 mt-sm-0 mx-1" style="border-radius: 30px; background-color: #F39C12;">Get Started</a>
+                                    }
                                 }
-                            }
-                            <!-- hover background-color: #9B5DE5; color: white; -->
-                            <a id="outlined" class="btn px-5 py-3 text-white mt-3 mt-sm-0 mx-1" style="border-radius: 30px; border: 2px solid #F39C12;"
-                               data-bs-toggle="ajax-modal2" data-bs-target="#modal-quoteForm" data-url="@Url.Action("QuoteForm", "Customer")" type="button">Request A Quote</a>
+                                <!-- hover background-color: #9B5DE5; color: white; -->
+                                <a id="outlined" class="btn px-5 py-3 text-white mt-3 mt-sm-0 mx-1" style="border-radius: 30px; border: 2px solid #F39C12;"
+                                   data-bs-toggle="ajax-modal2" data-bs-target="#modal-quoteForm" data-url="@Url.Action("QuoteForm", "Customer")" type="button">Request A Quote</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- Banner image -->
             }
         }
-
 
     </header>
     <main role="main" class="pb-3 px-5">

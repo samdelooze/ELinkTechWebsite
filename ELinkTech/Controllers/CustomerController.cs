@@ -235,20 +235,25 @@ namespace ELinkTech.Controllers
             {
                 try
                 {
-                    await db.quotes.AddAsync(quote);
-                    await db.SaveChangesAsync();
-
-                    var product = db.products.Where(m => m.ProductID.ToString() == quote.ProductID).FirstOrDefault();
+                    var product = db.products.Where(m => m.ProductID.ToString() == quote.ProductID.ToString()).FirstOrDefault();
                     var productName = product.ProductName;
 
                     var senderEmail = configuration["SendGrid:SenderEmail"];
 
-                    await emailSender.SendEmailAsync(
-                          senderEmail,
-                          "[ELinkTech] User requested a quote",
-                          "User Information: " + quote.UserName + "(" + quote.UserEmail + ")<br>Quote about: " + productName + "<br>Message: " + quote.Message);
+                    if (product != null && senderEmail != null && senderEmail != "")
+                    {
+                        await emailSender.SendEmailAsync(
+                              senderEmail,
+                              "[ELinkTech] User requested a quote",
+                              "User Information: " + quote.UserName + "(" + quote.UserEmail + ")<br>Quote about: " + productName + "<br>Message: " + quote.Message);
 
-                    TempData["AlertSuccess"] = "Your quote request is successfully submitted";
+                        await db.quotes.AddAsync(quote);
+                        await db.SaveChangesAsync();
+
+                        TempData["AlertSuccess"] = "Your quote request is successfully submitted";
+                    }
+
+                    TempData["AlertFail"] = "Fail to submit your quote request";
                 }
                 catch (Exception e)
                 {
