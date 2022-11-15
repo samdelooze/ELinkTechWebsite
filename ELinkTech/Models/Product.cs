@@ -17,7 +17,7 @@ namespace ELinkTech.Models
         [Key]
         public int? ProductID { get; set; }
 
-        [Display(Name = "Product Name")]
+        [Display(Name = "Service Name")]
         public string? ProductName { get; set; }
 
         [Display(Name = "Supplier")]
