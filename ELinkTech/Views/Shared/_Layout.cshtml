@@ -50,10 +50,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-light page-scroll" href="@Url.Action("Index","Main")#sect4">Testimonials</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light page-scroll" href="@Url.Action("Privacy","Main")">Privacy</a>
-                        </li>
-
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         @{
@@ -158,59 +154,88 @@
         }
 
     </header>
-    <main role="main" class="pb-3 px-5">
-        <div class="container-fluid" style="padding-bottom: 70px;">
+
+    <main role="main">
+        <div class="container-fluid">
             @RenderBody()
         </div>
     </main>
-    <footer class="border-top footer text-muted bg-dark offcanvas-bottom">
+
+    <footer class="footer text-muted bg-dark mt-auto" style="position: absolute; right: 0; bottom: 0; left: 0; ">
         <div class="container p-3">
-            <div class="row">
-                <div class="col-12 col-lg-6">
-                    <div class="d-flex justify-content-left justify-content-lg-start">
-                        &copy;
-                        <script>document.write(new Date().getFullYear())</script>&nbsp;<b>ELinkTech</b>&nbsp;|&nbsp;All Rights Reserved.
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                <div class="me-5 d-none d-lg-block">
+                    <span>Get connected with us on social networks:</span>
+                </div>
+                <div>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="text-reset">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </section>
+
+            <section>
+                <div class="container text-center text-md-start mt-5">
+                    <div class="row mt-3">
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                ElinkTech
+                            </h6>
+                            <p>
+                                ELink Technology is a fully Australian owned cloud computing and Manage IT service Provider
+                            </p>
+                        </div>
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Main Page
+                            </h6>
+                            <p>
+                                <a href="@Url.Action("Index","Main")#sect1" class="nav-link p-0 text-light">Home</a>
+                            </p>
+                            <p>
+                                <a href="@Url.Action("Index","Main")#sect2" class="nav-link p-0 text-light">Services</a>
+                            </p>
+                            <p>
+                                <a href="@Url.Action("Index","Main")#sect3" class="nav-link p-0 text-light">About</a>
+                            </p>
+                            <p>
+                                <a href="@Url.Action("Index","Main")#sect4" class="nav-link p-0 text-light">Testimonials</a>
+                            </p>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Policy
+                            </h6>
+                            <p>
+                                <a href="@Url.Action("Privacy", "Main")" class="nav-link p-0 text-light">Privacy</a>
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                            <p><i class="fas fa-home me-3"></i> 799 Springvale Road, Mulgrave.</p>
+                            <p><i class="fas fa-envelope me-3"></i> info@elinktech.com.au</p>
+                            <p><i class="fas fa-phone me-3"></i> + 61 0456 233 344</p>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="col-12 col-lg-6">
-                    <div class="d-flex justify-content-center justify-content-lg-end">
-                        <a href="" class="me-4 text-reset">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="" class="me-4 text-reset">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="" class="me-4 text-reset">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="" class="text-reset">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-4 col-lg-5">
-                    <h6 class="text-uppercase fw-bold mt-3 mb-2">
-                        Main Page
-                    </h6>
-
-                    <div class="justify-content-end justify-content-lg-end">
-                        <!-- Links -->
-
-                        <a href="@Url.Action("Index","Main")#sect1" class="nav-link p-0 text-light">Home</a>
-
-                        <a href="@Url.Action("Index","Main")#sect2" class="nav-link p-0 text-light">Services</a>
-
-                        <a href="@Url.Action("Index","Main")#sect3" class="nav-link p-0 text-light">About</a>
-
-                        <a href="@Url.Action("Index","Main")#sect4" class="nav-link p-0 text-light">Testimonials</a>
-
-                        <a href="@Url.Action("Privacy", "Main")" class="nav-link p-0 text-light">Privacy</a>
-                    </div>
-                </div>
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+                &copy;
+                <script>document.write(new Date().getFullYear())</script>&nbsp;<b>ELinkTech</b>&nbsp;|&nbsp;All Rights Reserved.
             </div>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js" integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA==" crossorigin="anonymous"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
