@@ -138,3 +138,22 @@ a.nav-link:hover {
 .nav-link {
     color: gray;
 }
+
+/* Mobile */
+main {
+    padding-bottom: 900px;
+}
+
+/* Tablet */
+@media (min-width:768px) {
+    main {
+        padding-bottom: 600px;
+    }
+}
+
+/* Desktop */
+@media (min-width:992px) {
+    main {
+        padding-bottom: 550px;
+    }
+}
