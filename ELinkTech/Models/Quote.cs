@@ -15,6 +15,7 @@ namespace ELinkTech.Models
     public class Quote
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "Quote ID")]
         public int? QuoteId { get; set; }
 
         [Required]
